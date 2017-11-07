@@ -4,34 +4,42 @@ import nurikabe.jeu.assets.cellule.Cellule;
 import nurikabe.jeu.assets.cellule.Etat;
 import nurikabe.jeu.assets.cellule.Jouable;
 import nurikabe.jeu.assets.cellule.NonJouable;
+import nurikabe.jeu.logic.generateur.Generateur;
+import util.Matrix;
 
 public class Grille {
 
-	private Cellule[][] grille;
+	private Matrix<Cellule> grille;
 	
 	public Grille( int width, int height) {
-		grille = new Cellule[width][height];
+		grille = new Matrix<Cellule>(width, height);
 		for (int x = 0; x < width; x++)
 			for (int y = 0; y < height; y++)
-				grille[x][y] = new Jouable();
+				grille.set(x, y, new Jouable());
+	}
+	
+	public Grille( Matrix<Cellule> grille) {
+		this.grille = grille;
+	}
+	
+	public Grille( int width, int height, Generateur generateur) {
+		
 	}
 	
 	public int getWidth( ) {
 		if (grille != null)
-			return grille.length;
+			return grille.getWidth();
 		return -1;
 	}
 	
 	public int getHeight( ) {
 		if (grille != null)
-			return grille[0].length;
+			return grille.getHeight();
 		return -1;
 	}
 	
 	private Cellule getCellule( int x, int y) {
-		if (x >= 0 && x < getWidth() && y >= 0 && y < getHeight())
-			return grille[x][y];
-		return null;
+		return grille.get( x, y);
 	}
 	
 	public int difficulty( ) {
