@@ -23,7 +23,7 @@ public class Grille {
 	}
 	
 	public Grille( int width, int height, Generateur generateur) {
-		
+		grille = generateur.createMatrix( width, height);
 	}
 	
 	public int getWidth( ) {
@@ -65,5 +65,19 @@ public class Grille {
 		if (c != null && c instanceof NonJouable)
 			return ((NonJouable) c).getValeur();
 		return -1;
+	}
+	
+	public boolean cycleEtat( int x, int y) {
+		Cellule c = getCellule( x, y);
+		if (c != null)
+			return c.cycleEtat();
+		return false;
+	}
+	
+	public boolean setEtat( int x, int y, Etat etat) {
+		Cellule c = getCellule( x, y);
+		if (c != null)
+			return c.setEtat( etat);
+		return false;
 	}
 }

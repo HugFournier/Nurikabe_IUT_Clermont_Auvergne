@@ -5,7 +5,11 @@ import java.util.List;
 
 import nurikabe.jeu.assets.Grille;
 import nurikabe.jeu.assets.cellule.Etat;
+import nurikabe.jeu.logic.generateur.Generateur;
 import nurikabe.jeu.logic.verif.Verif;
+import nurikabe.jeu.logic.verif.blancChiffre.VerifBlancChiffreBrut;
+import nurikabe.jeu.logic.verif.blancConnect.VerifBlancConnectBrut;
+import nurikabe.jeu.logic.verif.noirConnect.VerifNoirConnectBrut;
 import nurikabe.jeu.logic.verif.vide.VerifVideBrut;
 
 public class Jeu {
@@ -13,14 +17,22 @@ public class Jeu {
 	private Grille grille;
 	private List<Verif> regles = new ArrayList<Verif>();
 	
-	public Jeu( ) {
-		grille = new Grille( 4, 4);
+	public Jeu( int width, int height) {
+		grille = new Grille( width, height);
+		initVerif();
+	}
+	
+	public Jeu( int width, int height, Generateur generateur) {
+		grille = new Grille( width, height, generateur);
 		initVerif();
 	}
 	
 	// REGLES
 	private void initVerif( ) {
 		regles.add( new VerifVideBrut());
+		regles.add( new VerifNoirConnectBrut());
+		regles.add( new VerifBlancConnectBrut());
+		regles.add( new VerifBlancChiffreBrut());
 	}
 	
 	public boolean verfication() {
@@ -61,5 +73,20 @@ public class Jeu {
 		return -1;
 	}
 	
+	public boolean cycleEtat( int x, int y) {
+		if (grille != null)
+			return grille.cycleEtat( x, y);
+		return false;
+	}
+	
+	public void mettreVideEnBlanc( ) {
+		int width = getWidth();
+		int height = getHeight();
+		
+		for (int x = 0; x < width; x++)
+			for (int y = 0; y < height; y++)
+				if (grille.getEtat( x, y) == Etat.VIDE)
+					grille.setEtat( x, y, Etat.BLANC);
+	}
 	
 }
