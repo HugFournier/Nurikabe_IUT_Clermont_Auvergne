@@ -1,5 +1,7 @@
 package nurikabe.jeu.assets.cellule;
 
+import java.io.Serializable;
+
 public abstract class Cellule implements Serializable{
 	
 	private static final long serialVersionUID = 5897004859064209151L;

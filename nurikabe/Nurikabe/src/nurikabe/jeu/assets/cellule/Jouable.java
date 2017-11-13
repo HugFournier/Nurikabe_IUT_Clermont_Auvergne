@@ -12,18 +12,18 @@ public class Jouable extends Cellule {
 		super(etat);
 	}
 
-        @Override
-        public String toString() {
-            switch(getEtat()){
-                case VIDE :
-                    return ".";
-                case BLANC :
-                    return "+";
-                case NOIR :
-                    return "#";
-                default:
-                    return "?";
-            }
-        }
+	@Override
+    public String toString() {
+		switch(getEtat()){
+        	case VIDE :
+        		return ".";
+        	case BLANC :
+        		return "+";
+            case NOIR :
+                return "#";
+            default:
+                return "?";
+		}
+	}
 	
 }

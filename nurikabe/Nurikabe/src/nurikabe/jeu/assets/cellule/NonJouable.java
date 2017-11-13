@@ -21,4 +21,9 @@ public class NonJouable extends Cellule {
 		return false;
 	}
 	
+	@Override
+	public String toString() {
+		return "" + getValeur();
+	}
+	
 }

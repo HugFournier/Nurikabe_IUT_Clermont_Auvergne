@@ -10,7 +10,6 @@ import nurikabe.jeu.logic.verif.Verif;
 import nurikabe.jeu.logic.verif.blancChiffre.VerifBlancChiffreBrut;
 import nurikabe.jeu.logic.verif.blancConnect.VerifBlancConnectBrut;
 import nurikabe.jeu.logic.verif.noirConnect.VerifNoirConnectBrut;
-import nurikabe.jeu.logic.verif.vide.VerifVideBrut;
 
 public class Jeu {
 
@@ -29,7 +28,6 @@ public class Jeu {
 	
 	// REGLES
 	private void initVerif( ) {
-		regles.add( new VerifVideBrut());
 		regles.add( new VerifNoirConnectBrut());
 		regles.add( new VerifBlancConnectBrut());
 		regles.add( new VerifBlancChiffreBrut());

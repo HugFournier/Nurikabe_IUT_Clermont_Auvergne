@@ -3,7 +3,6 @@ package nurikabe.affichage;
 import java.util.Scanner;
 
 import nurikabe.jeu.Jeu;
-import nurikabe.jeu.assets.cellule.Etat;
 
 public class Console extends Affichage{
 	
@@ -17,7 +16,7 @@ public class Console extends Affichage{
 	public void afficher( Jeu jeu) {
 		if (jeu == null)
 			return;
-                System.out.println(jeu.toString());
+        System.out.println(jeu.toString());
 	}
 	
 	@Override

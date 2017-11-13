@@ -17,7 +17,7 @@ public class VerifBlancConnectBrut implements Verif{
 		int width = grille.getWidth(), height = grille.getHeight();
 		for (int x = 0; x < width; x++)
 			for (int y = 0; y < height; y++)
-				if (Etat.BLANC == grille.getEtat( x, y)) {
+				if (Etat.BLANC == grille.getEtat( x, y) || Etat.VIDE == grille.getEtat( x, y)) {
 					listBlanc.add( new Position( x, y));
 					if (grille.getValeur( x, y) > 0)
 						listChiffre.add( new Position( x, y));
