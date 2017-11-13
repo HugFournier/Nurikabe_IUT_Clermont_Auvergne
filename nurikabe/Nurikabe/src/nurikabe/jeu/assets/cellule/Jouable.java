@@ -12,6 +12,7 @@ public class Jouable extends Cellule {
 		super(etat);
 	}
 
+<<<<<<< HEAD
         @Override
         public String toString() {
             switch(getEtat()){
@@ -25,5 +26,20 @@ public class Jouable extends Cellule {
                     return "?";
             }
         }
+=======
+	@Override
+    public String toString() {
+		switch(getEtat()){
+        	case VIDE :
+        		return ".";
+        	case BLANC :
+        		return "+";
+            case NOIR :
+                return "#";
+            default:
+                return "?";
+		}
+	}
+>>>>>>> 276406a5557426ad516f450c4e903a46e0bdbc8e
 	
 }
