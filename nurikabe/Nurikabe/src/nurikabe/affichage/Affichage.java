@@ -14,6 +14,12 @@ public abstract class Affichage {
 		afficher( jeu);
 	}
 	
+	public void jouer( ) {
+		jouer( jeu);
+	}
+	
 	public abstract void afficher( Jeu jeu);
+	
+	public abstract void jouer( Jeu jeu);
 	
 }

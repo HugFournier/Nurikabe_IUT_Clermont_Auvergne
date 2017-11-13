@@ -73,7 +73,7 @@ public class Jeu {
 		return -1;
 	}
 	
-	public boolean cycleEtat( int x, int y) {
+	private boolean cycleEtat( int x, int y) {
 		if (grille != null)
 			return grille.cycleEtat( x, y);
 		return false;
@@ -87,6 +87,10 @@ public class Jeu {
 			for (int y = 0; y < height; y++)
 				if (grille.getEtat( x, y) == Etat.VIDE)
 					grille.setEtat( x, y, Etat.BLANC);
+	}
+	
+	public void jouer( int x, int y) {
+		cycleEtat( x, y);
 	}
 	
 }
