@@ -17,23 +17,7 @@ public class Console extends Affichage{
 	public void afficher( Jeu jeu) {
 		if (jeu == null)
 			return;
-		int height = jeu.getHeight();
-		int width = jeu.getWidth();
-		for (int y = 0; y < height; y++) {
-			for (int x = 0; x < width; x++) {
-				Etat e = jeu.getEtat(x, y);
-				if (e == Etat.BLANC)
-					if (jeu.isJouable(x, y))
-						System.out.print( "+");
-					else
-						System.out.print( jeu.valeur( x, y));
-				else if (e == Etat.NOIR)
-					System.out.print( "X");
-				else if (e == Etat.VIDE)
-					System.out.print( ".");
-			}
-			System.out.println("");
-		}
+                System.out.println(jeu.toString());
 	}
 	
 	@Override
@@ -44,6 +28,8 @@ public class Console extends Affichage{
 		System.out.print( "Donnez la position x du case (commence par 0) : ");
 		while (!sc.hasNextInt()) {}
 		x = sc.nextInt();
+		if (x == -1)
+			System.exit( 0);
 		System.out.print( "Donnez la position y du case (commence par 0) : ");
 		while (!sc.hasNextInt()) {}
 		y = sc.nextInt();

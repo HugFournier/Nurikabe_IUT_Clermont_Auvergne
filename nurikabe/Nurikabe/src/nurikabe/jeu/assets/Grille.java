@@ -7,12 +7,10 @@ import nurikabe.jeu.assets.cellule.NonJouable;
 import nurikabe.jeu.logic.generateur.Generateur;
 import util.Matrix;
 
-import java.io.Serializable;
-
 public class Grille implements Serializable{
 
 	private static final long serialVersionUID = 3255510956281643421L;
-	
+
 	private Matrix<Cellule> grille;
 	
 	public Grille( int width, int height) {
@@ -84,4 +82,20 @@ public class Grille implements Serializable{
 			return c.setEtat( etat);
 		return false;
 	}
+
+        @Override
+        public String toString() {
+            int height = getHeight();
+            int width = getWidth();
+            String retour = "";
+            for (int y = 0; y < height; y++) {
+                for (int x = 0; x < width; x++) {
+                    retour += getCellule(x,y).toString();
+                }
+		retour += "\n";
+            }
+            return retour;
+        }
+        
+        
 }

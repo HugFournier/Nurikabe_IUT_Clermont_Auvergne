@@ -92,5 +92,11 @@ public class Jeu {
 	public void jouer( int x, int y) {
 		cycleEtat( x, y);
 	}
+
+        @Override
+        public String toString() {
+            return  grille.toString();
+        }
 	
+        
 }
