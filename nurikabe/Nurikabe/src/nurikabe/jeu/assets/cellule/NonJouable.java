@@ -2,6 +2,8 @@ package nurikabe.jeu.assets.cellule;
 
 public class NonJouable extends Cellule {
 	
+	private static final long serialVersionUID = 2920309031260971068L;
+	
 	private int valeur;
 	
 	public NonJouable( int valeur) {

@@ -1,6 +1,8 @@
 package nurikabe.jeu.assets.cellule;
 
-public enum Etat {
+import java.io.Serializable;
+
+public enum Etat implements Serializable{
 
 	BLANC, VIDE, NOIR
 	

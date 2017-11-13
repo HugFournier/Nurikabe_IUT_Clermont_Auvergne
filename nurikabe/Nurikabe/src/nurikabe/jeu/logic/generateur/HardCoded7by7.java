@@ -5,7 +5,7 @@ import nurikabe.jeu.assets.cellule.Jouable;
 import nurikabe.jeu.assets.cellule.NonJouable;
 import util.Matrix;
 
-public class HardCoded7by7 extends Generateur{
+public class HardCoded7by7 implements Generateur{
 
 	@Override
 	public Matrix<Cellule> createMatrix( int width, int height) {

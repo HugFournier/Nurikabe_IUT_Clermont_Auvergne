@@ -1,12 +1,14 @@
 package util;
 
+import java.io.Serializable;
 import java.util.HashMap;
-import java.util.Map;
 
-public class Matrix<leType> {
+public class Matrix<leType> implements Serializable{
 
+	private static final long serialVersionUID = 6230104758740040210L;
+	
 	private int width, height;
-	private Map<Position, leType> data;
+	private HashMap<Position, leType> data;
 	
 	public Matrix( int width, int height){
 		this.width = width;
