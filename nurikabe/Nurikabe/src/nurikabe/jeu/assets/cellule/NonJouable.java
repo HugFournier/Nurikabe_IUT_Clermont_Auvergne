@@ -20,5 +20,10 @@ public class NonJouable extends Cellule {
 	public boolean setEtat( Etat etat) {
 		return false;
 	}
-	
+
+        @Override
+        public String toString() {
+            return "" + getValeur();
+        }
+        	
 }

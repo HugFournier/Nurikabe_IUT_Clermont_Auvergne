@@ -20,7 +20,7 @@ public class Jouable extends Cellule {
                 case BLANC :
                     return "+";
                 case NOIR :
-                    return "#";
+                    return "¤";
                 default:
                     return "?";
             }

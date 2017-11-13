@@ -1,5 +1,6 @@
 package nurikabe.jeu.assets;
 
+import java.io.Serializable;
 import nurikabe.jeu.assets.cellule.Cellule;
 import nurikabe.jeu.assets.cellule.Etat;
 import nurikabe.jeu.assets.cellule.Jouable;
