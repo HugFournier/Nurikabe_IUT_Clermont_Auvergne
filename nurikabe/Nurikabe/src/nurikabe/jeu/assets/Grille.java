@@ -1,10 +1,7 @@
 package nurikabe.jeu.assets;
 
 import java.io.Serializable;
-<<<<<<< HEAD
-=======
 
->>>>>>> 276406a5557426ad516f450c4e903a46e0bdbc8e
 import nurikabe.jeu.assets.cellule.Cellule;
 import nurikabe.jeu.assets.cellule.Etat;
 import nurikabe.jeu.assets.cellule.Jouable;
