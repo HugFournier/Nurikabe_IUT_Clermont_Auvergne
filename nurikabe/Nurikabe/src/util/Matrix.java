@@ -7,13 +7,19 @@ public class Matrix<leType> implements Serializable{
 
 	private static final long serialVersionUID = 6230104758740040210L;
 	
-	private int width, height;
+	protected int width, height;
 	private HashMap<Position, leType> data;
 	
 	public Matrix( int width, int height){
 		this.width = width;
 		this.height = height;
 		data = new HashMap<Position, leType>();
+	}
+
+	public Matrix( Matrix<leType> clone){
+		width = clone.getWidth();
+		height = clone.getHeight();
+		data = clone.data;
 	}
 	
 	public int getWidth() {
