@@ -17,7 +17,10 @@ public class BinaryGrille implements Generateur, Enregistreur{
 		File f = new File( path);
 		if (!f.exists())
 			try {
+				f.getParentFile().mkdirs();
 				f.createNewFile();
+				f.setWritable( true);
+				f.setReadable( true);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}

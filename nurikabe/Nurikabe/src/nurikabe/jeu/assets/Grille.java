@@ -9,41 +9,30 @@ import nurikabe.jeu.assets.cellule.NonJouable;
 import nurikabe.jeu.logic.generateur.Generateur;
 import util.Matrix;
 
-public class Grille implements Serializable{
+public class Grille extends Matrix<Cellule> implements Serializable{
 
 	private static final long serialVersionUID = 3255510956281643421L;
 
-	private Matrix<Cellule> grille;
 	
 	public Grille( int width, int height) {
-		grille = new Matrix<Cellule>(width, height);
+		super( width, height);
 		for (int x = 0; x < width; x++)
 			for (int y = 0; y < height; y++)
-				grille.set(x, y, new Jouable());
+				set(x, y, new Jouable());
 	}
 	
 	public Grille( Matrix<Cellule> grille) {
-		this.grille = grille;
+		super( grille);
 	}
 	
 	public Grille( int width, int height, Generateur generateur) {
-		grille = generateur.createMatrix( width, height);
+		this( generateur.createMatrix( width, height));
+
 	}
-	
-	public int getWidth( ) {
-		if (grille != null)
-			return grille.getWidth();
-		return -1;
-	}
-	
-	public int getHeight( ) {
-		if (grille != null)
-			return grille.getHeight();
-		return -1;
-	}
-	
+
+
 	private Cellule getCellule( int x, int y) {
-		return grille.get( x, y);
+		return get( x, y);
 	}
 	
 	public int difficulty( ) {
@@ -87,16 +76,14 @@ public class Grille implements Serializable{
 
         @Override
         public String toString() {
-            int height = getHeight();
-            int width = getWidth();
-            String retour = "";
+            StringBuilder retour = new StringBuilder();
             for (int y = 0; y < height; y++) {
                 for (int x = 0; x < width; x++) {
-                    retour += getCellule(x,y).toString();
+                    retour.append( getCellule( x, y).toString() + " ");
                 }
-		retour += "\n";
+				retour.append( "\n");
             }
-            return retour;
+            return retour.toString();
         }
         
         

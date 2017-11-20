@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/fourn/OneDrive/Documents/GitHub/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/nurikabe/jeu/assets/Grille.java</file>
-            <file>file:/C:/Users/fourn/OneDrive/Documents/GitHub/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/nurikabe/jeu/assets/cellule/Jouable.java</file>
-            <file>file:/C:/Users/fourn/OneDrive/Documents/GitHub/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/nurikabe/jeu/logic/generateur/FromTextFile.java</file>
-            <file>file:/C:/Users/fourn/OneDrive/Documents/GitHub/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/nurikabe/jeu/assets/cellule/Cellule.java</file>
-            <file>file:/C:/Users/fourn/OneDrive/Documents/GitHub/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/nurikabe/jeu/Jeu.java</file>
-            <file>file:/C:/Users/fourn/OneDrive/Documents/GitHub/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/nurikabe/jeu/assets/cellule/NonJouable.java</file>
+            <file>file:/Users/argiraud/Desktop/Nurikabe_IUT_Clermont_Auvergne/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/nurikabe/affichage/Case.java</file>
+            <file>file:/Users/argiraud/Desktop/Nurikabe_IUT_Clermont_Auvergne/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/nurikabe/jeu/logic/generateur/FromTextFile.java</file>
+            <file>file:/Users/argiraud/Desktop/Nurikabe_IUT_Clermont_Auvergne/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/nurikabe/affichage/Grille.java</file>
+            <file>file:/Users/argiraud/Desktop/Nurikabe_IUT_Clermont_Auvergne/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/nurikabe/affichage/controller/ControllerFenetrePrincipale.java</file>
+            <file>file:/Users/argiraud/Desktop/Nurikabe_IUT_Clermont_Auvergne/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/nurikabe/affichage/ihm/FenetrePrincipale.fxml</file>
         </group>
     </open-files>
 </project-private>
