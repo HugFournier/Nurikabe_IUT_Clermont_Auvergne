@@ -45,7 +45,7 @@ public class ControllerFenetrePrincipale {
     @FXML
     public void onNPartie(){
        hbox.getChildren().clear();
-       grille = new Grille(5,7));
+       grille = new Grille(5,7);
        hbox.getChildren().add(grille);
     }
    
