@@ -41,7 +41,7 @@ public class Case extends Parent{
         else{
             valeur = 0;
             caseChifree = false;
-            couleur = Color.WHITE;
+            couleur = Color.LIGHTGREY;
         }
         
         fondCase = new Rectangle(GLOBALSIZE,GLOBALSIZE,couleur);
@@ -76,24 +76,21 @@ public class Case extends Parent{
             }
         });
         
-        this.setOnMouseReleased(new EventHandler<MouseEvent>(){
-            public void handle(MouseEvent me){
-                relacher();
-            }
-        });
+        
     }
     private void appuyer() {
         if (!caseChifree){
-            if (fondCase.getFill().equals(Color.BLACK)){
-                fondCase.setFill(Color.WHITE);
-            }
-            else{
+            if(fondCase.getFill().equals(Color.LIGHTGREY)){
                 fondCase.setFill(Color.BLACK);
             }
+            else{ if(fondCase.getFill().equals(Color.BLACK)){ 
+                fondCase.setFill(Color.WHITE);
+            }
+                else{
+                   fondCase.setFill(Color.LIGHTGREY);
+                }
         }
     }
     
-    private void relacher(){
-        //nothing
     }
 }

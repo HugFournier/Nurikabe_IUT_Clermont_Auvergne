@@ -13,7 +13,7 @@ import javafx.scene.layout.GridPane;
  * @author sylat
  */
 public class Grille extends Parent{
-    GridPane grille;
+    private GridPane grille;
     
     public Grille(){
         this(5,5);
@@ -27,11 +27,19 @@ public class Grille extends Parent{
         
         for (int i=0; i<x; i++){
             for (int j=0; j<y; j++){
-                grille.add(new Case(),i,j);
+                if (i== 4 && j==5 ) grille.add(new Case(9),i,j);
+                else if (i==2 && j==2 ) grille.add(new Case(2),i,j);
+                else if (i==1 && j==4 ) grille.add(new Case(2),i,j);
+                else
+                    grille.add(new Case(),i,j);
+                
             }
         }
         
         this.getChildren().add(grille);
         
+    }
+    public GridPane getGrille(){
+        return grille;
     }
 }

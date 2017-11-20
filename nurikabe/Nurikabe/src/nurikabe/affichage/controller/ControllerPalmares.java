@@ -6,6 +6,7 @@
 package nurikabe.affichage.controller;
 
 import javafx.event.Event;
+import javafx.fxml.FXML;
 import javafx.scene.Node;
 
 /**
@@ -13,6 +14,7 @@ import javafx.scene.Node;
  * @author argiraud
  */
 public class ControllerPalmares {
+    @FXML
     public void onExit(Event event){
         ((Node)event.getSource()).getScene().getWindow().hide();
     }
