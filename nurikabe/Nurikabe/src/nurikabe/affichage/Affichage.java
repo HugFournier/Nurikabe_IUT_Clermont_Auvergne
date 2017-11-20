@@ -1,25 +1,18 @@
 package nurikabe.affichage;
 
 import nurikabe.jeu.Jeu;
+import nurikabe.jeu.logic.Handler;
+import nurikabe.jeu.logic.generateur.Enregistreur;
 
 public abstract class Affichage {
 
-	protected Jeu jeu;
 	
-	public Affichage( Jeu jeu) {
-		this.jeu = jeu;
+	public Affichage( ) {
+
 	}
 	
-	public void afficher( ) {
-		afficher( jeu);
-	}
+	public abstract void afficher( Handler handler);
 	
-	public void jouer( ) {
-		jouer( jeu);
-	}
-	
-	public abstract void afficher( Jeu jeu);
-	
-	public abstract void jouer( Jeu jeu);
+	public abstract void jouer( Handler handler);
 	
 }

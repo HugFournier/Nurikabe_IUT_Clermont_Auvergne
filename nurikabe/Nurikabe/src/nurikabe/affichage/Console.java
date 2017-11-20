@@ -3,30 +3,34 @@ package nurikabe.affichage;
 import java.util.Scanner;
 
 import nurikabe.jeu.Jeu;
+import nurikabe.jeu.logic.Handler;
 
 public class Console extends Affichage{
 	
 	Scanner sc = new Scanner( System.in);
 
-	public Console(Jeu jeu) {
-		super(jeu);
+	public Console () {
 	}
 
 	@Override
-	public void afficher( Jeu jeu) {
-		if (jeu == null)
+	public void afficher( Handler handler) {
+		if (handler == null)
 			return;
-		System.out.println(jeu.toString());
+		if (handler.getJeu() == null)
+			return;
+		System.out.println(handler.getJeu().toString());
 	}
 	
 	@Override
-	public void jouer( Jeu jeu) {
-		afficher( jeu);
+	public void jouer( Handler handler) {
+		afficher( handler);
 		int x = -1, y = -1;
 		System.out.println( "Tapez -1 pour quiter");
 		System.out.print( "Donnez la position x du case (commence par 0) : ");
 		while (!sc.hasNextInt()) {}
 		x = sc.nextInt();
+		if (x == -2)
+			handler.enregistrer( );
 		if (x == -1)
 			System.exit( 0);
 		System.out.print( "Donnez la position y du case (commence par 0) : ");
@@ -34,7 +38,7 @@ public class Console extends Affichage{
 		y = sc.nextInt();
 		if (y == -1)
 			System.exit( 0);
-		jeu.jouer( x, y);
+		handler.jouer( x, y);
 	}
 
 	
