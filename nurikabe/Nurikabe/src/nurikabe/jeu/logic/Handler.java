@@ -12,13 +12,13 @@ public class Handler {
 
     private Enregistreur chargeur, enregistreur;
     private Jeu jeu;
-    private Affichage affichage;
+    //private Affichage affichage;
 
-    public Handler( Enregistreur chargeur, Enregistreur enregistreur, Jeu jeu, Affichage affichage){
+    public Handler( Enregistreur chargeur, Enregistreur enregistreur){
         this.chargeur = chargeur;
         this.enregistreur = enregistreur;
-        this.jeu = jeu;
-        this.affichage = affichage;
+        this.jeu = new Jeu(chargeur, defaultPath);
+        //this.affichage = affichage;
     }
 
     public void enregistrer( ){

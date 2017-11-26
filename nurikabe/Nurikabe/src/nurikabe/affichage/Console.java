@@ -25,12 +25,14 @@ public class Console extends Affichage{
 	public void jouer( Handler handler) {
 		afficher( handler);
 		int x = -1, y = -1;
-		System.out.println( "Tapez -1 pour quiter");
+		System.out.println( "Tapez -1 pour quiter ou -2 pour sauvegarder");
 		System.out.print( "Donnez la position x du case (commence par 0) : ");
 		while (!sc.hasNextInt()) {}
 		x = sc.nextInt();
-		if (x == -2)
+		if (x == -2){
 			handler.enregistrer( );
+                        return;
+                }
 		if (x == -1)
 			System.exit( 0);
 		System.out.print( "Donnez la position y du case (commence par 0) : ");
