@@ -5,6 +5,9 @@
  */
 package nurikabe.affichage;
 
+import static java.lang.Integer.min;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.Parent;
 import javafx.scene.layout.GridPane;
 
@@ -13,8 +16,37 @@ import javafx.scene.layout.GridPane;
  * @author sylat
  */
 public class Grille extends Parent{
+    //PROPERTIES
     private GridPane grille;
+    private ObservableValue<Integer> width;
+    private ObservableValue<Integer> height;
     
+    //GETTERS
+    public GridPane getGrille(){
+        return grille;
+    }
+    public ObservableValue<Integer> getWidth() {
+        return width;
+    }
+    public ObservableValue<Integer> getHeight() {
+        return height;
+    }
+    
+    public int getWidthValue(){
+        return this.width.getValue().intValue();
+    }
+    public int getHeightValue(){
+        return this.height.getValue().intValue();
+    }
+    //SETTERS
+    public void setWidth(int width) {
+        this.width = new SimpleIntegerProperty(width).asObject();
+    }
+    public void setHeight(int height) {
+        this.height = new SimpleIntegerProperty(height).asObject();
+    }
+    
+    //CONSTRUCTORS
     public Grille(){
         this(5,5);
     }
@@ -23,23 +55,18 @@ public class Grille extends Parent{
         if (x<5) x=5;
         if (y<5) y=5;
         
+        this.width = new SimpleIntegerProperty(x*40).asObject();
+        this.height = new SimpleIntegerProperty(y*40).asObject();
+        
         grille = new GridPane();
         
-        for (int i=0; i<x; i++){
-            for (int j=0; j<y; j++){
-                if (i== 4 && j==5 ) grille.add(new Case(9),i,j);
-                else if (i==2 && j==2 ) grille.add(new Case(2),i,j);
-                else if (i==1 && j==4 ) grille.add(new Case(2),i,j);
-                else
-                    grille.add(new Case(),i,j);
-                
+        
+        
+        for (int row=0; row<x; row++){
+            for (int col=0; col<y; col++){
+                    grille.add(new Case(min(this.getWidthValue()/x, this.getHeightValue()/y)),row,col);
             }
         }
-        
         this.getChildren().add(grille);
-        
-    }
-    public GridPane getGrille(){
-        return grille;
-    }
+    }  
 }

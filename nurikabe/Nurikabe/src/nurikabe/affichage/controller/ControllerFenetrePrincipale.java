@@ -6,17 +6,16 @@
 package nurikabe.affichage.controller;
 
 import java.io.IOException;
-import static javafx.application.ConditionalFeature.FXML;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import nurikabe.affichage.Case;
 import nurikabe.affichage.Grille;
 
 /**
@@ -25,8 +24,9 @@ import nurikabe.affichage.Grille;
  */
 public class ControllerFenetrePrincipale {
     @FXML
+    BorderPane root;
+    @FXML
     Grille grille;
-
     @FXML
     ToolBar toolbarPartie;
     @FXML
@@ -45,7 +45,7 @@ public class ControllerFenetrePrincipale {
     @FXML
     public void onNPartie(){
        hbox.getChildren().clear();
-       grille = new Grille(5,7);
+       grille = new Grille(11,11);
        hbox.getChildren().add(grille);
     }
    
@@ -53,6 +53,10 @@ public class ControllerFenetrePrincipale {
     @FXML
     public void onExit(){
         Platform.exit();
+    }
+    
+    public void initialize(){
+        root.setMargin(hbox, new Insets(20,20,20,20));
     }
     
 }

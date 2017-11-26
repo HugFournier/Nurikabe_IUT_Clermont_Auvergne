@@ -5,6 +5,8 @@
  */
 package nurikabe.affichage;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
@@ -19,20 +21,56 @@ import javafx.scene.text.Text;
  * @author sylat
  */
 public class Case extends Parent{
-    private final static int GLOBALSIZE = 40;
+    //PROPERTIES
+    private ObservableValue<Integer> taille;
     
     private final int valeur;
     private final boolean caseChifree;
         
-    Paint couleur;
-    Rectangle fondCase;
-    Text texteCase;
+    private Paint couleur;
+    private Rectangle fondCase;
+    private Text texteCase;
     
-    public Case(){
-        this(0);
+    //GETTERS
+    public ObservableValue<Integer> getTaille() {
+        return taille;
+    }
+    public int getValeur() {
+        return valeur;
+    }
+    public boolean isCaseChifree() {
+        return caseChifree;
+    }
+    public Paint getCouleur() {
+        return couleur;
+    }
+    public Rectangle getFondCase() {
+        return fondCase;
+    }
+    public Text getTexteCase() {
+        return texteCase;
     }
     
-    public Case(int nombre){
+    //SETTERS
+    public void setTaille(int taille) {
+        this.taille = new SimpleIntegerProperty(taille).asObject();
+    }
+    public void setCouleur(Paint couleur) {
+        this.couleur = couleur;
+    }
+    public void setFondCase(Rectangle fondCase) {
+        this.fondCase = fondCase;
+    }
+    public void setTexteCase(Text texteCase) {
+        this.texteCase = texteCase;
+    }
+    
+    //CONSTRUCTORS
+    public Case(int taille){
+        this(0, taille);
+    }
+    
+    public Case(int nombre, int taille){
         if (nombre > 0){
             valeur = nombre;
             caseChifree = true;
@@ -44,9 +82,15 @@ public class Case extends Parent{
             couleur = Color.LIGHTGREY;
         }
         
-        fondCase = new Rectangle(GLOBALSIZE,GLOBALSIZE,couleur);
+        this.taille = new SimpleIntegerProperty(taille).asObject();
+        //taille = Bindings.selectDouble(parentProperty(), "width").getValue().intValue();
+        
+        fondCase = new Rectangle(taille,taille,couleur);
         fondCase.setStroke(Color.BLACK);
         fondCase.setStrokeWidth(2);
+        fondCase.widthProperty().bind(this.taille);
+        fondCase.heightProperty().bind(this.taille);
+        
         this.getChildren().add(fondCase);
         
         if(caseChifree){ 
@@ -75,9 +119,9 @@ public class Case extends Parent{
                 appuyer();
             }
         });
-        
-        
     }
+    
+    //METHODS
     private void appuyer() {
         if (!caseChifree){
             if(fondCase.getFill().equals(Color.LIGHTGREY)){
@@ -89,8 +133,7 @@ public class Case extends Parent{
                 else{
                    fondCase.setFill(Color.LIGHTGREY);
                 }
+            }
         }
-    }
-    
     }
 }
