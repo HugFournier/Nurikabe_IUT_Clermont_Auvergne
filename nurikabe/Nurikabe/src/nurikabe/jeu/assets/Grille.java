@@ -12,7 +12,6 @@ import util.Matrix;
 public class Grille extends Matrix<Cellule> implements Serializable{
 
 	private static final long serialVersionUID = 3255510956281643421L;
-
 	
 	public Grille( int width, int height) {
 		super( width, height);

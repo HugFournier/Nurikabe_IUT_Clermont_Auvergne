@@ -13,10 +13,12 @@ public class LauncheurConsole {
 
 
 	public static void main(String[] args) {
-
-		Handler handler = new Handler( new BinaryGrille(), new BinaryGrille(), null, new Console());
-		handler.charger();
-		
+                Console c = new Console();
+		Handler handler = new Handler( new BinaryGrille(), new BinaryGrille());
+                while(true){
+                    c.jouer(handler);
+                }
+		//System.out.println("ok");
 	}
 	
 	
