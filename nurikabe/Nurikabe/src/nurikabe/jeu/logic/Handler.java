@@ -2,7 +2,7 @@ package nurikabe.jeu.logic;
 
 import nurikabe.affichage.Affichage;
 import nurikabe.jeu.Jeu;
-import nurikabe.jeu.logic.generateur.FromBinaryFile;
+import nurikabe.jeu.logic.generateur.EnregistrerDansFichierBinaire;
 import nurikabe.jeu.logic.generateur.Enregistreur;
 import nurikabe.jeu.logic.generateur.FromTextFile;
 
