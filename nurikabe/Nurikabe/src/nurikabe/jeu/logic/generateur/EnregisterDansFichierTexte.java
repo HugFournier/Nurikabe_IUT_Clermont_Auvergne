@@ -14,7 +14,7 @@ import util.Matrix;
 public class EnregisterDansFichierTexte implements Enregistreur{
 
 	@Override
-	public void enregistrer( Matrix<Cellule> grille, String path) {
+	public void enregistrer( Grille grille, String path) {
 		File f = new File( path);
 		if (!f.exists())
 			try {
@@ -27,12 +27,14 @@ public class EnregisterDansFichierTexte implements Enregistreur{
 			}
 		int x=grille.getWidth();
 		int y=grille.getHeight();
+                long t=grille.getChrono().getDureeMs();
 		try {
 			FileOutputStream fo = new FileOutputStream( path);
 			PrintStream ps = new PrintStream( fo);
 
 			ps.println( x);
 			ps.println( y);
+			ps.println( t);
 			ps.print( grille.toString());
 
 			ps.close();

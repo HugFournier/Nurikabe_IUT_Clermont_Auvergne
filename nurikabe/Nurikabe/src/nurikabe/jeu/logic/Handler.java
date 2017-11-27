@@ -10,7 +10,7 @@ public class Handler {
 
     private static final String path = System.getProperty( "user.dir").replace( "\\", "/");
 
-    private String defaultPath = path + "/res/grilles/test.bin";
+    private String defaultPath = path + "/res/grilles/test.nuribin";
 
     private List<Enregistreur> enregistreurs;
     private List<Chargeur> chargeurs;
@@ -50,10 +50,11 @@ public class Handler {
     }
 
     public void enregistrer( String path){
-        String[] arr = path.split( ".");
+        String[] arr = path.split("\\.");
         String extention = "." + arr[arr.length-1];
         jeu.enregistrer( getEnregistreurTypeSpecifique( extention), path);
         SaveHandler.getSaveHandler().addFile( path);
+        SaveHandler.getSaveHandler().saveFiles();
 
     }
 

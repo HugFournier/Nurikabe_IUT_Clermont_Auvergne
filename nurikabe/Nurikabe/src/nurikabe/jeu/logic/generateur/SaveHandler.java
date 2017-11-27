@@ -54,6 +54,9 @@ public class SaveHandler {
 
     public void saveFiles( ){
         File f = new File( path.toAbsolutePath() + "\\saves.bin");
+        if (f.exists())
+            f.delete();
+        
         if (!f.exists())
             try {
                 f.getParentFile().mkdirs();

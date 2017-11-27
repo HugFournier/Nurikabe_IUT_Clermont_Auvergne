@@ -7,25 +7,26 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import nurikabe.jeu.assets.Grille;
 
 public class ChargerDepuisFichierBinaire implements Chargeur{
 
     @SuppressWarnings("unchecked")
     @Override
-    public Matrix<Cellule> charger(String path) {
+    public Grille charger(String path) {
         File f = new File( path);
         if (!f.exists()) {
             System.out.println( "ERREUR : le fichier n'existe pas");
             return null;
         }
-        Matrix<Cellule> grille = null;
+        Grille grille = null;
 
         FileInputStream fin = null;
         ObjectInputStream ois = null;
         try {
             fin = new FileInputStream( f);
             ois = new ObjectInputStream(fin);
-            grille = (Matrix<Cellule>) ois.readObject();
+            grille = (Grille) ois.readObject();
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {

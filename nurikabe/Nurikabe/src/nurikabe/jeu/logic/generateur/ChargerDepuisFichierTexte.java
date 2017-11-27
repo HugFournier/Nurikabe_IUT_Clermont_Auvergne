@@ -7,6 +7,7 @@ package nurikabe.jeu.logic.generateur;
 
 import java.io.FileInputStream;
 import java.util.Scanner;
+import nurikabe.jeu.assets.Grille;
 import nurikabe.jeu.assets.cellule.Cellule;
 import nurikabe.jeu.assets.cellule.Etat;
 import nurikabe.jeu.assets.cellule.Jouable;
@@ -21,18 +22,20 @@ public class ChargerDepuisFichierTexte implements Chargeur {
     
 
 	@Override
-	public Matrix<Cellule> charger( String path) {
-		Matrix<Cellule> grille = null;
+	public Grille charger( String path) {
+		Grille grille = null;
 		int x;
 		int y;
-
+                long t;
+                
 		try {
 			FileInputStream fi = new FileInputStream( path);
 			Scanner sc = new Scanner(fi);
 			String pattern = "[#.+]";
 			x=sc.nextInt();
 			y=sc.nextInt();
-			grille=new Matrix<Cellule>(x,y);
+                        t=sc.nextLong();
+			grille=new Grille(new Matrix<Cellule>(x,y),t);
 			for (int i=0; i < y; i++)
 				for (int j = 0; j < x; j++){
 					if (sc.hasNextInt())
