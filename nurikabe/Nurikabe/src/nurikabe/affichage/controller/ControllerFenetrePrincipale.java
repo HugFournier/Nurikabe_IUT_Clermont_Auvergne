@@ -12,7 +12,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import nurikabe.affichage.Grille;
 import nurikabe.jeu.logic.Handler;
@@ -23,12 +22,9 @@ import nurikabe.jeu.logic.Handler;
  */
 public class ControllerFenetrePrincipale {
     @FXML
-    Grille grille;
-
-    @FXML
     ToolBar toolbarPartie;
     @FXML
-    HBox hbox;
+    Grille grille;
     
     private Handler manager = new Handler();
 
@@ -61,9 +57,7 @@ public class ControllerFenetrePrincipale {
     
     @FXML
     public void onNPartie(){
-       hbox.getChildren().clear();
-       grille = new Grille(manager.getJeu().getGrille());
-       hbox.getChildren().add(grille);
+       grille.initGrille(manager.getJeu().getGrille());
     }
    
     //Méthode utilisée par lorsque que le bouton Quitter est utilisé

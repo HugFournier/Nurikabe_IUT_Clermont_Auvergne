@@ -5,29 +5,65 @@
  */
 package nurikabe.affichage;
 
-import javafx.event.EventHandler;
-import javafx.scene.Parent;
-import javafx.scene.input.MouseEvent;
+import javafx.geometry.Insets;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 /**
  *
  * @author sylat
  */
-public class Case extends Parent{
-    private final static int GLOBALSIZE = 40;
-    
+public class Case extends Label{
+    //PROPERTIES
     private final int valeur;
     private final boolean caseChifree;
-        
-    Paint couleur;
-    Rectangle fondCase;
-    Text texteCase;
     
+    //SETTERS
+    public int getValeur() {
+        return valeur;
+    }
+    public boolean isCaseChifree() {
+        return caseChifree;
+    }
+    
+    //CONSTRUCTORS
+    Case(int valeur, Paint couleur) {
+        if (valeur > 0){
+            this.valeur = valeur;
+            this.caseChifree = true;
+            couleur = Color.WHITE;
+        } 
+        else{
+            this.valeur = 0;
+            this.caseChifree = false;
+        }
+        
+        if (this.isCaseChifree()){
+            this.setText(this.getValeur()+"");
+            this.setFont(new Font(17));
+            this.setTextFill(Color.BLACK);
+        }
+        
+        this.setMaxSize(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
+        this.setTextAlignment(TextAlignment.CENTER);
+        this.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+        this.setBackground(new Background(new BackgroundFill(couleur, CornerRadii.EMPTY, Insets.EMPTY)));
+    }
+    
+    //METHODS
+
+}
+    /*
     public Case(){
         this(0, Color.LIGHTGRAY);
     }
@@ -82,3 +118,4 @@ public class Case extends Parent{
         }
     }
 }
+*/
