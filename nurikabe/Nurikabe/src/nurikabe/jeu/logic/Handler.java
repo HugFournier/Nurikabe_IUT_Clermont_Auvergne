@@ -1,49 +1,48 @@
 package nurikabe.jeu.logic;
 
-import nurikabe.affichage.Affichage;
 import nurikabe.jeu.Jeu;
-import nurikabe.jeu.logic.generateur.EnregistrerDansFichierBinaire;
-import nurikabe.jeu.logic.generateur.Enregistreur;
-import nurikabe.jeu.logic.generateur.FromTextFile;
+import nurikabe.jeu.logic.generateur.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Handler {
 
-    private static final String binaryFileExtention = ".nuribin", textFileExtention = ".nuritxt";
     private static final String path = System.getProperty( "user.dir").replace( "\\", "/");
 
     private String defaultPath = path + "/res/grilles/test.bin";
 
     private List<Enregistreur> enregistreurs;
+    private List<Chargeur> chargeurs;
     private Jeu jeu;
-    //private Affichage affichage;
 
     public Handler( ){
-        initEnregistreurs();
-        this.jeu = new Jeu(chargeur, defaultPath);
-        //this.affichage = affichage;
-
+        initEnregistreursEtChargeurs();
+        jeu = new Jeu( 7, 7, new HardCoded7by7());
     }
 
-    private void initEnregistreurs(){
+    private void initEnregistreursEtChargeurs(){
         enregistreurs = new ArrayList<Enregistreur>();
-        enregistreurs.add( new FromTextFile());
-        enregistreurs.add( new FromBinaryFile());
+        chargeurs = new ArrayList<Chargeur>();
+        enregistreurs.add( new EnregistrerDansFichierBinaire());
+        chargeurs.add( new ChargerDepuisFichierBinaire());
+        enregistreurs.add( new EnregisterDansFichierTexte());
+        chargeurs.add( new ChargerDepuisFichierTexte());
+
     }
 
     private Enregistreur getEnregistreurTypeSpecifique( String type){
-        switch (type){
-            case binaryFileExtention :
-                return enregistreurs.get(1);
-            case textFileExtention :
-                return enregistreurs.get(2);
-            default:
-                return null;
-        }
+        for (Enregistreur e : enregistreurs)
+            if (e.getExtentionDeFichier().equals( type))
+                return e;
+        return null;
+    }
 
-
+    private Chargeur getChargeurTypeSpecifique( String type){
+        for (Chargeur c : chargeurs)
+            if (c.getExtentionDeFichier().equals( type))
+                return c;
+        return null;
     }
 
     public void enregistrer( ){
@@ -51,10 +50,10 @@ public class Handler {
     }
 
     public void enregistrer( String path){
-        if (path.endsWith( binaryFileExtention))
-        jeu.enregistrer( getEnregistreurTypeSpecifique( binaryFileExtention), path);
-        else
-            jeu.enregistrer( getEnregistreurTypeSpecifique( textFileExtention), path);
+        String[] arr = path.split( ".");
+        String extention = "." + arr[arr.length-1];
+        jeu.enregistrer( getEnregistreurTypeSpecifique( extention), path);
+        SaveHandler.getSaveHandler().addFile( path);
 
     }
 
@@ -63,7 +62,9 @@ public class Handler {
     }
 
     public void charger( String path){
-        jeu = new Jeu( chargeur, path);
+        String[] arr = path.split( ".");
+        String extention = "." + arr[arr.length-1];
+        jeu = new Jeu( getChargeurTypeSpecifique( extention), path);
     }
 
     public void jouer( int x, int y) {

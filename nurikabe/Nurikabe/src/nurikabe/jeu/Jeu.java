@@ -6,6 +6,7 @@ import java.util.List;
 import nurikabe.jeu.assets.Grille;
 import nurikabe.jeu.assets.cellule.Cellule;
 import nurikabe.jeu.assets.cellule.Etat;
+import nurikabe.jeu.logic.generateur.Chargeur;
 import nurikabe.jeu.logic.generateur.Enregistreur;
 import nurikabe.jeu.logic.generateur.Generateur;
 import nurikabe.jeu.logic.verif.Verif;
@@ -29,7 +30,7 @@ public class Jeu {
 		initVerif();
 	}
 
-	public Jeu( Enregistreur chargeur, String path){
+	public Jeu(Chargeur chargeur, String path){
 		grille = new Grille( chargeur.charger( path));
 	}
 	

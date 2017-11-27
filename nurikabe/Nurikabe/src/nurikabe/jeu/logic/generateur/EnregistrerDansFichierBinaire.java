@@ -11,7 +11,8 @@ import nurikabe.jeu.assets.cellule.Cellule;
 import util.Matrix;
 
 public class EnregistrerDansFichierBinaire implements Enregistreur{
-	
+
+
 	@Override
 	public void enregistrer( Matrix<Cellule> grille, String path) {
 		File f = new File( path);
@@ -30,7 +31,6 @@ public class EnregistrerDansFichierBinaire implements Enregistreur{
 			fout = new FileOutputStream( f);
 			oos = new ObjectOutputStream( fout);
 			oos.writeObject( grille);
-			SaveHandler.getSaveHandler().addFile( path);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -50,6 +50,10 @@ public class EnregistrerDansFichierBinaire implements Enregistreur{
 			}
 		}
 	}
-	
 
+
+	@Override
+	public String getExtentionDeFichier() {
+		return ".nuribin";
+	}
 }

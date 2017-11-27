@@ -37,13 +37,15 @@ public class EnregisterDansFichierTexte implements Enregistreur{
 
 			ps.close();
 			fo.close();
-			SaveHandler.getSaveHandler().addFile( path);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	
+	@Override
+	public String getExtentionDeFichier() {
+		return ".nuritxt";
+	}
 
 
 }

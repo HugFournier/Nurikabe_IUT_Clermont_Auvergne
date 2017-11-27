@@ -46,4 +46,9 @@ public class ChargerDepuisFichierBinaire implements Chargeur{
         }
         return grille;
     }
+
+    @Override
+    public String getExtentionDeFichier() {
+        return ".nuribin";
+    }
 }

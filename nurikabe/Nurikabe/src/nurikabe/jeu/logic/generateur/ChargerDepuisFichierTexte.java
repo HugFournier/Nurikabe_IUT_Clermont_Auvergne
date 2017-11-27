@@ -54,4 +54,9 @@ public class ChargerDepuisFichierTexte implements Chargeur {
 		}
 		return grille;
 	}
+
+	@Override
+	public String getExtentionDeFichier() {
+		return ".nuritxt";
+	}
 }
