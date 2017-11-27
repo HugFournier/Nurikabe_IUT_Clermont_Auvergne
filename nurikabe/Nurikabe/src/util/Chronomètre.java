@@ -11,7 +11,7 @@ package util;
  */
 public class Chronomètre {
     
-    private long tmpDebut=0, tmpFin=0, total=0;
+    private long tmpDebut=0, total=0;
     private boolean actif=false;
 
     public Chronomètre() {
@@ -22,38 +22,31 @@ public class Chronomètre {
         this.total=total;
     }
     
-    public void start()
+    public void lancer()
     {
+        if(actif) return;
         tmpDebut=System.currentTimeMillis();
-        tmpFin=0;
-        total=0;
         actif = true;
     }
     
     public void pause()
     {
         if(!actif) return;
-        tmpFin=System.currentTimeMillis();
-        total+=tmpFin-tmpDebut;
-        actif=false;
-    }
-    
-    public void resume()
-    {
-        if(actif) return;
-        tmpDebut=System.currentTimeMillis();
-        tmpFin=0;
-        actif = true;
-    }
-    
-    public void stop()
-    {
-        if(!actif) return;
-        tmpFin=System.currentTimeMillis();
-        total+=tmpFin-tmpDebut;
-        tmpDebut=0;
-        tmpFin=0;
+        total+=System.currentTimeMillis()-tmpDebut;
         actif = false;
+    }
+    
+    public void reset()
+    {
+        total = 0;
+        actif = false;
+    }
+    
+    public void reset(boolean relancer)
+    {
+        reset();
+        if(relancer)
+            lancer();
     }
     
     public long getDureeSec()

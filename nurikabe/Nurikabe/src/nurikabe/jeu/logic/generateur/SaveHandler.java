@@ -38,7 +38,7 @@ public class SaveHandler {
     }
 
     private void loadFileLocations( ){
-        files = new ArrayList<>();
+        files = new ArrayList<String>();
         try {
             FileInputStream fi = new FileInputStream( path.toAbsolutePath() + "\\saves.bin");
             Scanner sc = new Scanner(fi);
@@ -106,7 +106,7 @@ public class SaveHandler {
     }
 
     public List<String> cloneStringList( List<String> list){
-        List<String> clone = new ArrayList<>();
+        List<String> clone = new ArrayList<String>();
         for (String s : list)
             clone.add(s);
         return clone;
