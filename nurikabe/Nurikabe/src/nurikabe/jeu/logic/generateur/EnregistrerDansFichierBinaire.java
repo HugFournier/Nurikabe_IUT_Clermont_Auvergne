@@ -10,7 +10,7 @@ import java.io.ObjectOutputStream;
 import nurikabe.jeu.assets.cellule.Cellule;
 import util.Matrix;
 
-public class FromBinaryFile implements Generateur, Enregistreur{
+public class EnregistrerDansFichierBinaire implements Enregistreur{
 	
 	@Override
 	public void enregistrer( Matrix<Cellule> grille, String path) {
@@ -51,48 +51,5 @@ public class FromBinaryFile implements Generateur, Enregistreur{
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
-	@Override
-	public Matrix<Cellule> charger( String path) {
-		File f = new File( path);
-		if (!f.exists()) {
-			System.out.println( "ERREUR : le fichier n'existe pas");
-			return null;
-		}
-		Matrix<Cellule> grille = null;
-
-		FileInputStream fin = null;
-		ObjectInputStream ois = null;
-		try {
-			fin = new FileInputStream( f);
-			ois = new ObjectInputStream(fin);
-			grille = (Matrix<Cellule>) ois.readObject();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			if (fin != null) {
-				try {
-					fin.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-			if (ois != null) {
-				try {
-					ois.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		return grille;
-	}
-	
-	
-	
-	@Override
-	public Matrix<Cellule> createMatrix( int width, int height) {
-		return null;
-	}
 
 }
