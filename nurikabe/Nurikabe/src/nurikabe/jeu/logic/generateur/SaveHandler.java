@@ -90,6 +90,8 @@ public class SaveHandler {
     }
 
     public int addFile( String filePath){
+        if (files.contains( filePath))
+            return files.indexOf( filePath);
         files.add( filePath);
         return files.size() -1;
     }
