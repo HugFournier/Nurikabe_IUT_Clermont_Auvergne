@@ -10,6 +10,8 @@ public abstract class Affichage {
 	public Affichage( ) {
 
 	}
+        
+        public abstract void demanderChemin(Handler handler); 
 	
 	public abstract void afficher( Handler handler);
 	

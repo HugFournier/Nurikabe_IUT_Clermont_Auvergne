@@ -63,7 +63,7 @@ public class Handler {
     }
 
     public void charger( String path){
-        String[] arr = path.split( ".");
+        String[] arr = path.split( "\\.");
         String extention = "." + arr[arr.length-1];
         jeu = new Jeu( getChargeurTypeSpecifique( extention), path);
     }
