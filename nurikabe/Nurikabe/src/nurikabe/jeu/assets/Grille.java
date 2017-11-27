@@ -82,6 +82,7 @@ public class Grille extends Matrix<Cellule> implements Serializable{
     @Override
     public String toString() {
         StringBuilder retour = new StringBuilder();
+        retour.append(getChrono().getDureeTxt()+"\n");
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 retour.append( getCellule( x, y).toString() + " ");
