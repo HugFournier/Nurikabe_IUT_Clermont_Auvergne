@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import nurikabe.jeu.assets.Grille;
 
 import nurikabe.jeu.assets.cellule.Cellule;
 import util.Matrix;
@@ -14,7 +15,7 @@ public class EnregistrerDansFichierBinaire implements Enregistreur{
 
 
 	@Override
-	public void enregistrer( Matrix<Cellule> grille, String path) {
+	public void enregistrer( Grille grille, String path) {
 		File f = new File( path);
 		if (!f.exists())
 			try {

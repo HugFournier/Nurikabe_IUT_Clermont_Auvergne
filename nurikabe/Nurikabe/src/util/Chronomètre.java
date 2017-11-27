@@ -5,11 +5,15 @@
 */
 package util;
 
+import java.io.Serializable;
+
 /**
  *
  * @author fourn
  */
-public class Chronomètre {
+public class Chronomètre implements Serializable{
+    
+    private static final long serialVersionUID = -7060644478953544967L;
     
     private long tmpDebut=0, total=0;
     private boolean actif=false;
