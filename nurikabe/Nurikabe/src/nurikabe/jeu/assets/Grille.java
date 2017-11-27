@@ -7,25 +7,26 @@ import nurikabe.jeu.assets.cellule.Etat;
 import nurikabe.jeu.assets.cellule.Jouable;
 import nurikabe.jeu.assets.cellule.NonJouable;
 import nurikabe.jeu.logic.generateur.Generateur;
+import util.Chronomètre;
 import util.Matrix;
 
 public class Grille extends Matrix<Cellule> implements Serializable{
 
 	private static final long serialVersionUID = 3255510956281643421L;
+        
+        private Chronomètre chrono;
 	
-	public Grille( int width, int height) {
-		super( width, height);
-		for (int x = 0; x < width; x++)
-			for (int y = 0; y < height; y++)
-				set(x, y, new Jouable());
-	}
-	
-	public Grille( Matrix<Cellule> grille) {
+	public Grille( Matrix<Cellule> grille, long scoreTmp) {
 		super( grille);
+                chrono=new Chronomètre(scoreTmp);
+	}
+        
+        public Grille( Matrix<Cellule> grille) {
+                this(grille, 0);
 	}
 	
 	public Grille( int width, int height, Generateur generateur) {
-		this( generateur.createMatrix( width, height));
+		this( generateur.createMatrix( width, height), 0);
 
 	}
 

@@ -20,11 +20,6 @@ public class Jeu {
 	private Grille grille;
 	private List<Verif> regles = new ArrayList<Verif>();
 	
-	public Jeu( int width, int height) {
-		grille = new Grille( width, height);
-		initVerif();
-	}
-	
 	public Jeu( int width, int height, Generateur generateur) {
 		grille = new Grille( width, height, generateur);
 		initVerif();

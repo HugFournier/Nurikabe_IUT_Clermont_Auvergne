@@ -2,7 +2,6 @@ package nurikabe.launcher;
 
 import nurikabe.affichage.Console;
 import nurikabe.jeu.logic.Handler;
-import nurikabe.jeu.logic.generateur.BinaryGrille;
 import nurikabe.jeu.logic.generateur.SaveHandler;
 
 public class LauncheurConsole {
