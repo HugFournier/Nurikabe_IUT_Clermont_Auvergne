@@ -10,7 +10,7 @@ import java.io.ObjectOutputStream;
 import nurikabe.jeu.assets.cellule.Cellule;
 import util.Matrix;
 
-public class BinaryGrille implements Generateur, Enregistreur{
+public class FromBinaryFile implements Generateur, Enregistreur{
 	
 	@Override
 	public void enregistrer( Matrix<Cellule> grille, String path) {

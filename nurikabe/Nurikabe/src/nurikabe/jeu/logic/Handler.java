@@ -2,23 +2,48 @@ package nurikabe.jeu.logic;
 
 import nurikabe.affichage.Affichage;
 import nurikabe.jeu.Jeu;
+import nurikabe.jeu.logic.generateur.FromBinaryFile;
 import nurikabe.jeu.logic.generateur.Enregistreur;
+import nurikabe.jeu.logic.generateur.FromTextFile;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Handler {
 
+    private static final String binaryFileExtention = ".nuribin", textFileExtention = ".nuritxt";
     private static final String path = System.getProperty( "user.dir").replace( "\\", "/");
 
     private String defaultPath = path + "/res/grilles/test.bin";
 
-    private Enregistreur chargeur, enregistreur;
+    private List<Enregistreur> enregistreurs;
     private Jeu jeu;
     //private Affichage affichage;
 
-    public Handler( Enregistreur chargeur, Enregistreur enregistreur){
-        this.chargeur = chargeur;
-        this.enregistreur = enregistreur;
+    public Handler( ){
+        initEnregistreurs();
         this.jeu = new Jeu(chargeur, defaultPath);
         //this.affichage = affichage;
+
+    }
+
+    private void initEnregistreurs(){
+        enregistreurs = new ArrayList<Enregistreur>();
+        enregistreurs.add( new FromTextFile());
+        enregistreurs.add( new FromBinaryFile());
+    }
+
+    private Enregistreur getEnregistreurTypeSpecifique( String type){
+        switch (type){
+            case binaryFileExtention :
+                return enregistreurs.get(1);
+            case textFileExtention :
+                return enregistreurs.get(2);
+            default:
+                return null;
+        }
+
+
     }
 
     public void enregistrer( ){
@@ -26,7 +51,11 @@ public class Handler {
     }
 
     public void enregistrer( String path){
-        jeu.enregistrer( enregistreur, path);
+        if (path.endsWith( binaryFileExtention))
+        jeu.enregistrer( getEnregistreurTypeSpecifique( binaryFileExtention), path);
+        else
+            jeu.enregistrer( getEnregistreurTypeSpecifique( textFileExtention), path);
+
     }
 
     public void charger( ){
@@ -39,10 +68,6 @@ public class Handler {
 
     public void jouer( int x, int y) {
         jeu.jouer( x, y);
-    }
-
-    public Enregistreur getChargeur() {
-        return chargeur;
     }
 
     public Jeu getJeu() {
