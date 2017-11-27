@@ -26,14 +26,16 @@ public class ChargerDepuisFichierTexte implements Chargeur {
 		Grille grille = null;
 		int x;
 		int y;
-
+                long t;
+                
 		try {
 			FileInputStream fi = new FileInputStream( path);
 			Scanner sc = new Scanner(fi);
 			String pattern = "[#.+]";
 			x=sc.nextInt();
 			y=sc.nextInt();
-			grille=new Grille(new Matrix<Cellule>(x,y));
+                        t=sc.nextLong();
+			grille=new Grille(new Matrix<Cellule>(x,y),t);
 			for (int i=0; i < y; i++)
 				for (int j = 0; j < x; j++){
 					if (sc.hasNextInt())
