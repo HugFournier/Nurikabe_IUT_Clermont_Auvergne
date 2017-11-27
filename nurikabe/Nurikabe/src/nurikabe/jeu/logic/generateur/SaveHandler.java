@@ -43,7 +43,9 @@ public class SaveHandler {
             FileInputStream fi = new FileInputStream( path.toAbsolutePath() + "\\saves.bin");
             Scanner sc = new Scanner(fi);
             while ( sc.hasNextLine()){
-                files.add( sc.nextLine());
+                String line = sc.nextLine();
+                if ((new File( line)).exists())
+                    files.add( line);
             }
             sc.close();
             fi.close();
