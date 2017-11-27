@@ -108,6 +108,10 @@ public class Jeu {
         public String toString() {
             return  grille.toString();
         }
+
+    public Grille getGrille() {
+        return this.grille; 
+    }
 	
         
 }

@@ -29,10 +29,10 @@ public class Case extends Parent{
     Text texteCase;
     
     public Case(){
-        this(0);
+        this(0, Color.LIGHTGRAY);
     }
     
-    public Case(int nombre){
+    public Case(int nombre, Paint couleur){
         if (nombre > 0){
             valeur = nombre;
             caseChifree = true;
@@ -41,10 +41,10 @@ public class Case extends Parent{
         else{
             valeur = 0;
             caseChifree = false;
-            couleur = Color.LIGHTGREY;
+            this.couleur = couleur;
         }
         
-        fondCase = new Rectangle(GLOBALSIZE,GLOBALSIZE,couleur);
+        fondCase = new Rectangle(GLOBALSIZE,GLOBALSIZE,this.couleur);
         fondCase.setStroke(Color.BLACK);
         fondCase.setStrokeWidth(2);
         this.getChildren().add(fondCase);
@@ -77,7 +77,8 @@ public class Case extends Parent{
         });
         
         
-    }
+    }    
+    
     private void appuyer() {
         if (!caseChifree){
             if(fondCase.getFill().equals(Color.LIGHTGREY)){
@@ -89,8 +90,7 @@ public class Case extends Parent{
                 else{
                    fondCase.setFill(Color.LIGHTGREY);
                 }
+            }
         }
-    }
-    
     }
 }

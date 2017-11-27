@@ -7,6 +7,8 @@ package nurikabe.affichage;
 
 import javafx.scene.Parent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import nurikabe.jeu.assets.cellule.Etat;
 
 /**
  *
@@ -27,18 +29,40 @@ public class Grille extends Parent{
         
         for (int i=0; i<x; i++){
             for (int j=0; j<y; j++){
-                if (i== 4 && j==5 ) grille.add(new Case(9),i,j);
-                else if (i==2 && j==2 ) grille.add(new Case(2),i,j);
-                else if (i==1 && j==4 ) grille.add(new Case(2),i,j);
-                else
-                    grille.add(new Case(),i,j);
-                
+                grille.add(new Case(),i,j);
             }
         }
         
         this.getChildren().add(grille);
         
     }
+    
+    public Grille (nurikabe.jeu.assets.Grille grille){
+        int col = grille.getWidth();
+        int row = grille.getHeight();
+        
+        for (int i=0 ; i<col ; i++){
+            for (int j=0 ; j<row ; j++){
+                if (!grille.isJouable(i, j)){
+                    this.grille.add(new Case(grille.getValeur(i, j) , Color.WHITE), i, j);
+                }
+                else{
+                    switch(grille.getEtat(i, j)){
+                        case BLANC :
+                            this.grille.add(new Case(0 , Color.WHITE), i, j);
+                            break;
+                        case NOIR :
+                            this.grille.add(new Case(0 , Color.BLACK), i, j);
+                            break;
+                        default :
+                            this.grille.add(new Case(0 , Color.LIGHTGREY), i, j);
+                            break;
+                    }
+                }
+            }
+        }
+    }
+    
     public GridPane getGrille(){
         return grille;
     }

@@ -6,18 +6,16 @@
 package nurikabe.affichage.controller;
 
 import java.io.IOException;
-import static javafx.application.ConditionalFeature.FXML;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import nurikabe.affichage.Case;
 import nurikabe.affichage.Grille;
+import nurikabe.jeu.logic.Handler;
 
 /**
  *
@@ -32,7 +30,26 @@ public class ControllerFenetrePrincipale {
     @FXML
     HBox hbox;
     
-    
+    private Handler manager = new Handler();
+
+    /**
+     * Get the value of manager
+     *
+     * @return the value of manager
+     */
+    public Handler getManager() {
+        return manager;
+    }
+
+    /**
+     * Set the value of manager
+     *
+     * @param manager new value of manager
+     */
+    public void setManager(Handler manager) {
+        this.manager = manager;
+    }
+
     @FXML
     public void onPalmares() throws IOException{
         Stage palmares = new Stage();   
@@ -45,7 +62,7 @@ public class ControllerFenetrePrincipale {
     @FXML
     public void onNPartie(){
        hbox.getChildren().clear();
-       grille = new Grille(5,7);
+       grille = new Grille(5,5);
        hbox.getChildren().add(grille);
     }
    
