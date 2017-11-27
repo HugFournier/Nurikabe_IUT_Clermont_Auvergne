@@ -57,19 +57,7 @@ public class Case extends Parent{
             texteCase.setY(25);
             this.getChildren().add(texteCase);
         }
-        
-        this.setOnMouseEntered(new EventHandler<MouseEvent>(){
-            public void handle(MouseEvent me){
-                fondCase.setStrokeWidth(1);
-            }
-        });
-        
-        this.setOnMouseExited(new EventHandler<MouseEvent>(){
-            public void handle(MouseEvent me){
-                fondCase.setStrokeWidth(2);
-            }
-        });
-        
+              
         this.setOnMousePressed(new EventHandler<MouseEvent>(){
             public void handle(MouseEvent me){
                 appuyer();

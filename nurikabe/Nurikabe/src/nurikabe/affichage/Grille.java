@@ -8,7 +8,7 @@ package nurikabe.affichage;
 import javafx.scene.Parent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import nurikabe.jeu.assets.cellule.Etat;
+import javafx.scene.paint.Paint;
 
 /**
  *
@@ -37,17 +37,17 @@ public class Grille extends Parent{
         
     }
     
-    public Grille (nurikabe.jeu.assets.Grille grille){
-        int col = grille.getWidth();
-        int row = grille.getHeight();
-        
+    public Grille (nurikabe.jeu.assets.Grille entree){
+        int col = entree.getWidth();
+        int row = entree.getHeight();
+        grille = new GridPane();       
         for (int i=0 ; i<col ; i++){
             for (int j=0 ; j<row ; j++){
-                if (!grille.isJouable(i, j)){
-                    this.grille.add(new Case(grille.getValeur(i, j) , Color.WHITE), i, j);
+                if (!entree.isJouable(i, j)){
+                    this.grille.add(new Case(entree.getValeur(i, j) , Color.WHITE), i, j);
                 }
                 else{
-                    switch(grille.getEtat(i, j)){
+                    switch(entree.getEtat(i, j)){
                         case BLANC :
                             this.grille.add(new Case(0 , Color.WHITE), i, j);
                             break;
@@ -61,6 +61,7 @@ public class Grille extends Parent{
                 }
             }
         }
+        this.getChildren().add(grille);
     }
     
     public GridPane getGrille(){

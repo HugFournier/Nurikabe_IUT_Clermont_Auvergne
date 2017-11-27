@@ -62,7 +62,7 @@ public class ControllerFenetrePrincipale {
     @FXML
     public void onNPartie(){
        hbox.getChildren().clear();
-       grille = new Grille(5,5);
+       grille = new Grille(manager.getJeu().getGrille());
        hbox.getChildren().add(grille);
     }
    

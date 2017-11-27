@@ -26,7 +26,7 @@ public class Jeu {
 	}
 	
 	public Jeu( int width, int height, Generateur generateur) {
-		grille = new Grille( width, height, generateur);
+                    grille = new Grille( width, height, generateur);
 		initVerif();
 	}
 
