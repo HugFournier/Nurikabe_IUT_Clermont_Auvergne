@@ -30,6 +30,7 @@ public class BinaryGrille implements Generateur, Enregistreur{
 			fout = new FileOutputStream( f);
 			oos = new ObjectOutputStream( fout);
 			oos.writeObject( grille);
+			SaveHandler.getSaveHandler().addFile( path);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {

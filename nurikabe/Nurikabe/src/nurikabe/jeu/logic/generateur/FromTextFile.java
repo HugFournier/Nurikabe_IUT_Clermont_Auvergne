@@ -43,6 +43,7 @@ public class FromTextFile implements Generateur, Enregistreur{
 
 			ps.close();
 			fo.close();
+			SaveHandler.getSaveHandler().addFile( path);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

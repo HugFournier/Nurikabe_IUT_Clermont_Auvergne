@@ -15,10 +15,17 @@ import java.util.Scanner;
 
 public class SaveHandler {
 
+    private static SaveHandler saveHandler = null;
     private final Path path;
     private List<String> files;
 
-    public SaveHandler(){
+    public static SaveHandler getSaveHandler( ){
+        if (saveHandler == null)
+            saveHandler = new SaveHandler();
+        return saveHandler;
+    }
+
+    private SaveHandler(){
         URI uri = null;
         try {
             uri = SaveHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI();
