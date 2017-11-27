@@ -54,6 +54,9 @@ public class SaveHandler {
 
     public void saveFiles( ){
         File f = new File( path.toAbsolutePath() + "\\saves.bin");
+        if (f.exists())
+            f.delete();
+        
         if (!f.exists())
             try {
                 f.getParentFile().mkdirs();
@@ -87,6 +90,8 @@ public class SaveHandler {
     }
 
     public int addFile( String filePath){
+        if (files.contains( filePath))
+            return files.indexOf( filePath);
         files.add( filePath);
         return files.size() -1;
     }
