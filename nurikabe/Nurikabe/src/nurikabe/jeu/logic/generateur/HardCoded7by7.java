@@ -16,8 +16,9 @@ public class HardCoded7by7 implements Generateur{
 		grid.set( 6,  0, new NonJouable( 4));
 		grid.set( 1,  2, new NonJouable( 4));
 		grid.set( 3,  2, new NonJouable( 1));
-		grid.set( 4,  3, new NonJouable( 4));
+		grid.set( 4,  3, new NonJouable( 3));
 		grid.set( 0,  6, new NonJouable( 3));
+		grid.set( 6,  6, new NonJouable( 2));
 		
 		
 		for (int x = 0; x < 7; x++)
