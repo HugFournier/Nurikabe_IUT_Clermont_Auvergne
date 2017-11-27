@@ -11,13 +11,7 @@ import nurikabe.jeu.assets.cellule.Jouable;
 import nurikabe.jeu.assets.cellule.NonJouable;
 import util.Matrix;
 
-public class FromTextFile implements Generateur, Enregistreur{
-
-
-	@Override
-	public Matrix<Cellule> createMatrix( int width, int height) {
-		return null;
-	}
+public class EnregisterDansFichierTexte implements Enregistreur{
 
 	@Override
 	public void enregistrer( Matrix<Cellule> grille, String path) {
@@ -49,40 +43,7 @@ public class FromTextFile implements Generateur, Enregistreur{
 		}
 	}
 
-	@Override
-	public Matrix<Cellule> charger( String path) {
-		Matrix<Cellule> grille = null;
-		int x;
-		int y;
-
-		try {
-			FileInputStream fi = new FileInputStream( path);
-			Scanner sc = new Scanner(fi);
-			String pattern = "[#.+]";
-			x=sc.nextInt();
-			y=sc.nextInt();
-			grille=new Matrix<Cellule>(x,y);
-			for (int i=0; i < y; i++)
-				for (int j = 0; j < x; j++){
-					if (sc.hasNextInt())
-						grille.set( j, i, new NonJouable( sc.nextInt()));
-					else{
-						String b = sc.next(pattern);
-						if (b.equals("#"))
-							grille.set( j, i, new Jouable( Etat.NOIR));
-						else if (b.equals("."))
-							grille.set( j, i, new Jouable( Etat.VIDE));
-						else if (b.equals("+"))
-							grille.set( j, i, new Jouable( Etat.BLANC));
-					}
-				}
-			sc.close();
-			fi.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return grille;
-	}
+	
 
 
 }
