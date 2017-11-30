@@ -5,8 +5,10 @@
  */
 package nurikabe.affichage;
 
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Border;
@@ -55,67 +57,39 @@ public class Case extends Label{
         }
         
         this.setMaxSize(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
-        this.setTextAlignment(TextAlignment.CENTER);
+        this.setTextAlignment(TextAlignment.JUSTIFY);
         this.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
         this.setBackground(new Background(new BackgroundFill(couleur, CornerRadii.EMPTY, Insets.EMPTY)));
-    }
     
-    //METHODS
-
-}
-    /*
-    public Case(){
-        this(0, Color.LIGHTGRAY);
-    }
-    
-    public Case(int nombre, Paint couleur){
-        if (nombre > 0){
-            valeur = nombre;
-            caseChifree = true;
-            couleur = Color.WHITE;
-        }
-        else{
-            valeur = 0;
-            caseChifree = false;
-            this.couleur = couleur;
-        }
-        
-        fondCase = new Rectangle(GLOBALSIZE,GLOBALSIZE,this.couleur);
-        fondCase.setStroke(Color.BLACK);
-        fondCase.setStrokeWidth(2);
-        this.getChildren().add(fondCase);
-        
-        if(caseChifree){ 
-            texteCase = new Text(valeur+""); //le texte
-            texteCase.setFont(new Font(17)); //sa taille
-            texteCase.setFill(Color.BLACK); //sa couleur
-            texteCase.setX(15); //sa position
-            texteCase.setY(25);
-            this.getChildren().add(texteCase);
-        }
-              
         this.setOnMousePressed(new EventHandler<MouseEvent>(){
             public void handle(MouseEvent me){
                 appuyer();
             }
         });
-        
-        
-    }    
+    }
+    
+    //METHODS
+    private Paint getFill(){
+        return getBackground().getFills().get(0).getFill();
+    }
+    
+    private void setFill (Paint value ){
+        setBackground(new Background(new BackgroundFill(value, CornerRadii.EMPTY, Insets.EMPTY)));
+    }
+    
     
     private void appuyer() {
         if (!caseChifree){
-            if(fondCase.getFill().equals(Color.LIGHTGREY)){
-                fondCase.setFill(Color.BLACK);
+            if(this.getFill().equals(Color.LIGHTGREY)){
+                this.setFill(Color.BLACK);
             }
-            else{ if(fondCase.getFill().equals(Color.BLACK)){ 
-                fondCase.setFill(Color.WHITE);
+            else{ if(this.getFill().equals(Color.BLACK)){ 
+                this.setFill(Color.WHITE);
             }
                 else{
-                   fondCase.setFill(Color.LIGHTGREY);
+                   this.setFill(Color.LIGHTGREY);
                 }
             }
         }
     }
 }
-*/

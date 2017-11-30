@@ -57,7 +57,7 @@ public class ControllerFenetrePrincipale {
     
     @FXML
     public void onNPartie(){
-       grille.initGrille(manager.getJeu().getGrille());
+        grille.initGrille(manager.getJeu().getGrille());
     }
    
     //Méthode utilisée par lorsque que le bouton Quitter est utilisé
