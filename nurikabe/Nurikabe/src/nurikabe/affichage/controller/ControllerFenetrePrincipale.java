@@ -9,9 +9,12 @@ import java.io.IOException;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import nurikabe.affichage.Grille;
 import nurikabe.jeu.logic.Handler;
@@ -22,10 +25,14 @@ import nurikabe.jeu.logic.Handler;
  */
 public class ControllerFenetrePrincipale {
     @FXML
-    ToolBar toolbarPartie;
+    BorderPane root;
     @FXML
     Grille grille;
-    
+    @FXML
+    ToolBar toolbarPartie;
+    @FXML
+    HBox hbox;
+
     private Handler manager = new Handler();
 
     /**
@@ -57,6 +64,7 @@ public class ControllerFenetrePrincipale {
     
     @FXML
     public void onNPartie(){
+
         grille.initGrille(manager.getJeu().getGrille());
     }
    
@@ -64,6 +72,10 @@ public class ControllerFenetrePrincipale {
     @FXML
     public void onExit(){
         Platform.exit();
+    }
+    
+    public void initialize(){
+        root.setMargin(hbox, new Insets(20,20,20,20));
     }
     
 }

@@ -5,6 +5,8 @@
  */
 package nurikabe.affichage;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
@@ -25,6 +27,7 @@ import javafx.scene.text.TextAlignment;
  *
  * @author sylat
  */
+
 public class Case extends Label{
     //PROPERTIES
     private final int valeur;
@@ -43,6 +46,7 @@ public class Case extends Label{
         if (valeur > 0){
             this.valeur = valeur;
             this.caseChifree = true;
+
             couleur = Color.WHITE;
         } 
         else{
@@ -50,6 +54,7 @@ public class Case extends Label{
             this.caseChifree = false;
         }
         
+
         if (this.isCaseChifree()){
             this.setText(this.getValeur()+"");
             this.setFont(new Font(17));
@@ -93,3 +98,4 @@ public class Case extends Label{
         }
     }
 }
+

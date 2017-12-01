@@ -14,10 +14,11 @@
       xmlns="http://javafx.com/javafx/8" 
       xmlns:fx="http://javafx.com/fxml/1">
 
-    
-    <!--La toolBar du haut-->
-    <top>
-    <ToolBar prefHeight="40.0" prefWidth="200.0" >
+<BorderPane fx:id="root" fx:controller="nurikabe.affichage.controller.ControllerFenetrePrincipale" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+
+   <top>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+
         <items>
             <Button onAction="#onNPartie" text="Nouvelle Grille" />
             <Button text="Charger une grille" />
@@ -45,6 +46,10 @@
             <Button text="Sauvegarder" />
             <Button text="Aide" />
         </items>
-    </ToolBar>
-    </bottom>
+
+      </ToolBar>
+   </bottom>
+   <center>
+       <HBox fx:id="hbox" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>
