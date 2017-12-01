@@ -5,66 +5,62 @@
  */
 package nurikabe.affichage;
 
-import javafx.scene.Parent;
+
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.VPos;
+import javafx.scene.control.Control;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 
 /**
  *
  * @author sylat
  */
-public class Grille extends Parent{
-    private GridPane grille;
+public class Grille extends GridPane{
     
-    public Grille(){
-        this(5,5);
-    }
-    
-    public Grille(int x, int y){
-        if (x<5) x=5;
-        if (y<5) y=5;
+    public void initGrille(nurikabe.jeu.assets.Grille entree){
+        this.getColumnConstraints().clear();
+        this.getRowConstraints().clear();
+        this.getChildren().clear();
         
-        grille = new GridPane();
-        
-        for (int i=0; i<x; i++){
-            for (int j=0; j<y; j++){
-                grille.add(new Case(),i,j);
-            }
-        }
-        
-        this.getChildren().add(grille);
-        
-    }
-    
-    public Grille (nurikabe.jeu.assets.Grille entree){
         int col = entree.getWidth();
-        int row = entree.getHeight();
-        grille = new GridPane();       
-        for (int i=0 ; i<col ; i++){
-            for (int j=0 ; j<row ; j++){
+        int row = entree.getHeight();     
+        
+        for (int i=0 ; i<row ; i++){
+            for (int j=0 ; j<col ; j++){
+                
                 if (!entree.isJouable(i, j)){
-                    this.grille.add(new Case(entree.getValeur(i, j) , Color.WHITE), i, j);
+                    this.add(new Case(entree.getValeur(i, j) , Color.WHITE), i, j);
                 }
                 else{
                     switch(entree.getEtat(i, j)){
                         case BLANC :
-                            this.grille.add(new Case(0 , Color.WHITE), i, j);
+                            this.add(new Case(0 , Color.WHITE), i, j);
                             break;
                         case NOIR :
-                            this.grille.add(new Case(0 , Color.BLACK), i, j);
+                            this.add(new Case(0 , Color.BLACK), i, j);
                             break;
                         default :
-                            this.grille.add(new Case(0 , Color.LIGHTGREY), i, j);
+                            this.add(new Case(0 , Color.LIGHTGREY), i, j);
                             break;
                     }
                 }
             }
         }
-        this.getChildren().add(grille);
-    }
-    
-    public GridPane getGrille(){
-        return grille;
+        
+        for (int i = 0; i < col; i++) {
+            //ajouter une contrainte de colone avec les tailles min, pref et max ainsi que le comportement horizontal : croissance, position et remplissage
+            getColumnConstraints().add(new ColumnConstraints(5, Control.USE_COMPUTED_SIZE, Double.POSITIVE_INFINITY, Priority.ALWAYS, HPos.CENTER, true));
+        }
+        for (int i = 0; i < row; i++) {
+            getRowConstraints().add(new RowConstraints(5, Control.USE_COMPUTED_SIZE, Double.POSITIVE_INFINITY, Priority.ALWAYS, VPos.CENTER, true));
+        }
+        
+        setPadding(new Insets(20,20,20,20));
+        setMaxSize(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
     }
 }

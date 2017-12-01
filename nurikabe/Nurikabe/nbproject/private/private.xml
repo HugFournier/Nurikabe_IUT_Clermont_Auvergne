@@ -3,15 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/fourn/Documents/IUT/projetJavaFX/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/nurikabe/jeu/assets/Grille.java</file>
-            <file>file:/C:/Users/fourn/Documents/IUT/projetJavaFX/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/nurikabe/jeu/logic/Handler.java</file>
-            <file>file:/C:/Users/fourn/Documents/IUT/projetJavaFX/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/nurikabe/launcher/LauncheurConsole.java</file>
-            <file>file:/C:/Users/fourn/Documents/IUT/projetJavaFX/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/nurikabe/jeu/Jeu.java</file>
-            <file>file:/C:/Users/fourn/Documents/IUT/projetJavaFX/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/nurikabe/jeu/assets/cellule/Cellule.java</file>
-            <file>file:/C:/Users/fourn/Documents/IUT/projetJavaFX/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/nurikabe/affichage/Console.java</file>
-            <file>file:/C:/Users/fourn/Documents/IUT/projetJavaFX/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/nurikabe/jeu/logic/generateur/FromTextFile.java</file>
-            <file>file:/C:/Users/fourn/Documents/IUT/projetJavaFX/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/util/Chronomètre.java</file>
-            <file>file:/C:/Users/fourn/Documents/IUT/projetJavaFX/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/nurikabe/jeu/logic/generateur/BinaryGrille.java</file>
+            <file>file:/C:/Users/sylat/Documents/000Docs%20perso/cours/Nurikabe/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/nurikabe/affichage/controller/ControllerFenetrePrincipale.java</file>
+            <file>file:/C:/Users/sylat/Documents/000Docs%20perso/cours/Nurikabe/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/nurikabe/affichage/ihm/FenetrePrincipale.fxml</file>
+            <file>file:/C:/Users/sylat/Documents/000Docs%20perso/cours/Nurikabe/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/nurikabe/affichage/Case.java</file>
+            <file>file:/C:/Users/sylat/Documents/000Docs%20perso/cours/Nurikabe/Nurikabe_IUT_Clermont_Auvergne/nurikabe/Nurikabe/src/nurikabe/affichage/Grille.java</file>
         </group>
     </open-files>
 </project-private>
