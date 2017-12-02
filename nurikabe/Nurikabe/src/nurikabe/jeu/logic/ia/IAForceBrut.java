@@ -7,20 +7,21 @@ import java.util.List;
 
 public class IAForceBrut implements IAInterface{
 
-    private List<IAInterface> algos = new LinkedList<IAInterface>();
+    private List<IAalgo> algos = new LinkedList<IAalgo>();
 
     public IAForceBrut( ){
         algos.add( new IAalgo1());
         algos.add( new IAalgo2());
+        algos.add( new IAalgo3());
     }
 
     @Override
     public Grille resoudre( Grille grille) {
-        Grille laGrille = grille.clone();
+        IAGrille laGrille = new IAGrille( grille);
 
-        for (IAInterface algo : algos)
+        for (IAalgo algo : algos)
             laGrille = algo.resoudre( laGrille);
 
-        return laGrille;
+        return laGrille.getGrille();
     }
 }

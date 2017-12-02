@@ -18,6 +18,10 @@ public abstract class Cellule implements Serializable, PublicCloneable{
 		return etat;
 	}
 
+	public Cellule clone(){
+		return null;
+	}
+
 	public boolean setEtat( Etat etat) {
 		this.etat = etat;
 		return true;

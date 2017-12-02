@@ -1,6 +1,6 @@
 package util;
 
-public interface PublicCloneable extends Cloneable{
+public interface PublicCloneable {
 
     public PublicCloneable clone();
 }

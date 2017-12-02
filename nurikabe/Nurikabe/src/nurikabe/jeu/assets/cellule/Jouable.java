@@ -12,6 +12,7 @@ public class Jouable extends Cellule {
 		super(etat);
 	}
 
+	@Override
 	public Jouable clone(){
 		return new Jouable(getEtat());
 	}

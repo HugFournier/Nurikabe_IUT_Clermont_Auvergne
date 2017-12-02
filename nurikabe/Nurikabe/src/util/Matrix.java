@@ -20,11 +20,11 @@ public class Matrix<leType extends PublicCloneable> implements Serializable, Pub
 	}
 
 	public Matrix( Matrix<leType> clone){
-		width = clone.getWidth();
-		height = clone.getHeight();
+		this( clone.getWidth(), clone.getHeight());
 		Set<Map.Entry<Position, leType>> entryset = clone.data.entrySet();
 		for (Map.Entry<Position, leType> entry : entryset){
-			data.put( entry.getKey().clone(), (leType) entry.getValue().clone());
+			if (entry.getKey() != null && entry.getValue() != null)
+				data.put( entry.getKey().clone(), (leType) entry.getValue().clone());
 		}
 	}
 
