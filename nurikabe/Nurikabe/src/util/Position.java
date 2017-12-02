@@ -2,7 +2,7 @@ package util;
 
 import java.io.Serializable;
 
-public class Position implements Serializable{
+public class Position implements Serializable, PublicCloneable{
 
 	private static final long serialVersionUID = -465646611055196084L;
 	
@@ -11,6 +11,10 @@ public class Position implements Serializable{
 	public Position( int x, int y) {
 		this.x = x;
 		this.y = y;
+	}
+
+	public Position clone( ){
+		return new Position( x, y);
 	}
 	
 	public Position addition( Position p) {

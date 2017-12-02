@@ -11,6 +11,11 @@ public class NonJouable extends Cellule {
 		this.valeur = valeur;
 	}
 
+	@Override
+	public NonJouable clone(){
+		return new NonJouable( valeur);
+	}
+
 	
 	public int getValeur( ) {
 		return valeur;

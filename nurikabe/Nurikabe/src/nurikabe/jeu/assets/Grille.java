@@ -34,6 +34,11 @@ public class Grille extends Matrix<Cellule> implements Serializable{
         this( generateur.createMatrix( width, height), 0);
         
     }
+
+    @Override
+    public Grille clone( ){
+        return new Grille( this, chrono.getDureeMs());
+    }
     
     
     private Cellule getCellule( int x, int y) {
