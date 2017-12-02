@@ -5,6 +5,8 @@
  */
 package nurikabe.affichage;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
@@ -43,29 +45,28 @@ public class Case extends Label{
     Case(int valeur, Paint couleur) {
         if (valeur > 0){
             this.valeur = valeur;
-            caseChifree = true;
+            this.caseChifree = true;
 
             couleur = Color.WHITE;
         } 
         else{
             this.valeur = 0;
-            caseChifree = false;
+            this.caseChifree = false;
         }
         
 
-        if (isCaseChifree()){
-            setText(getValeur()+"");
-            setFont(new Font(17));
-            setTextFill(Color.BLACK);
+        if (this.isCaseChifree()){
+            this.setText(this.getValeur()+"");
+            this.setFont(new Font(17));
+            this.setTextFill(Color.BLACK);
         }
         
-        setMaxSize(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
-        setTextAlignment(TextAlignment.CENTER);
-        setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-        setBackground(new Background(new BackgroundFill(couleur, CornerRadii.EMPTY, Insets.EMPTY)));
+        this.setMaxSize(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
+        this.setTextAlignment(TextAlignment.JUSTIFY);
+        this.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+        this.setBackground(new Background(new BackgroundFill(couleur, CornerRadii.EMPTY, Insets.EMPTY)));
     
-        setOnMousePressed(new EventHandler<MouseEvent>(){
-            @Override
+        this.setOnMousePressed(new EventHandler<MouseEvent>(){
             public void handle(MouseEvent me){
                 appuyer();
             }
@@ -84,14 +85,14 @@ public class Case extends Label{
     
     private void appuyer() {
         if (!caseChifree){
-            if(getFill().equals(Color.LIGHTGREY)){
-                setFill(Color.BLACK);
+            if(this.getFill().equals(Color.LIGHTGREY)){
+                this.setFill(Color.BLACK);
             }
-            else{ if(getFill().equals(Color.BLACK)){ 
-                setFill(Color.WHITE);
+            else{ if(this.getFill().equals(Color.BLACK)){ 
+                this.setFill(Color.WHITE);
             }
                 else{
-                   setFill(Color.LIGHTGREY);
+                   this.setFill(Color.LIGHTGREY);
                 }
             }
         }

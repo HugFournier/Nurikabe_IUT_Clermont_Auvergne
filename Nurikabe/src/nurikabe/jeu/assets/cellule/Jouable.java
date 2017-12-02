@@ -13,6 +13,11 @@ public class Jouable extends Cellule {
 	}
 
 	@Override
+	public Jouable clone(){
+		return new Jouable(getEtat());
+	}
+
+	@Override
     public String toString() {
 		switch(getEtat()){
         	case VIDE :

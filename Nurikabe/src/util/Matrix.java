@@ -1,9 +1,12 @@
 package util;
 
+import javax.swing.text.html.parser.Entity;
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
-public class Matrix<leType> implements Serializable{
+public class Matrix<leType extends PublicCloneable> implements Serializable, PublicCloneable{
 
 	private static final long serialVersionUID = 6230104758740040210L;
 	
@@ -17,9 +20,17 @@ public class Matrix<leType> implements Serializable{
 	}
 
 	public Matrix( Matrix<leType> clone){
-		width = clone.getWidth();
-		height = clone.getHeight();
-		data = clone.data;
+		this( clone.getWidth(), clone.getHeight());
+		Set<Map.Entry<Position, leType>> entryset = clone.data.entrySet();
+		for (Map.Entry<Position, leType> entry : entryset){
+			if (entry.getKey() != null && entry.getValue() != null)
+				data.put( entry.getKey().clone(), (leType) entry.getValue().clone());
+		}
+	}
+
+	@Override
+	public Matrix<leType> clone(){
+		return new Matrix<leType>( this);
 	}
 	
 	public int getWidth() {
