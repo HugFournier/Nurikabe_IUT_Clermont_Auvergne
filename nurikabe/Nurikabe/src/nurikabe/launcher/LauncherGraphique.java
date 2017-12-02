@@ -27,7 +27,7 @@ public class LauncherGraphique extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/nurikabe/affichage/ihm/FenetrePrincipale.fxml"));
         primaryStage.setScene(new Scene(root));
         primaryStage.centerOnScreen();
-        primaryStage.show(); 
+        primaryStage.show();
     }
 
     /**

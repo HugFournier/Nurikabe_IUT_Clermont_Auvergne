@@ -64,7 +64,6 @@ public class ControllerFenetrePrincipale {
     
     @FXML
     public void onNPartie(){
-
         grille.initGrille(manager.getJeu().getGrille());
     }
    
