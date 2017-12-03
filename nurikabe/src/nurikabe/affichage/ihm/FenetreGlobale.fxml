@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="nurikabe.affichage.controller.FenetreGlobaleController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <TabPane layoutX="162.0" layoutY="82.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <tabs>
@@ -45,9 +45,9 @@
                         </AnchorPane>
                     </content>
                 </Tab>
-                <Tab text="Sauvegarde">
+                <Tab onSelectionChanged="#afficherListeSaves" text="Sauvegarde">
                     <content>
-                        <ListView prefHeight="200.0" prefWidth="200.0" />
+                        <ListView fx:id="listeSaves" prefHeight="200.0" prefWidth="200.0" />
                     </content>
                 </Tab>
                 <Tab text="Créer">

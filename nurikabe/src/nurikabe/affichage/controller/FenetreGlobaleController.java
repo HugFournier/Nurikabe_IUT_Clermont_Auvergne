@@ -6,22 +6,41 @@
 package nurikabe.affichage.controller;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
+import nurikabe.jeu.logic.Handler;
+import nurikabe.jeu.logic.generateur.SaveHandler;
 
 /**
  * FXML Controller class
  *
  * @author fourn
  */
-public class FenetreGlobaleController implements Initializable {
+public class FenetreGlobaleController {
+
+    private Handler manager = new Handler();
+    @FXML
+    private ListView listeSaves;
+    ObservableList observableListeSaves = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize() {
         // TODO
-    }    
+    }
+    
+    @FXML
+    public void afficherListeSaves(){
+        List<String> lines = SaveHandler.getSaveHandler().getFiles();
+        observableListeSaves.setAll(lines);
+        listeSaves.setItems(observableListeSaves);
+        //grille.initGrille(manager.getJeu().getGrille());
+    }
     
 }
