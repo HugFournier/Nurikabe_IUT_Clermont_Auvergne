@@ -13,6 +13,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TabPane;
+import nurikabe.affichage.Grille;
 import nurikabe.jeu.logic.Handler;
 import nurikabe.jeu.logic.generateur.SaveHandler;
 
@@ -25,6 +27,10 @@ public class FenetreGlobaleController {
 
     private Handler manager = new Handler();
     @FXML
+    private Grille grille;
+    @FXML
+    private TabPane onglets;
+    @FXML
     private ListView listeSaves;
     ObservableList observableListeSaves = FXCollections.observableArrayList();
 
@@ -32,6 +38,7 @@ public class FenetreGlobaleController {
      * Initializes the controller class.
      */
     public void initialize() {
+        onglets.getSelectionModel().select(1);
         // TODO
     }
     
@@ -40,7 +47,17 @@ public class FenetreGlobaleController {
         List<String> lines = SaveHandler.getSaveHandler().getFiles();
         observableListeSaves.setAll(lines);
         listeSaves.setItems(observableListeSaves);
-        //grille.initGrille(manager.getJeu().getGrille());
+    }
+    
+    @FXML
+    public void cheminClic(){
+        String path = (String) listeSaves.getSelectionModel().getSelectedItem();
+        onglets.getSelectionModel().select(0);
+        //System.out.println(path);
+        manager.charger(path);
+        manager.getJeu().getGrille().getChrono().lancer();
+        grille.initGrille(manager.getJeu().getGrille());
+        //System.out.println(manager.getJeu().getGrille());
     }
     
 }
