@@ -7,16 +7,20 @@ package nurikabe.affichage.controller;
 
 import java.io.IOException;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import nurikabe.affichage.Grille;
+import nurikabe.jeu.assets.Chronometre;
 import nurikabe.jeu.logic.Handler;
 
 /**
@@ -29,8 +33,14 @@ public class ControllerFenetrePrincipale {
     @FXML
     Grille grille;
     @FXML
-    ToolBar toolbarPartie;
+    Button pause;
+    @FXML
+    Button start;
+    @FXML
+    Label text;
+    
 
+    Chronometre c;
     private Handler manager = new Handler();
 
     /**
@@ -72,14 +82,35 @@ public class ControllerFenetrePrincipale {
         System.out.println("clic");
         grille.initGrille(manager.getJeu().getGrille());
     }
+    @FXML
+    public void onStart() {
+         c.start();
+         pause.setVisible(true);
+         start.setVisible(false);
+         grille.setVisible(true);
+     }
+    @FXML
+    public void onPause() {
+         c.pause();
+         pause.setVisible(false);
+         start.setVisible(true);
+         grille.setVisible(false);
+     } 
     //Méthode utilisée par lorsque que le bouton Quitter est utilisé
+    
     @FXML
     public void onExit(){
+        c.pause();
         Platform.exit();
     }
-    
+    @FXML
     public void initialize(){
-        
+        c = new Chronometre(0);
+        c.setLabel(text);
+        start.setVisible(false);
+        grille.setVisible(true);
+        c.setLabel(text);
+        c.start();
     }
     
 }
