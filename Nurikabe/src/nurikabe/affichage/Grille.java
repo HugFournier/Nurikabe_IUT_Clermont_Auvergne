@@ -23,6 +23,7 @@ import javafx.scene.paint.Color;
 public class Grille extends GridPane{
     
     public void initGrille(nurikabe.jeu.assets.Grille entree){
+        System.out.println(entree.getWidth()+" dans init");
         this.getColumnConstraints().clear();
         this.getRowConstraints().clear();
         this.getChildren().clear();

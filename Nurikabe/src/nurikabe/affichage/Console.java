@@ -61,12 +61,7 @@ public class Console extends Affichage{
         proposerChemin();
         System.out.println("Quel fichier charger ?");
         String path = sc.nextLine();
-        if (path.equals( "")){
-
-        }
-        else{
-            handler.charger(path);
-        }
+        handler.charger(path);
         handler.getJeu().getGrille().getChrono().lancer();
         
     }

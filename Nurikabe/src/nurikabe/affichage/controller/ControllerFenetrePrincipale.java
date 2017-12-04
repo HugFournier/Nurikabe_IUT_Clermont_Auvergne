@@ -30,8 +30,6 @@ public class ControllerFenetrePrincipale {
     Grille grille;
     @FXML
     ToolBar toolbarPartie;
-    @FXML
-    HBox hbox;
 
     private Handler manager = new Handler();
 
@@ -64,10 +62,16 @@ public class ControllerFenetrePrincipale {
     
     @FXML
     public void onNPartie(){
-
+        System.out.println("clic");
         grille.initGrille(manager.getJeu().getGrille());
     }
    
+    
+    @FXML
+    public void onCharger(){
+        System.out.println("clic");
+        grille.initGrille(manager.getJeu().getGrille());
+    }
     //Méthode utilisée par lorsque que le bouton Quitter est utilisé
     @FXML
     public void onExit(){
@@ -75,7 +79,7 @@ public class ControllerFenetrePrincipale {
     }
     
     public void initialize(){
-        root.setMargin(hbox, new Insets(20,20,20,20));
+        
     }
     
 }

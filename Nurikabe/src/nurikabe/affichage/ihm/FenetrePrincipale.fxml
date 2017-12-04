@@ -4,39 +4,32 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import nurikabe.affichage.Grille?>
 
 <BorderPane fx:controller="nurikabe.affichage.controller.ControllerFenetrePrincipale" 
       maxHeight="-Infinity" maxWidth="-Infinity" 
       minHeight="-Infinity" minWidth="-Infinity" 
-      prefHeight="400.0" prefWidth="600.0" 
+      prefHeight="400.0" prefWidth="400.0" 
       xmlns="http://javafx.com/javafx/8" 
       xmlns:fx="http://javafx.com/fxml/1">
-
-<BorderPane fx:id="root" fx:controller="nurikabe.affichage.controller.ControllerFenetrePrincipale" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-
-   <top>
+    <top>
       <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-
         <items>
             <Button onAction="#onNPartie" text="Nouvelle Grille" />
-            <Button text="Charger une grille" />
+            <Button onAction="#onCharger" text="Charger une grille" />
             <Button onAction="#onPalmares" text="Palmarès" />
             <Button onAction="#onExit" text="Quitter" />
         </items>
     </ToolBar>
     </top>
     
-    <right>
-        <VBox>
-            <Label text="Mettre Chrono ici" />
-        </VBox>
-    </right>
     <!--La grille-->
     <center>
         <Grille fx:id="grille"/> 
     </center>
+    
     <!--La toolBar du bas-->
     <bottom>
     <ToolBar fx:id="toolbarPartie" disable="true" >
@@ -46,10 +39,6 @@
             <Button text="Sauvegarder" />
             <Button text="Aide" />
         </items>
-
       </ToolBar>
    </bottom>
-   <center>
-       <HBox fx:id="hbox" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </center>
 </BorderPane>
