@@ -15,10 +15,11 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import nurikabe.affichage.Grille?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurikabe.affichage.controller.FenetreGlobaleController">
     <children>
-        <TabPane layoutX="162.0" layoutY="82.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <TabPane fx:id="onglets" layoutX="162.0" layoutY="82.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <tabs>
                 <Tab text="Jeu">
                     <content>
@@ -27,7 +28,7 @@
                                 <VBox alignment="CENTER" layoutX="129.0" layoutY="69.0" prefHeight="369.6" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
                                         <Label text="Chrono" />
-                                        <GridPane gridLinesVisible="true">
+                                        <!--GridPane gridLinesVisible="true">
                                             <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -37,7 +38,8 @@
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
-                                        </GridPane>
+                                        </GridPane-->
+                                     <Grille fx:id="grille"/> 
                               <Button mnemonicParsing="false" text="Indice" />
                                     </children>
                                 </VBox>
@@ -45,9 +47,9 @@
                         </AnchorPane>
                     </content>
                 </Tab>
-                <Tab text="Sauvegarde">
+                <Tab onSelectionChanged="#afficherListeSaves" text="Sauvegarde">
                     <content>
-                        <ListView prefHeight="200.0" prefWidth="200.0" />
+                        <ListView fx:id="listeSaves" onMouseClicked="#cheminClic" prefHeight="200.0" prefWidth="200.0" />
                     </content>
                 </Tab>
                 <Tab text="Créer">

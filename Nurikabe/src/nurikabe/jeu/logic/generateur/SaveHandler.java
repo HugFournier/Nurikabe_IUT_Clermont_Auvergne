@@ -36,6 +36,7 @@ public class SaveHandler {
         path = Paths.get(uri);
         loadFileLocations();
     }
+<<<<<<< HEAD
 
     public void findSaveLocations(){
         File f = path.toFile();
@@ -65,6 +66,9 @@ public class SaveHandler {
             }
     }
 
+=======
+    
+>>>>>>> fixBranche-Modif_UI-Hugo
     private void loadFileLocations( ){
         files = new ArrayList<String>();
         try {
