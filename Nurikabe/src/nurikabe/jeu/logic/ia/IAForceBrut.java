@@ -13,6 +13,7 @@ public class IAForceBrut implements IAInterface{
         algos.add( new IAalgo1());
         algos.add( new IAalgo2());
         algos.add( new IAalgo3());
+        algos.add( new IAalgo0());
     }
 
     @Override

@@ -1,46 +1,27 @@
 package nurikabe.jeu;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import nurikabe.jeu.assets.Grille;
-import nurikabe.jeu.assets.cellule.Cellule;
 import nurikabe.jeu.assets.cellule.Etat;
 import nurikabe.jeu.logic.generateur.Chargeur;
 import nurikabe.jeu.logic.generateur.Enregistreur;
 import nurikabe.jeu.logic.generateur.Generateur;
-import nurikabe.jeu.logic.verif.Verif;
-import nurikabe.jeu.logic.verif.blancChiffre.VerifBlancChiffreBrut;
-import nurikabe.jeu.logic.verif.blancConnect.VerifBlancConnectBrut;
-import nurikabe.jeu.logic.verif.noirConnect.VerifNoirConnectBrut;
-import util.Matrix;
+import nurikabe.jeu.logic.verif.LesVerifs;
 
 public class Jeu {
 
 	private Grille grille;
-	private List<Verif> regles = new ArrayList<Verif>();
+	private LesVerifs verifs = new LesVerifs();
 	
 	public Jeu( int width, int height, Generateur generateur) {
                     grille = new Grille( width, height, generateur);
-		initVerif();
 	}
 
 	public Jeu(Chargeur chargeur, String path){
 		grille = new Grille( chargeur.charger( path));
 	}
 	
-	// REGLES
-	private void initVerif( ) {
-		regles.add( new VerifNoirConnectBrut());
-		regles.add( new VerifBlancConnectBrut());
-		regles.add( new VerifBlancChiffreBrut());
-	}
-	
 	public boolean verfication() {
-		for (Verif regle : regles)
-			if (!regle.verification( grille))
-				return false;
-		return true;
+		return verifs.verification( grille);
 	}
 
 	// PER

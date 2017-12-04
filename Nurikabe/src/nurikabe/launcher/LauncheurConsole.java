@@ -14,9 +14,7 @@ public class LauncheurConsole {
 	public static void main(String[] args) {
 		Console c = new Console();
 		Handler handler = new Handler();
-		c.demanderChemin(handler);
 		c.afficher( handler);
-
 		Grille grille = (new IAForceBrut()).resoudre(handler.getJeu().getGrille());
 		for (int x = 0; x < grille.getWidth(); x++)
 			for( int y = 0; y < grille.getHeight(); y++)

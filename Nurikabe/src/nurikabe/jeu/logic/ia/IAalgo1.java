@@ -20,23 +20,17 @@ class IAalgo1 implements IAalgo{
         int height = grille.getHeight();
         for (int y = 1; y < height-1; y++)
             for (int x = 1; x < width-1; x++)
-                if (laGrille.getGrille().isJouable(x, y) && ((!(laGrille.getGrille().isJouable(x-1, y) || laGrille.getGrille().isJouable(x+1, y))) ||
-                        (!(laGrille.getGrille().isJouable(x, y-1) || laGrille.getGrille().isJouable(x, y+1))))){
-                    laGrille.getGrille().setEtat(x, y, Etat.NOIR);
-                    laGrille.setForced(x, y, true);
-                }
+                if ((!laGrille.isForced( x, y)) && ((!(laGrille.getGrille().isJouable(x-1, y) || laGrille.getGrille().isJouable(x+1, y))) ||
+                        (!(laGrille.getGrille().isJouable(x, y-1) || laGrille.getGrille().isJouable(x, y+1)))))
+                    laGrille.setForced(x, y, laGrille.getGrille().setEtat(x, y, Etat.NOIR));
         for (int y = 0; y < grille.getHeight(); y += grille.getHeight()-1)
             for (int x = 1; x < grille.getWidth()-1; x++)
-                if (laGrille.getGrille().isJouable(x, y) && (!(laGrille.getGrille().isJouable(x-1, y) || laGrille.getGrille().isJouable(x+1, y)))){
-                    laGrille.getGrille().setEtat(x, y, Etat.NOIR);
-                    laGrille.setForced( x, y, true);
-                }
+                if ((!laGrille.isForced( x, y)) && (!(laGrille.getGrille().isJouable(x-1, y) || laGrille.getGrille().isJouable(x+1, y))))
+                    laGrille.setForced( x, y, laGrille.getGrille().setEtat(x, y, Etat.NOIR));
         for (int x = 0; x < grille.getWidth(); x += grille.getWidth()-1)
             for (int y = 1; y < grille.getHeight()-1; y++)
-                if (laGrille.getGrille().isJouable(x, y) && (!(laGrille.getGrille().isJouable(x-1, y) || laGrille.getGrille().isJouable(x+1, y)))){
-                    laGrille.getGrille().setEtat(x, y, Etat.NOIR);
-                    laGrille.setForced( x, y, true);
-                }
+                if ((!laGrille.isForced( x, y)) && (!(laGrille.getGrille().isJouable(x, y-1) || laGrille.getGrille().isJouable(x, y+1))))
+                    laGrille.setForced( x, y, laGrille.getGrille().setEtat(x, y, Etat.NOIR));
         return laGrille;
     }
 

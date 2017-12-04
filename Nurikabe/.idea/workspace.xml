@@ -12,33 +12,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SaveHandler.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/SaveHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2665#2666#0" expanded="true" />
-                <element signature="e#2711#2712#0" expanded="true" />
-                <marker date="1511777684895" expanded="false" signature="2934:2944" ph=" { " />
-                <marker date="1511777684895" expanded="false" signature="2964:2970" ph=" }" />
-                <marker date="1511777684895" expanded="false" signature="3178:3188" ph=" { " />
-                <marker date="1511777684895" expanded="false" signature="3220:3226" ph=" }" />
-                <marker date="1511777684895" expanded="true" signature="3338:3426" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="LauncheurConsole.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/nurikabe/launcher/LauncheurConsole.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="12" column="40" lean-forward="false" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
+            <state relative-caret-position="272">
+              <caret line="16" column="29" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1511777617365" expanded="true" signature="175:323" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -47,88 +27,99 @@
       <file leaf-file-name="Handler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/Handler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="47" column="31" lean-forward="true" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
+            <state relative-caret-position="168">
+              <caret line="20" column="50" lean-forward="true" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1429#1430#0" expanded="true" />
                 <element signature="e#1470#1471#0" expanded="true" />
-                <element signature="e#1822#1823#0" expanded="true" />
-                <element signature="e#1859#1860#0" expanded="true" />
-                <element signature="e#2194#2195#0" expanded="true" />
-                <marker date="1511777617339" expanded="true" signature="2108:2119" ph=" { " />
-                <marker date="1511777617339" expanded="true" signature="2136:2142" ph=" }" />
-                <marker date="1511777617339" expanded="true" signature="2167:2178" ph=" { " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Jeu.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/Jeu.java">
+      <file leaf-file-name="IAalgo1.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IAalgo1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="21" lean-forward="true" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
-              <folding>
-                <marker date="1511776132190" expanded="false" signature="2522:2527" ph=" }" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EnregisterDansFichierTexte.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/EnregisterDansFichierTexte.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="40" column="23" lean-forward="false" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
-              <folding>
-                <marker date="1511775703446" expanded="false" signature="1142:1145" ph=" }" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EnregistrerDansFichierBinaire.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/EnregistrerDansFichierBinaire.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="33" column="37" lean-forward="false" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1511775703465" expanded="true" signature="459:1171" ph="{...}" />
-                <marker date="1511775703465" expanded="false" signature="1246:1249" ph=" }" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Chargeur.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/Chargeur.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="33" lean-forward="false" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Enregistreur.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/Enregistreur.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="57" lean-forward="false" selection-start-line="6" selection-start-column="57" selection-end-line="6" selection-end-column="57" />
+            <state relative-caret-position="340">
+              <caret line="20" column="42" lean-forward="true" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TypeDeFichierTraite.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/TypeDeFichierTraite.java">
+      <file leaf-file-name="Verif.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/verif/Verif.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="4" column="39" lean-forward="false" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="39" />
+              <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IAalgo2.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IAalgo2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="32" column="64" lean-forward="false" selection-start-line="32" selection-start-column="64" selection-end-line="32" selection-end-column="64" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IAalgo3.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IAalgo3.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="27" column="28" lean-forward="false" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IAForceBrut.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IAForceBrut.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="25" column="36" lean-forward="true" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IAalgo0.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IAalgo0.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="423">
+              <caret line="36" column="53" lean-forward="true" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#357#366#0" expanded="true" />
+                <element signature="e#411#420#0" expanded="true" />
+                <element signature="e#479#494#0" expanded="true" />
+                <element signature="e#542#550#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IAalgo0Thread.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IAalgo0Thread.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#264#273#0" expanded="true" />
+                <element signature="e#322#331#0" expanded="true" />
+                <element signature="e#765#766#0" expanded="true" />
+                <element signature="e#796#797#0" expanded="true" />
+                <element signature="e#829#830#0" expanded="true" />
+                <element signature="e#858#859#0" expanded="true" />
+                <element signature="e#2035#2036#0" expanded="true" />
+                <element signature="e#2070#2071#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -160,21 +151,28 @@
         <option value="$PROJECT_DIR$/src/nurikabe/affichage/controller/ControllerFenetrePrincipale.java" />
         <option value="$PROJECT_DIR$/src/nurikabe/affichage/Graphique.java" />
         <option value="$PROJECT_DIR$/src/util/Matrix.java" />
-        <option value="$PROJECT_DIR$/src/nurikabe/jeu/Jeu.java" />
         <option value="$PROJECT_DIR$/src/nurikabe/jeu/assets/Grille.java" />
         <option value="$PROJECT_DIR$/src/nurikabe/affichage/Affichage.java" />
         <option value="$PROJECT_DIR$/src/nurikabe/affichage/Console.java" />
         <option value="$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/FromTextFile.java" />
-        <option value="$PROJECT_DIR$/src/nurikabe/launcher/LauncheurConsole.java" />
         <option value="$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/BinaryGrille.java" />
         <option value="$PROJECT_DIR$/src/nurikabe/jeu/logic/Handler.java" />
         <option value="$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/SaveHandler.java" />
+        <option value="$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IAalgo2.java" />
+        <option value="$PROJECT_DIR$/src/nurikabe/launcher/LauncheurConsole.java" />
+        <option value="$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IAalgo3.java" />
+        <option value="$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IAalgo1.java" />
+        <option value="$PROJECT_DIR$/src/nurikabe/jeu/Jeu.java" />
+        <option value="$PROJECT_DIR$/src/nurikabe/jeu/logic/verif/LesVerifs.java" />
+        <option value="$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IAForceBrut.java" />
+        <option value="$PROJECT_DIR$/src/util/Bits.java" />
+        <option value="$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IAalgo0.java" />
+        <option value="$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IAalgo0Thread.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="126" />
-    <option name="y" value="99" />
+    <option name="x" value="-9" />
     <option name="width" value="1612" />
     <option name="height" value="876" />
   </component>
@@ -193,6 +191,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -203,17 +205,6 @@
             <path>
               <item name="Nurikabe" type="b2602c69:ProjectViewProjectNode" />
               <item name="Nurikabe" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Nurikabe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Nurikabe" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="grilles" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Nurikabe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Nurikabe" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -221,29 +212,6 @@
               <item name="Nurikabe" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="nurikabe" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Nurikabe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Nurikabe" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="nurikabe" type="462c0819:PsiDirectoryNode" />
-              <item name="affichage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Nurikabe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Nurikabe" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="nurikabe" type="462c0819:PsiDirectoryNode" />
-              <item name="affichage" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Nurikabe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Nurikabe" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="nurikabe" type="462c0819:PsiDirectoryNode" />
-              <item name="affichage" type="462c0819:PsiDirectoryNode" />
-              <item name="ihm" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Nurikabe" type="b2602c69:ProjectViewProjectNode" />
@@ -266,15 +234,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="nurikabe" type="462c0819:PsiDirectoryNode" />
               <item name="jeu" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="cellule" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Nurikabe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Nurikabe" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="nurikabe" type="462c0819:PsiDirectoryNode" />
-              <item name="jeu" type="462c0819:PsiDirectoryNode" />
               <item name="logic" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -284,7 +243,7 @@
               <item name="nurikabe" type="462c0819:PsiDirectoryNode" />
               <item name="jeu" type="462c0819:PsiDirectoryNode" />
               <item name="logic" type="462c0819:PsiDirectoryNode" />
-              <item name="generateur" type="462c0819:PsiDirectoryNode" />
+              <item name="ia" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Nurikabe" type="b2602c69:ProjectViewProjectNode" />
@@ -342,10 +301,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -519,12 +474,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17921527" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27253446" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2078125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -532,31 +487,11 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997879" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997879" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17921527" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -569,118 +504,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/FromTextFile.java" />
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/launcher/LauncheurConsole.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1511777617365" expanded="true" signature="175:323" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/Enregistreur.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="36" lean-forward="false" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/Jeu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1513">
-          <caret line="101" column="4" lean-forward="false" selection-start-line="101" selection-start-column="4" selection-end-line="103" selection-end-column="5" />
-          <folding>
-            <marker date="1511776132190" expanded="false" signature="2522:2527" ph=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/FromBinaryFile.java" />
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/Handler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="68" lean-forward="false" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1470#1471#0" expanded="true" />
-            <element signature="e#1822#1823#0" expanded="true" />
-            <element signature="e#1859#1860#0" expanded="true" />
-            <element signature="e#2194#2195#0" expanded="true" />
-            <marker date="1511777617339" expanded="true" signature="2108:2119" ph=" { " />
-            <marker date="1511777617339" expanded="true" signature="2136:2142" ph=" }" />
-            <marker date="1511777617339" expanded="true" signature="2167:2178" ph=" { " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/assets/cellule/Jouable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/Generateur.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/FromTextFile.java" />
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/assets/cellule/Cellule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="22" lean-forward="false" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/assets/Grille.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="21" column="29" lean-forward="false" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/Matrix.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="15" column="32" lean-forward="false" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/Jeu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1326">
-          <caret line="87" column="5" lean-forward="false" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
-          <folding>
-            <marker date="1511776132190" expanded="false" signature="2522:2527" ph=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/assets/cellule/Jouable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/FromTextFile.java" />
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/Generateur.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/assets/cellule/Cellule.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -709,9 +532,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1343">
           <caret line="89" column="5" lean-forward="false" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
-          <folding>
-            <marker date="1511776132190" expanded="false" signature="2522:2527" ph=" }" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -758,9 +579,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1343">
           <caret line="89" column="5" lean-forward="true" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
-          <folding>
-            <marker date="1511776132190" expanded="false" signature="2522:2527" ph=" }" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -771,20 +590,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/assets/cellule/Etat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/assets/cellule/Cellule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="22" lean-forward="false" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/util/Position.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -792,45 +597,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/affichage/ihm/FenetrePrincipale.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="17" column="16" lean-forward="true" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/affichage/ihm/FenetrePalmares.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="41" lean-forward="true" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/nurikabe/affichage/Graphique.java" />
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/affichage/controller/ControllerPalmares.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/affichage/controller/ControllerFenetrePrincipale.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="18" column="41" lean-forward="false" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/util/Matrix.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -839,26 +606,12 @@
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/io/File.java" />
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/assets/cellule/Jouable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="17" column="21" lean-forward="false" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/launcher/LauncherGraphique.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="26" column="104" lean-forward="false" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/nurikabe/affichage/Affichage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -871,26 +624,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/Jeu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="21" lean-forward="true" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
-          <folding>
-            <marker date="1511776132190" expanded="false" signature="2522:2527" ph=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/assets/Grille.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="947">
-          <caret line="82" column="17" lean-forward="false" selection-start-line="82" selection-start-column="17" selection-end-line="82" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/Generateur.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -900,55 +633,295 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/Enregistreur.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
+        <state relative-caret-position="68">
           <caret line="6" column="57" lean-forward="false" selection-start-line="6" selection-start-column="57" selection-end-line="6" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/FromTextFile.java" />
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/launcher/LauncheurConsole.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="40" lean-forward="false" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1511777617365" expanded="true" signature="175:323" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/FromBinaryFile.java" />
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/Handler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="47" column="31" lean-forward="true" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1470#1471#0" expanded="true" />
-            <element signature="e#1822#1823#0" expanded="true" />
-            <element signature="e#1859#1860#0" expanded="true" />
-            <element signature="e#2194#2195#0" expanded="true" />
-            <marker date="1511777617339" expanded="true" signature="2108:2119" ph=" { " />
-            <marker date="1511777617339" expanded="true" signature="2136:2142" ph=" }" />
-            <marker date="1511777617339" expanded="true" signature="2167:2178" ph=" { " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/SaveHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        <state relative-caret-position="561">
+          <caret line="70" column="93" lean-forward="true" selection-start-line="70" selection-start-column="93" selection-end-line="70" selection-end-column="93" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#4197#4205#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/affichage/controller/ControllerFenetrePrincipale.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/EnregisterDansFichierTexte.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="40" column="23" lean-forward="false" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/EnregistrerDansFichierBinaire.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="33" column="37" lean-forward="false" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/Chargeur.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="33" lean-forward="false" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/generateur/TypeDeFichierTraite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="39" lean-forward="false" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/affichage/controller/ControllerPalmares.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="14" column="3" lean-forward="true" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/affichage/controller/FenetreGlobaleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/affichage/ihm/FenetreGlobale.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/affichage/ihm/FenetrePalmares.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="41" lean-forward="true" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/affichage/ihm/FenetrePrincipale.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="16" lean-forward="true" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/assets/cellule/Cellule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="22" lean-forward="false" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/assets/cellule/Etat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/assets/cellule/Jouable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <folding>
+            <element signature="e#284#285#0" expanded="false" />
+            <element signature="e#320#321#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/assets/cellule/NonJouable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/assets/Grille.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="83" column="21" lean-forward="true" selection-start-line="83" selection-start-column="21" selection-end-line="83" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2665#2666#0" expanded="true" />
-            <element signature="e#2711#2712#0" expanded="true" />
-            <marker date="1511777684895" expanded="false" signature="2934:2944" ph=" { " />
-            <marker date="1511777684895" expanded="false" signature="2964:2970" ph=" }" />
-            <marker date="1511777684895" expanded="false" signature="3178:3188" ph=" { " />
-            <marker date="1511777684895" expanded="false" signature="3220:3226" ph=" }" />
-            <marker date="1511777684895" expanded="true" signature="3338:3426" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/launcher/LauncherGraphique.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/launcher/LauncheurConsole.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="29" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/verif/LesVerifs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="20" lean-forward="false" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/Jeu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="23" column="44" lean-forward="false" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#440#441#0" expanded="true" />
+            <element signature="e#512#513#0" expanded="true" />
+            <element signature="e#558#559#0" expanded="true" />
+            <element signature="e#610#611#0" expanded="true" />
+            <element signature="e#644#645#0" expanded="true" />
+            <element signature="e#686#687#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/Bits.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="27" lean-forward="true" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/Handler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="20" column="50" lean-forward="true" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1429#1430#0" expanded="true" />
+            <element signature="e#1470#1471#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IAalgo0Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#264#273#0" expanded="true" />
+            <element signature="e#322#331#0" expanded="true" />
+            <element signature="e#765#766#0" expanded="true" />
+            <element signature="e#796#797#0" expanded="true" />
+            <element signature="e#829#830#0" expanded="true" />
+            <element signature="e#858#859#0" expanded="true" />
+            <element signature="e#2035#2036#0" expanded="true" />
+            <element signature="e#2070#2071#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IAalgo1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="42" lean-forward="true" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/verif/Verif.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IAalgo2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="64" lean-forward="false" selection-start-line="32" selection-start-column="64" selection-end-line="32" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IAalgo3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="28" lean-forward="false" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IAForceBrut.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="25" column="36" lean-forward="true" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IAalgo0.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="36" column="53" lean-forward="true" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#357#366#0" expanded="true" />
+            <element signature="e#411#420#0" expanded="true" />
+            <element signature="e#479#494#0" expanded="true" />
+            <element signature="e#542#550#0" expanded="true" />
           </folding>
         </state>
       </provider>
