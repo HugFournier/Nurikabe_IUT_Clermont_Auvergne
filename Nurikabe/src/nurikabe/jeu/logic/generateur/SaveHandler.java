@@ -39,7 +39,7 @@ public class SaveHandler {
     
     private void loadFileLocations( ){
         files = new ArrayList<String>();
-        File f = new File( path.toAbsolutePath() + "\\saves.bin");
+        File f = new File( path.toAbsolutePath() + File.separator + "saves.bin");
         if (!f.exists())
             try {
                 f.getParentFile().mkdirs();
@@ -65,7 +65,7 @@ public class SaveHandler {
     }
     
     public void saveFiles( ){
-        File f = new File( path.toAbsolutePath() + "\\saves.bin");
+        File f = new File( path.toAbsolutePath() + File.separator + "saves.bin");
         if (f.exists())
             f.delete();
         

@@ -35,7 +35,7 @@ public class EnregisterDansFichierTexte implements Enregistreur{
 			ps.println( x);
 			ps.println( y);
 			ps.println( t);
-			ps.print( grille.toString());
+			ps.print( grille.grilleToString());
 
 			ps.close();
 			fo.close();

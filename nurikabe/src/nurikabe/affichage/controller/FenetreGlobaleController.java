@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package nurikabe.affichage.controller;
 
 import java.net.URL;
@@ -24,7 +24,7 @@ import nurikabe.jeu.logic.generateur.SaveHandler;
  * @author fourn
  */
 public class FenetreGlobaleController {
-
+    
     private Handler manager = new Handler();
     @FXML
     private Grille grille;
@@ -33,7 +33,7 @@ public class FenetreGlobaleController {
     @FXML
     private ListView listeSaves;
     ObservableList observableListeSaves = FXCollections.observableArrayList();
-
+    
     /**
      * Initializes the controller class.
      */
@@ -52,12 +52,12 @@ public class FenetreGlobaleController {
     @FXML
     public void cheminClic(){
         String path = (String) listeSaves.getSelectionModel().getSelectedItem();
-        onglets.getSelectionModel().select(0);
-        //System.out.println(path);
-        manager.charger(path);
-        manager.getJeu().getGrille().getChrono().lancer();
-        grille.initGrille(manager.getJeu().getGrille());
-        //System.out.println(manager.getJeu().getGrille());
+        if(path!=null){
+            onglets.getSelectionModel().select(0);
+            manager.charger(path);
+            manager.getJeu().getGrille().getChrono().lancer();
+            grille.initGrille(manager.getJeu().getGrille());
+        }
     }
     
 }
