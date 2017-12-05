@@ -74,6 +74,9 @@ public class ControllerFenetrePrincipale {
     public void onNPartie(){
         System.out.println("clic");
         grille.initGrille(manager.getJeu().getGrille());
+        c.setTime(0);
+        c.start();
+        pause.setDisable(false);
     }
    
     
@@ -107,10 +110,12 @@ public class ControllerFenetrePrincipale {
     public void initialize(){
         c = new Chronometre(0);
         c.setLabel(text);
+        pause.setDisable(true);
         start.setVisible(false);
         grille.setVisible(true);
         c.setLabel(text);
-        c.start();
+        
+       
     }
     
 }

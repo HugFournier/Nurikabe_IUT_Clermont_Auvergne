@@ -14,16 +14,16 @@ public class Grille extends Matrix<Cellule> implements Serializable{
     
     private static final long serialVersionUID = 3255510956281643421L;
     
-    private Chronomètre chrono;
+    private long chrono;
     
-    public Chronomètre getChrono() {
+    public long getChrono() {
         return chrono;
     }
     
     
     public Grille( Matrix<Cellule> grille, long scoreTmp) {
         super( grille);
-        chrono=new Chronomètre(scoreTmp);
+        chrono=scoreTmp;
     }
     
     public Grille( Matrix<Cellule> grille) {
@@ -82,7 +82,7 @@ public class Grille extends Matrix<Cellule> implements Serializable{
     @Override
     public String toString() {
         StringBuilder retour = new StringBuilder();
-        retour.append(getChrono().getDureeTxt()+"\n");
+        retour.append(getChrono()+"\n");
         retour.append(grilleToString());
         return retour.toString();
     }

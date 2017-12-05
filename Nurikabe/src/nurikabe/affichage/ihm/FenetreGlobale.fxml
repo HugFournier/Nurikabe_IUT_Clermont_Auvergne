@@ -17,9 +17,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import nurikabe.affichage.Grille?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurikabe.affichage.controller.FenetreGlobaleController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurikabe.affichage.controller.FenetreGlobaleController">
     <children>
-        <TabPane fx:id="onglets" layoutX="162.0" layoutY="82.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <TabPane fx:id="onglets" layoutX="162.0" layoutY="82.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="131.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <tabs>
                 <Tab text="Jeu">
                     <content>
@@ -27,7 +27,7 @@
                             <children>
                                 <VBox alignment="CENTER" layoutX="129.0" layoutY="69.0" prefHeight="369.6" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
-                                        <Label text="Chrono" />
+                                        <Label fx:id="chrono" text="00:00" />
                                         <!--GridPane gridLinesVisible="true">
                                             <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

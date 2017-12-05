@@ -27,7 +27,7 @@ public class EnregisterDansFichierTexte implements Enregistreur{
 			}
 		int x=grille.getWidth();
 		int y=grille.getHeight();
-                long t=grille.getChrono().getDureeMs();
+                long t=grille.getChrono();
 		try {
 			FileOutputStream fo = new FileOutputStream( path);
 			PrintStream ps = new PrintStream( fo);

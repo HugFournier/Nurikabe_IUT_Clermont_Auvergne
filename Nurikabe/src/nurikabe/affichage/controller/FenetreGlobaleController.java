@@ -12,9 +12,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TabPane;
 import nurikabe.affichage.Grille;
+import nurikabe.jeu.assets.Chronometre;
 import nurikabe.jeu.logic.Handler;
 import nurikabe.jeu.logic.generateur.SaveHandler;
 
@@ -32,13 +34,18 @@ public class FenetreGlobaleController {
     private TabPane onglets;
     @FXML
     private ListView listeSaves;
+    @FXML
+    private Label chrono;
     ObservableList observableListeSaves = FXCollections.observableArrayList();
+    private Chronometre c;
     
     /**
      * Initializes the controller class.
      */
     public void initialize() {
         onglets.getSelectionModel().select(1);
+        c=new Chronometre(0); 
+        c.setLabel(chrono);
         // TODO
     }
     
@@ -55,8 +62,9 @@ public class FenetreGlobaleController {
         if(path!=null){
             onglets.getSelectionModel().select(0);
             manager.charger(path);
-            manager.getJeu().getGrille().getChrono().lancer();
+            c.setTime(manager.getJeu().getGrille().getChrono());
             grille.initGrille(manager.getJeu().getGrille());
+            c.start();
         }
     }
     

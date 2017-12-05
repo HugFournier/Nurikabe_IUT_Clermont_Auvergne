@@ -62,7 +62,7 @@ public class Console extends Affichage{
         System.out.println("Quel fichier charger ?");
         String path = sc.nextLine();
         handler.charger(path);
-        handler.getJeu().getGrille().getChrono().lancer();
+       
         
     }
     
