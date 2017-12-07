@@ -16,22 +16,22 @@ class IAalgo0 implements IAalgo{
     @Override
     public IAGrille resoudre(IAGrille grille) {
         List<Boolean> begin = new ArrayList<Boolean>();
-        List<Boolean> end = new ArrayList<Boolean>();
         List<IAalgo0Thread> algoThreads = new ArrayList<IAalgo0Thread>();
         List<Thread> threads = new ArrayList<Thread>();
         int nbCases = grille.getHeight() * grille.getWidth();
-        for (int i = 0; i < nbCases; i++){
+        int nbAFaire = 0;
+        for (int x = 0; x < grille.getHeight(); x++)
+            for (int y = 0; y < grille.getWidth(); y++)
+                if (!grille.isForced(x, y))
+                    nbAFaire++;
+        for (int i = 0; i < nbCases; i++)
             begin.add( false);
-            end.add( false);
-        }
-        double perThread = (double)nbCases/NB_THREADS;
+        double perThread = Math.pow(2, nbAFaire)/NB_THREADS;
         double done = 0;
         for (int t = 0; t < NB_THREADS; t++){
+            algoThreads.add( new IAalgo0Thread( begin, (int) perThread, grille));
             for (int i = (int)done; i < done+perThread; i++)
-                next( end);
-            algoThreads.add( new IAalgo0Thread( begin, end, grille));
-            for (int i = (int)done; i < done+perThread; i++)
-                next( begin);
+                next( begin, grille);
             done += perThread;
         }
         for (IAalgo0Thread algoThread : algoThreads){
@@ -54,14 +54,21 @@ class IAalgo0 implements IAalgo{
         return grille;
     }
 
-    private void next( List<Boolean> booleanList){
+    private void next( List<Boolean> booleanList, IAGrille grille){
         int i = 0;
+        boolean diff = false;
         booleanList.set(i, !booleanList.get(i));
+        if (!grille.isForced( i%grille.getWidth(), i/grille.getWidth()))
+            diff = true;
         while (!booleanList.get(i)){
             i++;
             if (i >= booleanList.size())
                 return;
             booleanList.set( i, !booleanList.get(i));
+            if (!grille.isForced( i%grille.getWidth(), i/grille.getWidth()))
+                diff = true;
         }
+        if (!diff)
+            next( booleanList, grille);
     }
 }

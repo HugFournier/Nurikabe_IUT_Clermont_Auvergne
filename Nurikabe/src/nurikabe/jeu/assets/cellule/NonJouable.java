@@ -30,5 +30,17 @@ public class NonJouable extends Cellule {
 	public String toString() {
 		return "" + getValeur();
 	}
-	
+
+	@Override
+	public boolean equals( Object o){
+		if (o instanceof NonJouable)
+			return equals( (NonJouable) o);
+		return false;
+	}
+
+	public boolean equals( NonJouable c){
+		if (!super.equals( c))
+			return false;
+		return getValeur() == c.getValeur();
+	}
 }

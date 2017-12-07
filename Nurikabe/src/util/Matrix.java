@@ -57,5 +57,25 @@ public class Matrix<leType extends PublicCloneable> implements Serializable, Pub
 		if (p.isBetween( new Position( 0, 0), new Position( width-1, height-1)))
 			data.put( p, o);
 	}
+
+	@Override
+	public boolean equals( Object o){
+		if (o instanceof Matrix)
+			return equals( (Matrix) o);
+		return false;
+	}
+
+	public boolean equals( Matrix m){
+		if (m.getHeight() != getHeight() || m.getWidth() != getWidth())
+			return false;
+		for (int x = 0; x < getWidth(); x++)
+			for (int y = 0; y < getHeight(); y++){
+				if (get(x, y) != null && !get(x, y).equals( m.get(x, y)))
+					return false;
+				if (get( x, y) == null && m.get(x, y) != null)
+					return false;
+			}
+		return true;
+	}
 	
 }

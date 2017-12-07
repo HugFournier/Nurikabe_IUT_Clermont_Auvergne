@@ -9,18 +9,17 @@ import java.util.List;
 class IAalgo0Thread implements Runnable{
 
     private List<Boolean> booleanList = new ArrayList<Boolean>();
-    private List<Boolean> end = new ArrayList<Boolean>();
+    private int nb;
     private IAGrille laGrille;
     private boolean solved = false;
 
     private LesVerifs verifs;
 
-    protected IAalgo0Thread(List<Boolean> begin, List<Boolean> end, IAGrille grille){
+    protected IAalgo0Thread(List<Boolean> begin, int nb, IAGrille grille){
         verifs = new LesVerifs();
         for (Boolean bool : begin)
             booleanList.add( bool);
-        for (Boolean bool : end)
-            this.end.add( bool);
+        this.nb = nb;
         laGrille = grille.clone();
     }
 
@@ -44,25 +43,34 @@ class IAalgo0Thread implements Runnable{
                         laGrille.getGrille().setEtat(i%width, i/height, Etat.NOIR);
                 else
                     i = booleanList.size();
+            nb--;
             if (!next())
                 return false;
+            if (nb < 0)
+                return false;
+
         }
         return true;
     }
 
     private boolean next( ){
         int i = 0;
+        boolean diff = false;
         booleanList.set(i, !booleanList.get(i));
+        if (!laGrille.isForced( i%laGrille.getWidth(), i/laGrille.getWidth()))
+            diff = true;
         while (!booleanList.get(i)){
             i++;
             if (i >= booleanList.size())
                 return false;
             booleanList.set( i, !booleanList.get(i));
+            if (!laGrille.isForced( i%laGrille.getWidth(), i/laGrille.getWidth()))
+                diff = true;
         }
-        for (i = 0; i < booleanList.size(); i++)
-            if (!booleanList.get(i).equals( end.get(i)))
-                return true;
-        return false;
+        if (!diff)
+            return next( );
+        else
+            return true;
     }
 
     @Override

@@ -62,4 +62,21 @@ class IAGrille implements PublicCloneable{
         return grille.getWidth();
     }
 
+    @Override
+    public boolean equals( Object o){
+        if (o instanceof IAGrille)
+            return equals( (IAGrille) o);
+        return false;
+    }
+
+    public boolean equals( IAGrille grille){
+        if (getHeight() != grille.getHeight() || getWidth() != grille.getWidth())
+            return false;
+        for (int x = 0; x < getWidth(); x++)
+            for (int y = 0; y < getHeight(); y++)
+                if (isForced( x, y) != grille.isForced( x, y))
+                    return false;
+        return this.grille.equals( grille.getGrille());
+    }
+
 }

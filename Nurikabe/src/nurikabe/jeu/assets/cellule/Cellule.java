@@ -34,4 +34,17 @@ public abstract class Cellule implements Serializable, PublicCloneable{
 			return setEtat(Etat.BLANC);
 		return setEtat(Etat.VIDE);
 	}
+
+	@Override
+	public boolean equals( Object o){
+		if (o instanceof Cellule)
+			return equals( (Cellule) o);
+		return false;
+	}
+
+	public boolean equals( Cellule c){
+		if (c.getEtat() != getEtat())
+			return false;
+		return true;
+	}
 }

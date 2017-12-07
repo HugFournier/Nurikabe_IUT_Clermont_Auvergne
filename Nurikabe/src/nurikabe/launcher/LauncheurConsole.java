@@ -18,8 +18,7 @@ public class LauncheurConsole {
 		Grille grille = (new IAForceBrut()).resoudre(handler.getJeu().getGrille());
 		for (int x = 0; x < grille.getWidth(); x++)
 			for( int y = 0; y < grille.getHeight(); y++)
-				if (grille.getEtat(x, y) == Etat.NOIR)
-					handler.getJeu().getGrille().setEtat(x, y, Etat.NOIR);
+					handler.getJeu().getGrille().setEtat(x, y, grille.getEtat( x, y));
 		c.afficher( handler);
 	}
 	
