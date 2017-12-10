@@ -7,16 +7,20 @@ package nurikabe.affichage;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.NumberBinding;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.control.Control;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import static javafx.scene.layout.GridPane.getColumnIndex;
+import static javafx.scene.layout.GridPane.getRowIndex;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import nurikabe.affichage.events.caseClickedEvent;
 
 /**
  *
@@ -34,8 +38,6 @@ public class Grille extends GridPane {
 
         int col = entree.getWidth();
         int row = entree.getHeight();
-
-        Case nouvelle;
 
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
@@ -69,8 +71,22 @@ public class Grille extends GridPane {
         setPadding(new Insets(20, 20, 20, 20));
         prefWidthProperty().bind(taille);
         prefHeightProperty().bind(taille);
-        //setMaxSize(Control.USE_PREF_SIZE, Control.USE_PREF_SIZE);
-        setMaxSize(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
+        setMaxSize(Control.USE_PREF_SIZE, Control.USE_PREF_SIZE);
+        //setMaxSize(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
+        
+        //definition du clic
+        addEventHandler(caseClickedEvent.CASE_CLICKED_AVEC_SENDER, new EventHandler<caseClickedEvent>() {
+            @Override
+            public void handle(caseClickedEvent event) {
+                System.out.println("Event reçu dans grille");
+                if (event.isSenderType()){
+                    caseClickedEvent test = new caseClickedEvent(getColumnIndex(event.getSender()), getRowIndex(event.getSender()));
+                    fireEvent(test);
+                    event.consume(); //destruction de event
+                }
+            }
+        }          
+        );
     }
 
     private void ajouterCase(int colone, int ligne, Paint couleur, int valeur, int totalCol, int totalLig) {
@@ -79,4 +95,5 @@ public class Grille extends GridPane {
         nouvelle.prefHeightProperty().bind(heightProperty().divide(totalLig));
         this.add(nouvelle, ligne, colone);
     }
+
 }

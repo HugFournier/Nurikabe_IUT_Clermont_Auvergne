@@ -7,6 +7,8 @@ package nurikabe.affichage.controller;
 
 import java.io.IOException;
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
+import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,8 +18,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
+import javafx.stage.Window;
 import nurikabe.affichage.Grille;
+import nurikabe.affichage.events.caseClickedEvent;
 import nurikabe.jeu.assets.Chronometre;
 import nurikabe.jeu.logic.Handler;
 
@@ -26,6 +29,7 @@ import nurikabe.jeu.logic.Handler;
  * @author argiraud
  */
 public class ControllerFenetrePrincipale {
+
     @FXML
     BorderPane root;
     @FXML
@@ -59,51 +63,52 @@ public class ControllerFenetrePrincipale {
     }
 
     @FXML
-    public void onPalmares() throws IOException{
-        Stage palmares = new Stage();   
+    public void onPalmares() throws IOException {
+        Stage palmares = new Stage();
         Parent digit = FXMLLoader.load(getClass().getResource("/nurikabe/affichage/ihm/FenetrePalmares.fxml"));
         palmares.setScene(new Scene(digit));
         palmares.centerOnScreen();
         palmares.show();
     }
-    
+
     @FXML
-    public void onNPartie(){
+    public void onNPartie() {
         grille.initGrille(manager.getJeu().getGrille());
         c.setTime(0);
         c.start();
         pause.setDisable(false);
     }
-   
-    
+
     @FXML
-    public void onCharger(){
+    public void onCharger() {
         grille.initGrille(manager.getJeu().getGrille());
     }
+
     @FXML
     public void onStart() {
-         c.start();
-         pause.setVisible(true);
-         start.setVisible(false);
-         grille.setVisible(true);
-     }
+        c.start();
+        pause.setVisible(true);
+        start.setVisible(false);
+        grille.setVisible(true);
+    }
+
     @FXML
     public void onPause() {
-         c.pause();
-         pause.setVisible(false);
-         start.setVisible(true);
-         grille.setVisible(false);
-     } 
+        c.pause();
+        pause.setVisible(false);
+        start.setVisible(true);
+        grille.setVisible(false);
+    }
     //Méthode utilisée par lorsque que le bouton Quitter est utilisé
-    
+
     @FXML
-    public void onExit(){
+    public void onExit() {
         c.pause();
         Platform.exit();
     }
-    
+
     @FXML
-    public void initialize(){
+    public void initialize() {
         c = new Chronometre(0);
         c.setLabel(text);
         pause.setDisable(true);
@@ -111,5 +116,15 @@ public class ControllerFenetrePrincipale {
         grille.setVisible(true);
         c.setLabel(text);
     }
-    
+
+    final EventHandler<caseClickedEvent> clicSurCase = new EventHandler<caseClickedEvent>() {
+        @Override
+        public void handle(caseClickedEvent event) {
+            System.out.println("Event reçu dans fenetre");
+            if (!event.isSenderType()) {
+                manager.jouer(event.getLigne(), event.getColone());
+            }
+        }
+    };
+
 }
