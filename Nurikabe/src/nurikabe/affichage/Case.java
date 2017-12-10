@@ -59,11 +59,14 @@ public class Case extends Label{
             setTextFill(Color.BLACK);
         }
         
-        setMaxSize(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
         setTextAlignment(TextAlignment.CENTER);
+        this.setTranslateY(50);
         setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
         setBackground(new Background(new BackgroundFill(couleur, CornerRadii.EMPTY, Insets.EMPTY)));
-    
+        
+        setMaxSize(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
+        
+        
         setOnMousePressed(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent me){

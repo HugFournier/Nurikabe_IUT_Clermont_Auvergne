@@ -7,18 +7,16 @@ package nurikabe.affichage.controller;
 
 import java.io.IOException;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import nurikabe.affichage.Grille;
 import nurikabe.jeu.assets.Chronometre;
 import nurikabe.jeu.logic.Handler;
@@ -38,7 +36,6 @@ public class ControllerFenetrePrincipale {
     Button start;
     @FXML
     Label text;
-    
 
     Chronometre c;
     private Handler manager = new Handler();
@@ -72,7 +69,6 @@ public class ControllerFenetrePrincipale {
     
     @FXML
     public void onNPartie(){
-        System.out.println("clic");
         grille.initGrille(manager.getJeu().getGrille());
         c.setTime(0);
         c.start();
@@ -82,7 +78,6 @@ public class ControllerFenetrePrincipale {
     
     @FXML
     public void onCharger(){
-        System.out.println("clic");
         grille.initGrille(manager.getJeu().getGrille());
     }
     @FXML
@@ -106,6 +101,7 @@ public class ControllerFenetrePrincipale {
         c.pause();
         Platform.exit();
     }
+    
     @FXML
     public void initialize(){
         c = new Chronometre(0);
@@ -114,8 +110,6 @@ public class ControllerFenetrePrincipale {
         start.setVisible(false);
         grille.setVisible(true);
         c.setLabel(text);
-        
-       
     }
     
 }

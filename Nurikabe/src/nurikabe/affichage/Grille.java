@@ -5,7 +5,8 @@
  */
 package nurikabe.affichage;
 
-
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.NumberBinding;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
@@ -15,53 +16,67 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 
 /**
  *
  * @author sylat
  */
-public class Grille extends GridPane{
-    
-    public void initGrille(nurikabe.jeu.assets.Grille entree){
-        System.out.println(entree.getWidth()+" dans init");
+public class Grille extends GridPane {
+
+    private final NumberBinding taille = Bindings.min(widthProperty(), heightProperty());
+
+    public void initGrille(nurikabe.jeu.assets.Grille entree) {
+        //System.out.println(entree.getWidth()+" dans init");
         this.getColumnConstraints().clear();
         this.getRowConstraints().clear();
         this.getChildren().clear();
-        
+
         int col = entree.getWidth();
-        int row = entree.getHeight();     
-        
-        for (int i=0 ; i<row ; i++){
-            for (int j=0 ; j<col ; j++){
-                
-                if (!entree.isJouable(i, j)){
-                    this.add(new Case(entree.getValeur(i, j) , Color.WHITE), i, j);
-                }
-                else{
-                    switch(entree.getEtat(i, j)){
-                        case BLANC :
-                            this.add(new Case(0 , Color.WHITE), i, j);
+        int row = entree.getHeight();
+
+        Case nouvelle;
+
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+
+                if (!entree.isJouable(i, j)) {
+                    ajouterCase(i,j,Color.WHITE,entree.getValeur(i, j),col,row);
+                } else {
+                    switch (entree.getEtat(i, j)) {
+                        case BLANC:
+                            ajouterCase(i,j,Color.WHITE,0,col,row);
                             break;
-                        case NOIR :
-                            this.add(new Case(0 , Color.BLACK), i, j);
+                        case NOIR:
+                            ajouterCase(i,j,Color.BLACK,0,col,row);
                             break;
-                        default :
-                            this.add(new Case(0 , Color.LIGHTGREY), i, j);
+                        default:
+                            ajouterCase(i,j,Color.LIGHTGREY,0,col,row);
                             break;
                     }
                 }
             }
         }
-        
+
         for (int i = 0; i < col; i++) {
             //ajouter une contrainte de colone avec les tailles min, pref et max ainsi que le comportement horizontal : croissance, position et remplissage
-            getColumnConstraints().add(new ColumnConstraints(5, Control.USE_COMPUTED_SIZE, Double.POSITIVE_INFINITY, Priority.ALWAYS, HPos.CENTER, true));
+            getColumnConstraints().add(new ColumnConstraints(5, taille.doubleValue(), Double.POSITIVE_INFINITY, Priority.SOMETIMES, HPos.CENTER, false));
         }
         for (int i = 0; i < row; i++) {
-            getRowConstraints().add(new RowConstraints(5, Control.USE_COMPUTED_SIZE, Double.POSITIVE_INFINITY, Priority.ALWAYS, VPos.CENTER, true));
+            getRowConstraints().add(new RowConstraints(5, taille.doubleValue(), Double.POSITIVE_INFINITY, Priority.SOMETIMES, VPos.CENTER, false));
         }
-        
-        setPadding(new Insets(20,20,20,20));
+
+        setPadding(new Insets(20, 20, 20, 20));
+        prefWidthProperty().bind(taille);
+        prefHeightProperty().bind(taille);
+        //setMaxSize(Control.USE_PREF_SIZE, Control.USE_PREF_SIZE);
         setMaxSize(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
+    }
+
+    private void ajouterCase(int colone, int ligne, Paint couleur, int valeur, int totalCol, int totalLig) {
+        Case nouvelle = new Case(valeur, couleur);
+        nouvelle.prefWidthProperty().bind(widthProperty().divide(totalCol));
+        nouvelle.prefHeightProperty().bind(heightProperty().divide(totalLig));
+        this.add(nouvelle, ligne, colone);
     }
 }
