@@ -43,6 +43,7 @@ public class ControllerFenetrePrincipale {
 
     Chronometre c;
     private Handler manager = new Handler();
+    private FenetreSauvegardeController controllerSaves;
 
     /**
      * Get the value of manager
@@ -80,7 +81,16 @@ public class ControllerFenetrePrincipale {
     }
 
     @FXML
-    public void onCharger() {
+    public void onCharger() throws IOException {
+        Stage fSauvegarde = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/nurikabe/affichage/ihm/FenetreSauvegarde.fxml"));
+        fSauvegarde.setScene(new Scene((Parent) fxmlLoader.load()));
+        controllerSaves = fxmlLoader.getController();
+        controllerSaves.setManager(manager);
+        controllerSaves.setGrille(grille);
+        fSauvegarde.centerOnScreen();
+        fSauvegarde.show();
+        
         grille.initGrille(manager.getJeu().getGrille());
     }
 
