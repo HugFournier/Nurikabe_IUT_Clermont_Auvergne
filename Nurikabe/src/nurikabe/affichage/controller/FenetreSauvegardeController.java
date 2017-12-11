@@ -37,8 +37,6 @@ public class FenetreSauvegardeController {
     @FXML
     AnchorPane root;
     @FXML
-    Grille grille;
-    @FXML
     ListView listeSaves;
     @FXML
     ChoiceBox listeTaille;
@@ -97,9 +95,7 @@ public class FenetreSauvegardeController {
     public void chargerGrille() {
         if (path != null) {
             manager.charger(path);
-            grille.initGrille(manager.getJeu().getGrille());
             //fermer fenetre
-            // get a handle to the stage
             Stage stage = (Stage) root.getScene().getWindow();
             stage.close();
         }
@@ -107,9 +103,5 @@ public class FenetreSauvegardeController {
 
     public void setManager(Handler manager) {
         this.manager = manager;
-    }
-
-    public void setGrille(Grille grille) {
-        this.grille = grille;
     }
 }

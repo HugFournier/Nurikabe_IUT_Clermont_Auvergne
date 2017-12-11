@@ -72,22 +72,22 @@
             </font>
         </Label>
         
-        <Button mnemonicParsing="false" text="Aide" GridPane.rowIndex="4" onAction="#onAide">
+        <Button fx:id="bouttonAide" mnemonicParsing="false" text="Aide" GridPane.rowIndex="4" onAction="#onAide">
             <font>
                 <Font size="18.0" />
             </font>
         </Button>
-        <Button fx:id="pause" mnemonicParsing="false" onAction="#onPause" text="Pause" GridPane.columnIndex="1" GridPane.rowIndex="4">
+        <Button fx:id="bouttonPause" mnemonicParsing="false" onAction="#onPause" text="Pause" GridPane.columnIndex="1" GridPane.rowIndex="4">
             <font>
                 <Font size="18.0" />
             </font>
         </Button>
-        <Button fx:id="start" mnemonicParsing="false" onAction="#onStart" text="Reprendre" GridPane.columnIndex="1" GridPane.rowIndex="4">
+        <Button fx:id="bouttonStart" mnemonicParsing="false" onAction="#onStart" text="Reprendre" GridPane.columnIndex="1" GridPane.rowIndex="4">
             <font>
                 <Font size="18.0" />
             </font>
         </Button>
-        <Button mnemonicParsing="false" text="Vérifier" onAction="#onVerif" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="4">
+        <Button fx:id="bouttonVerif" mnemonicParsing="false" text="Vérifier" onAction="#onVerif" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="4">
             <font>
                 <Font size="18.0" />
             </font>

@@ -8,6 +8,7 @@ package nurikabe.affichage.controller;
 import java.io.IOException;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,13 +25,14 @@ import nurikabe.affichage.events.caseClickedEvent;
 import nurikabe.jeu.assets.Chronometre;
 import nurikabe.jeu.assets.cellule.Etat;
 import nurikabe.jeu.logic.Handler;
+import nurikabe.jeu.logic.IGrilleHandlerObserveur;
 import nurikabe.jeu.logic.ia.IANew;
 
 /**
  *
  * @author argiraud
  */
-public class ControllerFenetrePrincipale {
+public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur{
 
     private nurikabe.jeu.assets.Grille grilleCorrect = null;
 
@@ -39,9 +41,7 @@ public class ControllerFenetrePrincipale {
     @FXML
     Grille grille;
     @FXML
-    Button pause;
-    @FXML
-    Button start;
+    Button bouttonPause, bouttonStart, bouttonVerif, bouttonAide;
     @FXML
     Label chrono;
     @FXML
@@ -82,8 +82,11 @@ public class ControllerFenetrePrincipale {
     public void onNPartie() {
         grille.initGrille(manager.getJeu().getGrille());
         c.setTime(manager.getJeu().getGrille().getChrono());
+        System.out.println(manager.getJeu().getGrille().getChrono());
         c.start();
-        pause.setDisable(false);
+        bouttonPause.setDisable(false);
+        bouttonVerif.setDisable(false);
+        bouttonAide.setDisable(false);
         message.setText(null);
         grilleCorrect = null;
     }
@@ -95,8 +98,7 @@ public class ControllerFenetrePrincipale {
         fSauvegarde.setScene(new Scene((Parent) fxmlLoader.load()));
         controllerSaves = fxmlLoader.getController();
         controllerSaves.setManager(manager);
-        controllerSaves.setGrille(grille);
-        fSauvegarde.centerOnScreen();
+        //fSauvegarde.centerOnScreen();
         fSauvegarde.show();
         grilleCorrect = null;
     }
@@ -104,8 +106,8 @@ public class ControllerFenetrePrincipale {
     @FXML
     public void onStart() {
         c.start();
-        pause.setVisible(true);
-        start.setVisible(false);
+        bouttonPause.setVisible(true);
+        bouttonStart.setVisible(false);
         grille.setVisible(true);
         grilleCorrect = null;
     }
@@ -113,8 +115,8 @@ public class ControllerFenetrePrincipale {
     @FXML
     public void onPause() {
         c.pause();
-        pause.setVisible(false);
-        start.setVisible(true);
+        bouttonPause.setVisible(false);
+        bouttonStart.setVisible(true);
         grille.setVisible(false);
         grilleCorrect = null;
     }
@@ -130,11 +132,13 @@ public class ControllerFenetrePrincipale {
     public void initialize() {
         c = new Chronometre(0);
         c.setLabel(chrono);
-        pause.setDisable(true);
-        start.setVisible(false);
+        bouttonPause.setDisable(true);
+        bouttonVerif.setDisable(true);
+        bouttonAide.setDisable(true);
+        bouttonStart.setVisible(false);
         grille.setVisible(true);
         c.setLabel(chrono);
-        
+        manager.ajouterObservateur(this);
         grille.addEventHandler(caseClickedEvent.CASE_CLICKED_AVEC_POSITION, clicSurCase);
         grilleCorrect = null;
     }

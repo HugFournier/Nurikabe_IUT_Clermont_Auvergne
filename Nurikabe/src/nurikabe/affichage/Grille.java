@@ -39,8 +39,8 @@ public class Grille extends GridPane {
         @Override
         public void handle(caseClickedEvent event) {
             if (event.isSenderType()){
-                    caseClickedEvent test = new caseClickedEvent(getColumnIndex(event.getSender()), getRowIndex(event.getSender()));
-                    fireEvent(test);
+                    caseClickedEvent nouvEvent = new caseClickedEvent(getColumnIndex(event.getSender()), getRowIndex(event.getSender()));
+                    fireEvent(nouvEvent);
                     event.consume(); //destruction de event
                 }
         }
