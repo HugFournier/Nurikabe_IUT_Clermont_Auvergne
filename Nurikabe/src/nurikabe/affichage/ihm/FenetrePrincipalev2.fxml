@@ -33,6 +33,7 @@
         <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
         <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
         <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+        <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
     </rowConstraints>
     
     <padding>
@@ -40,9 +41,8 @@
     </padding>
     
     <children>
-        <MenuButton mnemonicParsing="false" text="Menu">
+        <MenuButton mnemonicParsing="false" style="-fx-background-color: transparent;" text="Menu">
             <items>
-                <MenuItem mnemonicParsing="false" onAction="#onNPartie" text="Nouvelle Grille" />
                 <MenuItem mnemonicParsing="false" onAction="#onCharger" text="Charger une grille"  />
                 <MenuItem mnemonicParsing="false" onAction="#onPalmares" text="Palmarès" />
                 <MenuItem mnemonicParsing="false" onAction="#onExit" text="Quitter" />
@@ -52,7 +52,7 @@
             </font>
         </MenuButton>
 
-        <Label fx:id="text" text="00:00" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+        <Label fx:id="chrono" text="00:00" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
             <font>
                 <Font size="24.0" />
             </font>
@@ -66,22 +66,28 @@
           
         <Grille fx:id="grille" GridPane.columnSpan="3" GridPane.rowIndex="2"/>
                 
-        <Button mnemonicParsing="false" text="Aide" GridPane.rowIndex="3">
+         <Label fx:id="message" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.columnSpan="3">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+        
+        <Button mnemonicParsing="false" text="Aide" GridPane.rowIndex="4">
             <font>
                 <Font size="18.0" />
             </font>
         </Button>
-        <Button fx:id="pause" mnemonicParsing="false" onAction="#onPause" text="Pause" GridPane.columnIndex="1" GridPane.rowIndex="3">
+        <Button fx:id="pause" mnemonicParsing="false" onAction="#onPause" text="Pause" GridPane.columnIndex="1" GridPane.rowIndex="4">
             <font>
                 <Font size="18.0" />
             </font>
         </Button>
-        <Button fx:id="start" mnemonicParsing="false" onAction="#onStart" text="Reprendre" GridPane.columnIndex="1" GridPane.rowIndex="3">
+        <Button fx:id="start" mnemonicParsing="false" onAction="#onStart" text="Reprendre" GridPane.columnIndex="1" GridPane.rowIndex="4">
             <font>
                 <Font size="18.0" />
             </font>
         </Button>
-        <Button mnemonicParsing="false" text="Vérifier" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3">
+        <Button mnemonicParsing="false" text="Vérifier" onAction="#onVerif" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="4">
             <font>
                 <Font size="18.0" />
             </font>

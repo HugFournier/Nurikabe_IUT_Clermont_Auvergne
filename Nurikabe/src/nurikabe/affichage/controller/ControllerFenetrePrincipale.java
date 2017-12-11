@@ -7,8 +7,6 @@ package nurikabe.affichage.controller;
 
 import java.io.IOException;
 import javafx.application.Platform;
-import javafx.beans.binding.Bindings;
-import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.stage.Window;
+import nurikabe.affichage.Console;
 import nurikabe.affichage.Grille;
 import nurikabe.affichage.events.caseClickedEvent;
 import nurikabe.jeu.assets.Chronometre;
@@ -39,7 +37,9 @@ public class ControllerFenetrePrincipale {
     @FXML
     Button start;
     @FXML
-    Label text;
+    Label chrono;
+    @FXML
+    Label message;
 
     Chronometre c;
     private Handler manager = new Handler();
@@ -75,9 +75,10 @@ public class ControllerFenetrePrincipale {
     @FXML
     public void onNPartie() {
         grille.initGrille(manager.getJeu().getGrille());
-        c.setTime(0);
+        c.setTime(manager.getJeu().getGrille().getChrono());
         c.start();
         pause.setDisable(false);
+        message.setText(null);
     }
 
     @FXML
@@ -90,8 +91,6 @@ public class ControllerFenetrePrincipale {
         controllerSaves.setGrille(grille);
         fSauvegarde.centerOnScreen();
         fSauvegarde.show();
-        
-        grille.initGrille(manager.getJeu().getGrille());
     }
 
     @FXML
@@ -120,11 +119,11 @@ public class ControllerFenetrePrincipale {
     @FXML
     public void initialize() {
         c = new Chronometre(0);
-        c.setLabel(text);
+        c.setLabel(chrono);
         pause.setDisable(true);
         start.setVisible(false);
         grille.setVisible(true);
-        c.setLabel(text);
+        c.setLabel(chrono);
         
         grille.addEventHandler(caseClickedEvent.CASE_CLICKED_AVEC_POSITION, clicSurCase);
     }
@@ -132,11 +131,18 @@ public class ControllerFenetrePrincipale {
     final EventHandler<caseClickedEvent> clicSurCase = new EventHandler<caseClickedEvent>() {
         @Override
         public void handle(caseClickedEvent event) {
-            System.out.println("Event reçu dans fenetre");
             if (!event.isSenderType()) {
-                manager.jouer(event.getLigne(), event.getColone());
+                manager.jouer(event.getColone(),event.getLigne());
+                new Console().afficher(manager);
             }
         }
     };
+    
+    @FXML
+    public void onVerif() {
+        new Console().afficher(manager);
+        if(manager.getJeu().verfication()) {message.setText("La grille est juste. Vous avez gagné.");}
+        else {message.setText("La grille est fausse.");}
+    }
 
 }
