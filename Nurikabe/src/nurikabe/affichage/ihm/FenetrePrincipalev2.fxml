@@ -41,9 +41,8 @@
     </padding>
     
     <children>
-        <MenuButton mnemonicParsing="false" text="Menu">
+        <MenuButton mnemonicParsing="false" style="-fx-background-color: transparent;" text="Menu">
             <items>
-                <MenuItem mnemonicParsing="false" onAction="#onNPartie" text="Nouvelle Grille" />
                 <MenuItem mnemonicParsing="false" onAction="#onCharger" text="Charger une grille"  />
                 <MenuItem mnemonicParsing="false" onAction="#onPalmares" text="Palmarès" />
                 <MenuItem mnemonicParsing="false" onAction="#onExit" text="Quitter" />
