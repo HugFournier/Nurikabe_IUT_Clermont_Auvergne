@@ -20,7 +20,7 @@ public class LauncherGraphique extends Application {
     
     @Override
     public void start(Stage primaryStage)throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/nurikabe/affichage/ihm/FenetrePrincipale.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/nurikabe/affichage/ihm/FenetrePrincipalev2.fxml"));
         primaryStage.setScene(new Scene(root));
         primaryStage.centerOnScreen();
         primaryStage.show(); 
@@ -31,6 +31,11 @@ public class LauncherGraphique extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+    
+    @Override
+    public void stop(){
+        System.exit(0);
     }
     
 }

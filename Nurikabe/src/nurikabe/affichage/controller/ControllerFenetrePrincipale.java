@@ -7,16 +7,19 @@ package nurikabe.affichage.controller;
 
 import java.io.IOException;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ToolBar;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import nurikabe.affichage.Console;
 import nurikabe.affichage.Grille;
+import nurikabe.affichage.events.caseClickedEvent;
+import nurikabe.jeu.assets.Chronometre;
 import nurikabe.jeu.logic.Handler;
 
 /**
@@ -24,14 +27,23 @@ import nurikabe.jeu.logic.Handler;
  * @author argiraud
  */
 public class ControllerFenetrePrincipale {
+
     @FXML
     BorderPane root;
     @FXML
     Grille grille;
     @FXML
-    ToolBar toolbarPartie;
+    Button pause;
+    @FXML
+    Button start;
+    @FXML
+    Label chrono;
+    @FXML
+    Label message;
 
+    Chronometre c;
     private Handler manager = new Handler();
+    private FenetreSauvegardeController controllerSaves;
 
     /**
      * Get the value of manager
@@ -52,34 +64,87 @@ public class ControllerFenetrePrincipale {
     }
 
     @FXML
-    public void onPalmares() throws IOException{
-        Stage palmares = new Stage();   
+    public void onPalmares() throws IOException {
+        Stage palmares = new Stage();
         Parent digit = FXMLLoader.load(getClass().getResource("/nurikabe/affichage/ihm/FenetrePalmares.fxml"));
         palmares.setScene(new Scene(digit));
         palmares.centerOnScreen();
         palmares.show();
     }
-    
+
     @FXML
-    public void onNPartie(){
-        System.out.println("clic");
+    public void onNPartie() {
         grille.initGrille(manager.getJeu().getGrille());
+        c.setTime(0);
+        c.start();
+        pause.setDisable(false);
     }
-   
-    
+
     @FXML
-    public void onCharger(){
-        System.out.println("clic");
+    public void onCharger() throws IOException {
+        Stage fSauvegarde = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/nurikabe/affichage/ihm/FenetreSauvegarde.fxml"));
+        fSauvegarde.setScene(new Scene((Parent) fxmlLoader.load()));
+        controllerSaves = fxmlLoader.getController();
+        controllerSaves.setManager(manager);
+        controllerSaves.setGrille(grille);
+        fSauvegarde.centerOnScreen();
+        fSauvegarde.show();
+        
         grille.initGrille(manager.getJeu().getGrille());
+        onNPartie();
+    }
+
+    @FXML
+    public void onStart() {
+        c.start();
+        pause.setVisible(true);
+        start.setVisible(false);
+        grille.setVisible(true);
+    }
+
+    @FXML
+    public void onPause() {
+        c.pause();
+        pause.setVisible(false);
+        start.setVisible(true);
+        grille.setVisible(false);
     }
     //Méthode utilisée par lorsque que le bouton Quitter est utilisé
+
     @FXML
-    public void onExit(){
+    public void onExit() {
+        c.pause();
         Platform.exit();
     }
-    
-    public void initialize(){
+
+    @FXML
+    public void initialize() {
+        c = new Chronometre(0);
+        c.setLabel(chrono);
+        pause.setDisable(true);
+        start.setVisible(false);
+        grille.setVisible(true);
+        c.setLabel(chrono);
         
+        grille.addEventHandler(caseClickedEvent.CASE_CLICKED_AVEC_POSITION, clicSurCase);
     }
+
+    final EventHandler<caseClickedEvent> clicSurCase = new EventHandler<caseClickedEvent>() {
+        @Override
+        public void handle(caseClickedEvent event) {
+            if (!event.isSenderType()) {
+                manager.jouer(event.getColone(),event.getLigne());
+                new Console().afficher(manager);
+            }
+        }
+    };
     
+    @FXML
+    public void onVerif() {
+        new Console().afficher(manager);
+        if(manager.getJeu().verfication()) {message.setText("La grille est juste. Vous avez gagné.");}
+        else {message.setText("La grille est fausse.");}
+    }
+
 }

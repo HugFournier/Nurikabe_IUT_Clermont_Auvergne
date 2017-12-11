@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import nurikabe.affichage.Grille?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.geometry.Insets?>
+
+<GridPane fx:controller="nurikabe.affichage.controller.ControllerFenetrePrincipale" 
+          maxHeight="-Infinity" maxWidth="-Infinity" 
+          minHeight="400" minWidth="400" 
+          prefHeight="800" prefWidth="800" 
+          xmlns="http://javafx.com/javafx/8" 
+          xmlns:fx="http://javafx.com/fxml/1">
+    
+    <columnConstraints>
+        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES"/>
+        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS"  />
+        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+        <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+        <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+        <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+        <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+    </rowConstraints>
+    
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="10" />
+    </padding>
+    
+    <children>
+        <MenuButton mnemonicParsing="false" style="-fx-background-color: transparent;" text="Menu">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#onCharger" text="Charger une grille"  />
+                <MenuItem mnemonicParsing="false" onAction="#onPalmares" text="Palmarès" />
+                <MenuItem mnemonicParsing="false" onAction="#onExit" text="Quitter" />
+            </items>
+            <font>
+                <Font size="18.0" />
+            </font>
+        </MenuButton>
+
+        <Label fx:id="chrono" text="00:00" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+        
+        <Button mnemonicParsing="false" text="Sauvegarder" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+          
+        <Grille fx:id="grille" GridPane.columnSpan="3" GridPane.rowIndex="2"/>
+                
+         <Label fx:id="message" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.columnSpan="3">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+        
+        <Button mnemonicParsing="false" text="Aide" GridPane.rowIndex="4">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+        <Button fx:id="pause" mnemonicParsing="false" onAction="#onPause" text="Pause" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+        <Button fx:id="start" mnemonicParsing="false" onAction="#onStart" text="Reprendre" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+        <Button mnemonicParsing="false" text="Vérifier" onAction="#onVerif" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+    </children>
+</GridPane>

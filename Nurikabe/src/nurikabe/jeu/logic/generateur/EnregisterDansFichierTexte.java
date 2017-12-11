@@ -27,7 +27,7 @@ public class EnregisterDansFichierTexte implements Enregistreur{
 			}
 		int x=grille.getWidth();
 		int y=grille.getHeight();
-                long t=grille.getChrono().getDureeMs();
+                long t=grille.getChrono();
 		try {
 			FileOutputStream fo = new FileOutputStream( path);
 			PrintStream ps = new PrintStream( fo);
@@ -35,7 +35,7 @@ public class EnregisterDansFichierTexte implements Enregistreur{
 			ps.println( x);
 			ps.println( y);
 			ps.println( t);
-			ps.print( grille.toString());
+			ps.print( grille.grilleToString());
 
 			ps.close();
 			fo.close();

@@ -5,8 +5,10 @@
  */
 package nurikabe.affichage;
 
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
@@ -20,6 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
+import nurikabe.affichage.events.caseClickedEvent;
 
 /**
  *
@@ -59,11 +62,14 @@ public class Case extends Label{
             setTextFill(Color.BLACK);
         }
         
-        setMaxSize(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
         setTextAlignment(TextAlignment.CENTER);
+        this.setTranslateY(50);
         setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
         setBackground(new Background(new BackgroundFill(couleur, CornerRadii.EMPTY, Insets.EMPTY)));
-    
+        
+        setMaxSize(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
+        
+        
         setOnMousePressed(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent me){
@@ -95,6 +101,7 @@ public class Case extends Label{
                 }
             }
         }
+        fireEvent(new caseClickedEvent((Node)this));
     }
 }
 
