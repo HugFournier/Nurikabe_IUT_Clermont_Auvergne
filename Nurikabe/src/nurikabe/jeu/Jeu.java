@@ -27,6 +27,7 @@ public class Jeu {
 
 	public Jeu(Chargeur chargeur, String path){
 		grille = new Grille( chargeur.charger( path));
+                initVerif();
 	}
 	
 	// REGLES

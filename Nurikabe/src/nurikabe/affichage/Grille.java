@@ -8,6 +8,7 @@ package nurikabe.affichage;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.NumberBinding;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
@@ -29,11 +30,24 @@ public class Grille extends GridPane {
 
     private final NumberBinding taille = Bindings.min(widthProperty(), heightProperty());
 
+    final EventHandler<caseClickedEvent> clicSurCase = new EventHandler<caseClickedEvent>() {
+        @Override
+        public void handle(caseClickedEvent event) {
+            if (event.isSenderType()){
+                    caseClickedEvent test = new caseClickedEvent(getColumnIndex(event.getSender()), getRowIndex(event.getSender()));
+                    fireEvent(test);
+                    event.consume(); //destruction de event
+                }
+        }
+    };
+    
     public void initGrille(nurikabe.jeu.assets.Grille entree) {
         //System.out.println(entree.getWidth()+" dans init");
         this.getColumnConstraints().clear();
         this.getRowConstraints().clear();
         this.getChildren().clear();
+        this.removeEventHandler(caseClickedEvent.CASE_CLICKED_AVEC_SENDER, clicSurCase);
+        
 
         int col = entree.getWidth();
         int row = entree.getHeight();
@@ -74,21 +88,10 @@ public class Grille extends GridPane {
         setMaxSize(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
         
         //definition du clic
-        addEventHandler(caseClickedEvent.CASE_CLICKED_AVEC_SENDER, new EventHandler<caseClickedEvent>() {
-            @Override
-            public void handle(caseClickedEvent event) {
-                System.out.println("Event reçu dans grille");
-                if (event.isSenderType()){
-                    caseClickedEvent test = new caseClickedEvent(getColumnIndex(event.getSender()), getRowIndex(event.getSender()));
-                    fireEvent(test);
-                    event.consume(); //destruction de event
-                }
-            }
-        }          
-        );
+        addEventHandler(caseClickedEvent.CASE_CLICKED_AVEC_SENDER, clicSurCase);
     }
 
-    private void ajouterCase(int colone, int ligne, Paint couleur, int valeur, int totalCol, int totalLig) {
+    private void ajouterCase(int ligne, int colone, Paint couleur, int valeur, int totalCol, int totalLig) {
         Case nouvelle = new Case(valeur, couleur);
         nouvelle.prefWidthProperty().bind(widthProperty().divide(totalCol));
         nouvelle.prefHeightProperty().bind(heightProperty().divide(totalLig));
