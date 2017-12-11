@@ -7,6 +7,7 @@ package nurikabe.affichage.controller;
 
 import java.io.IOException;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,17 +17,22 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import nurikabe.affichage.Case;
 import nurikabe.affichage.Console;
 import nurikabe.affichage.Grille;
 import nurikabe.affichage.events.caseClickedEvent;
 import nurikabe.jeu.assets.Chronometre;
+import nurikabe.jeu.assets.cellule.Etat;
 import nurikabe.jeu.logic.Handler;
+import nurikabe.jeu.logic.ia.IANew;
 
 /**
  *
  * @author argiraud
  */
 public class ControllerFenetrePrincipale {
+
+    private nurikabe.jeu.assets.Grille grilleCorrect = null;
 
     @FXML
     BorderPane root;
@@ -79,6 +85,7 @@ public class ControllerFenetrePrincipale {
         c.start();
         pause.setDisable(false);
         message.setText(null);
+        grilleCorrect = null;
     }
 
     @FXML
@@ -91,6 +98,7 @@ public class ControllerFenetrePrincipale {
         controllerSaves.setGrille(grille);
         fSauvegarde.centerOnScreen();
         fSauvegarde.show();
+        grilleCorrect = null;
     }
 
     @FXML
@@ -99,6 +107,7 @@ public class ControllerFenetrePrincipale {
         pause.setVisible(true);
         start.setVisible(false);
         grille.setVisible(true);
+        grilleCorrect = null;
     }
 
     @FXML
@@ -107,6 +116,7 @@ public class ControllerFenetrePrincipale {
         pause.setVisible(false);
         start.setVisible(true);
         grille.setVisible(false);
+        grilleCorrect = null;
     }
     //Méthode utilisée par lorsque que le bouton Quitter est utilisé
 
@@ -126,6 +136,7 @@ public class ControllerFenetrePrincipale {
         c.setLabel(chrono);
         
         grille.addEventHandler(caseClickedEvent.CASE_CLICKED_AVEC_POSITION, clicSurCase);
+        grilleCorrect = null;
     }
 
     final EventHandler<caseClickedEvent> clicSurCase = new EventHandler<caseClickedEvent>() {
@@ -133,16 +144,37 @@ public class ControllerFenetrePrincipale {
         public void handle(caseClickedEvent event) {
             if (!event.isSenderType()) {
                 manager.jouer(event.getColone(),event.getLigne());
-                new Console().afficher(manager);
             }
         }
     };
     
     @FXML
     public void onVerif() {
-        new Console().afficher(manager);
         if(manager.getJeu().verfication()) {message.setText("La grille est juste. Vous avez gagné.");}
         else {message.setText("La grille est fausse.");}
     }
 
+    @FXML
+    public void onAide() {
+        if (manager == null || manager.getJeu() == null || manager.getJeu().getGrille() == null)
+            return;
+        if (grilleCorrect == null)
+            grilleCorrect = (new IANew()).resoudre(manager.getJeu().getGrille());
+        for (int x = 0; x < grilleCorrect.getWidth(); x++)
+            for (int y = 0; y < grilleCorrect.getHeight(); y++)
+                if (grilleCorrect.getEtat( x, y) == Etat.BLANC && manager.getJeu().getEtat( x, y) != Etat.BLANC){
+                    manager.getJeu().getGrille().setEtat( x, y, Etat.BLANC);
+                    Case c = grille.getCase( x, y);
+                    if (c != null)
+                        c.setFill( Case.couleurBlanc);
+                    return;
+                }
+                else if (grilleCorrect.getEtat( x, y) == Etat.NOIR && manager.getJeu().getEtat( x, y) != Etat.NOIR){
+                    manager.getJeu().getGrille().setEtat( x, y, Etat.NOIR);
+                    Case c = grille.getCase( x, y);
+                    if (c != null)
+                        c.setFill( Case.couleurNoir);
+                    return;
+                }
+    }
 }

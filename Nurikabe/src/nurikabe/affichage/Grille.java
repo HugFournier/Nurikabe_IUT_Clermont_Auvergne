@@ -7,11 +7,13 @@ package nurikabe.affichage;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.NumberBinding;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
+import javafx.scene.Node;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import static javafx.scene.layout.GridPane.getColumnIndex;
@@ -29,6 +31,9 @@ import nurikabe.affichage.events.caseClickedEvent;
 public class Grille extends GridPane {
 
     private final NumberBinding taille = Bindings.min(widthProperty(), heightProperty());
+
+    private int nbCasesLargeur = 0;
+    private int nbCasesHauteur = 0;
 
     final EventHandler<caseClickedEvent> clicSurCase = new EventHandler<caseClickedEvent>() {
         @Override
@@ -51,22 +56,23 @@ public class Grille extends GridPane {
 
         int col = entree.getWidth();
         int row = entree.getHeight();
-
+        nbCasesHauteur = row;
+        nbCasesLargeur = col;
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
 
                 if (!entree.isJouable(i, j)) {
-                    ajouterCase(i,j,Color.WHITE,entree.getValeur(i, j),col,row);
+                    ajouterCase(i,j,Case.couleurBlanc,entree.getValeur(i, j),col,row);
                 } else {
                     switch (entree.getEtat(i, j)) {
                         case BLANC:
-                            ajouterCase(i,j,Color.WHITE,0,col,row);
+                            ajouterCase(i,j,Case.couleurBlanc,0,col,row);
                             break;
                         case NOIR:
-                            ajouterCase(i,j,Color.BLACK,0,col,row);
+                            ajouterCase(i,j,Case.couleurNoir,0,col,row);
                             break;
                         default:
-                            ajouterCase(i,j,Color.LIGHTGREY,0,col,row);
+                            ajouterCase(i,j,Case.couleurVide,0,col,row);
                             break;
                     }
                 }
@@ -89,6 +95,25 @@ public class Grille extends GridPane {
         
         //definition du clic
         addEventHandler(caseClickedEvent.CASE_CLICKED_AVEC_SENDER, clicSurCase);
+    }
+
+    public Case getCase( int colone, int ligne){
+        ObservableList<Node> children = getChildren();
+        if (nbCasesHauteur == 0 || nbCasesLargeur == 0)
+            return null;
+        double width = getWidth()/nbCasesLargeur;
+        double height = getHeight()/nbCasesHauteur;
+        if (width == 0 || height == 0)
+            return null;
+        for (Node n : children){
+            int x = (int) Math.round(n.getLayoutX()/width);
+            int y = (int) Math.round(n.getLayoutY()/height);
+            if (x == colone && y == ligne)
+                return (Case) n;
+
+        }
+        return null;
+
     }
 
     private void ajouterCase(int ligne, int colone, Paint couleur, int valeur, int totalCol, int totalLig) {

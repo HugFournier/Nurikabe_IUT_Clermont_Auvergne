@@ -30,6 +30,9 @@ import nurikabe.affichage.events.caseClickedEvent;
  */
 
 public class Case extends Label{
+
+    public static final Color couleurBlanc = Color.WHITE, couleurNoir = Color.BLACK, couleurVide = Color.LIGHTGREY;
+
     //PROPERTIES
     private final int valeur;
     private final boolean caseChifree;
@@ -83,21 +86,21 @@ public class Case extends Label{
         return getBackground().getFills().get(0).getFill();
     }
     
-    private void setFill (Paint value ){
+    public void setFill (Paint value ){
         setBackground(new Background(new BackgroundFill(value, CornerRadii.EMPTY, Insets.EMPTY)));
     }
     
     
     private void appuyer() {
         if (!caseChifree){
-            if(getFill().equals(Color.LIGHTGREY)){
-                setFill(Color.BLACK);
+            if(getFill().equals(couleurVide)){
+                setFill(couleurNoir);
             }
-            else{ if(getFill().equals(Color.BLACK)){ 
-                setFill(Color.WHITE);
+            else{ if(getFill().equals(couleurNoir)){
+                setFill(couleurBlanc);
             }
                 else{
-                   setFill(Color.LIGHTGREY);
+                   setFill(couleurVide);
                 }
             }
         }

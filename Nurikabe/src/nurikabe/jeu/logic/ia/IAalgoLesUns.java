@@ -2,16 +2,7 @@ package nurikabe.jeu.logic.ia;
 
 import nurikabe.jeu.assets.cellule.Etat;
 
-class IAalgo3 implements IAalgo{
-
-    /*
-        .#.
-        #1#
-        .#.
-    */
-    protected IAalgo3(){
-
-    }
+public class IAalgoLesUns implements IAalgo {
 
     @Override
     public IAGrille resoudre(IAGrille grille) {
@@ -30,5 +21,4 @@ class IAalgo3 implements IAalgo{
                 }
         return laGrille;
     }
-
 }

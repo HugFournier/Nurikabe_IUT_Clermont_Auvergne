@@ -6,8 +6,7 @@ import util.Position;
 import java.util.ArrayList;
 import java.util.List;
 
-public class IABlancs implements IAalgo{
-
+public class IA2choixRestant implements IAalgo{
 
     @Override
     public IAGrille resoudre( IAGrille grille) {
@@ -22,8 +21,29 @@ public class IABlancs implements IAalgo{
     private IAGrille mettreDesBlancs( IAGrille grille, int x, int y){
         List<Position> possibles = new ArrayList<>();
         possibleDePlacer( possibles, grille, x, y, new ArrayList<>(), grille.getGrille().getValeur( x, y));
-        if (possibles.size() == 1)
-            placer( grille, possibles.get(0).getX(), possibles.get(0).getY(), Etat.BLANC);
+        if (possibles.size() == 2){
+            int x1 = possibles.get(0).getX();
+            int x2 = possibles.get(1).getX();
+            int y1 = possibles.get(0).getY();
+            int y2 = possibles.get(1).getY();
+            System.out.println("ah");
+            if (x1 == x2-1 && y1 == y2-1){
+                System.out.println( "oui");
+                if (grille.getGrille().getEtat(x1, y2) == Etat.BLANC)
+                    placer( grille, x2, y1, Etat.NOIR);
+                else
+                    placer( grille, x1, y2, Etat.NOIR);
+            }
+            else if (x1 == x2-1 && y1 == y2+1){
+                System.out.println("non");
+                if (grille.getGrille().getEtat(x1, y2) == Etat.BLANC)
+                    placer( grille, x2, y1, Etat.NOIR);
+                else
+                    placer( grille, x1, y2, Etat.NOIR);
+            }
+
+
+        }
         return grille;
     }
 
