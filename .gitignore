@@ -25,4 +25,5 @@ hs_err_pid*
 *.recommenders*
 *.settings*
 *build*
-/nurikabe/Nurikabe/dist/
+/nurikabe/Nurikabe/
+/Nurikabe/dist/
