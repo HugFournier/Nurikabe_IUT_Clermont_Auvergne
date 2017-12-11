@@ -11,7 +11,6 @@ import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
-import javafx.scene.control.Control;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import static javafx.scene.layout.GridPane.getColumnIndex;
@@ -71,8 +70,8 @@ public class Grille extends GridPane {
         setPadding(new Insets(20, 20, 20, 20));
         prefWidthProperty().bind(taille);
         prefHeightProperty().bind(taille);
-        setMaxSize(Control.USE_PREF_SIZE, Control.USE_PREF_SIZE);
-        //setMaxSize(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
+        //setMaxSize(Control.USE_PREF_SIZE, Control.USE_PREF_SIZE);
+        setMaxSize(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
         
         //definition du clic
         addEventHandler(caseClickedEvent.CASE_CLICKED_AVEC_SENDER, new EventHandler<caseClickedEvent>() {
