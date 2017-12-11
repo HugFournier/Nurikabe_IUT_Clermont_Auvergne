@@ -7,7 +7,6 @@ import nurikabe.jeu.assets.cellule.Etat;
 import nurikabe.jeu.assets.cellule.Jouable;
 import nurikabe.jeu.assets.cellule.NonJouable;
 import nurikabe.jeu.logic.generateur.Generateur;
-import util.Chronomètre;
 import util.Matrix;
 
 public class Grille extends Matrix<Cellule> implements Serializable{
@@ -37,7 +36,7 @@ public class Grille extends Matrix<Cellule> implements Serializable{
 
     @Override
     public Grille clone( ){
-        return new Grille( this, chrono.getDureeMs());
+        return new Grille( this, chrono);
     }
     
     
