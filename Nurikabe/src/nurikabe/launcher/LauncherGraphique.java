@@ -33,4 +33,8 @@ public class LauncherGraphique extends Application {
         launch(args);
     }
     
+    public void stop(){
+        System.exit(0);
+    }
+    
 }
