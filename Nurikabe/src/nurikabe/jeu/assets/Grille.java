@@ -18,6 +18,10 @@ public class Grille extends Matrix<Cellule> implements Serializable {
     public long getChrono() {
         return chrono;
     }
+    
+    public void setChrono(long tps) {
+        chrono= tps;
+    }
 
     public Grille(Matrix<Cellule> grille, long scoreTmp) {
         super(grille);

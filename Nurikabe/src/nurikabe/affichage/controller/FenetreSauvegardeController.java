@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
@@ -38,6 +39,8 @@ public class FenetreSauvegardeController {
     AnchorPane root;
     @FXML
     ListView listeSaves;
+    @FXML
+    Label messageInfo;
     @FXML
     ChoiceBox listeTaille;
     ObservableList observableListeTaille = FXCollections.observableArrayList();
@@ -94,10 +97,20 @@ public class FenetreSauvegardeController {
     @FXML
     public void chargerGrille() {
         if (path != null) {
-            manager.charger(path);
-            //fermer fenetre
-            Stage stage = (Stage) root.getScene().getWindow();
-            stage.close();
+            try {
+                manager.charger(path);
+                SaveHandler.getSaveHandler().addFile(path);
+                SaveHandler.getSaveHandler().saveFiles();
+                //fermer fenetre
+                Stage stage = (Stage) root.getScene().getWindow();
+                stage.close();
+            } catch (Exception e) {
+                messageInfo.setText("Fichier invalide");
+                messageInfo.setVisible(true);
+            }
+        } else {
+            messageInfo.setText("Aucun fichier sélectionné");
+            messageInfo.setVisible(true);
         }
     }
 

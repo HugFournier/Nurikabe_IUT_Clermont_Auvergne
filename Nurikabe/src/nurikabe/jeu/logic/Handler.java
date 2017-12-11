@@ -17,6 +17,7 @@ public class Handler {
     private List<Enregistreur> enregistreurs;
     private List<Chargeur> chargeurs;
     private Jeu jeu;
+    private String cheminDeSauvegarde = null;
 
     public Handler( ){
         initEnregistreursEtChargeurs();
@@ -48,7 +49,7 @@ public class Handler {
     }
 
     public void enregistrer( ){
-        enregistrer( defaultPath);
+        enregistrer(getCheminDeSauvegarde() == null ? defaultPath : getCheminDeSauvegarde());
     }
 
     public void enregistrer( String path){
@@ -68,6 +69,7 @@ public class Handler {
         String[] arr = path.split( "\\.");
         String extention = "." + arr[arr.length-1];
         jeu = new Jeu( getChargeurTypeSpecifique( extention), path);
+        setCheminDeSauvegarde(path);
         //notifier du changement de la grille
         for(IGrilleHandlerObserveur obs : listeObserveur){
             obs.onNPartie();
@@ -84,5 +86,13 @@ public class Handler {
 
     public void ajouterObservateur(IGrilleHandlerObserveur controller) {
         listeObserveur.add(controller);
+    }
+    
+    public String getCheminDeSauvegarde(){
+        return cheminDeSauvegarde;
+    }
+    
+    public void setCheminDeSauvegarde(String chemin){
+        cheminDeSauvegarde=chemin;
     }
 }

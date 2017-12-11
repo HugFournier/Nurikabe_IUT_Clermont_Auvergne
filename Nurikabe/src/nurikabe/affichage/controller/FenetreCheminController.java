@@ -23,22 +23,27 @@ import javafx.stage.Stage;
  * @author syatelais1
  */
 public class FenetreCheminController {
+
     @FXML
     AnchorPane root;
-
+    String chemin;
     /**
      * Initializes the controller class.
      */
     public void initialize() {
     }
 
-    @FXML protected void filePicker(ActionEvent event) {
-    FileChooser chooser = new FileChooser();
-    Node node = (Node) event.getSource();
-    chooser.setTitle("Open File");
-    File file=chooser.showOpenDialog(node.getScene().getWindow());
-    
-    System.out.println(file);
-}
-    
+    @FXML
+    protected void filePicker(ActionEvent event) {
+        FileChooser chooser = new FileChooser();
+        Node node = (Node) event.getSource();
+        chooser.setTitle("Open File");
+        File file = chooser.showOpenDialog(node.getScene().getWindow());
+        chemin.replaceAll(chemin, file.getAbsolutePath());
+        System.out.println(file);
+    }
+
+    public void setChemin(String chemin){
+        this.chemin=chemin;
+    }
 }

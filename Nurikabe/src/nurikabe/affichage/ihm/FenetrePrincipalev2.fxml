@@ -58,7 +58,7 @@
             </font>
         </Label>
         
-        <Button mnemonicParsing="false" text="Sauvegarder" GridPane.columnIndex="2" GridPane.rowIndex="1">
+        <Button fx:id="bouttonSauvegarde" onAction="#onSauvegarde" mnemonicParsing="false" text="Sauvegarder" GridPane.columnIndex="2" GridPane.rowIndex="1">
             <font>
                 <Font size="18.0" />
             </font>
@@ -77,12 +77,12 @@
                 <Font size="18.0" />
             </font>
         </Button>
-        <Button fx:id="bouttonPause" mnemonicParsing="false" onAction="#onPause" text="Pause" GridPane.columnIndex="1" GridPane.rowIndex="4">
+        <Button fx:id="bouttonPause" mnemonicParsing="false" onAction="#onStartAndPause" text="Pause" GridPane.columnIndex="1" GridPane.rowIndex="4">
             <font>
                 <Font size="18.0" />
             </font>
         </Button>
-        <Button fx:id="bouttonStart" mnemonicParsing="false" onAction="#onStart" text="Reprendre" GridPane.columnIndex="1" GridPane.rowIndex="4">
+        <Button fx:id="bouttonStart" mnemonicParsing="false" onAction="#onStartAndPause" text="Reprendre" GridPane.columnIndex="1" GridPane.rowIndex="4">
             <font>
                 <Font size="18.0" />
             </font>
