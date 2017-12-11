@@ -9,7 +9,6 @@ public class IAalgo4 implements IAalgo{
     public IAGrille resoudre(IAGrille grille) {
         IAGrille laGrille = grille.clone();
         boolean changed = true;
-        int i = 0;
         while (changed){
             changed = false;
             for (int x = 0; x < laGrille.getWidth(); x++)
