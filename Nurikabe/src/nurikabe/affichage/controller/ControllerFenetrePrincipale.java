@@ -75,9 +75,10 @@ public class ControllerFenetrePrincipale {
     @FXML
     public void onNPartie() {
         grille.initGrille(manager.getJeu().getGrille());
-        c.setTime(0);
+        c.setTime(manager.getJeu().getGrille().getChrono());
         c.start();
         pause.setDisable(false);
+        message.setText(null);
     }
 
     @FXML
@@ -90,9 +91,6 @@ public class ControllerFenetrePrincipale {
         controllerSaves.setGrille(grille);
         fSauvegarde.centerOnScreen();
         fSauvegarde.show();
-        
-        grille.initGrille(manager.getJeu().getGrille());
-        onNPartie();
     }
 
     @FXML

@@ -67,7 +67,7 @@
           
         <Grille fx:id="grille" GridPane.columnSpan="3" GridPane.rowIndex="2"/>
                 
-         <Label fx:id="message" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.columnSpan="3">
+         <Label fx:id="message" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.columnSpan="3">
             <font>
                 <Font size="24.0" />
             </font>

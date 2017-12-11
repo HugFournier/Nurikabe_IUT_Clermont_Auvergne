@@ -81,7 +81,7 @@ public class Grille extends GridPane {
             getRowConstraints().add(new RowConstraints(5, taille.doubleValue(), Double.POSITIVE_INFINITY, Priority.SOMETIMES, VPos.CENTER, false));
         }
 
-        setPadding(new Insets(20, 20, 20, 20));
+        //setPadding(new Insets(20, 20, 20, 20));
         prefWidthProperty().bind(taille);
         prefHeightProperty().bind(taille);
         //setMaxSize(Control.USE_PREF_SIZE, Control.USE_PREF_SIZE);
