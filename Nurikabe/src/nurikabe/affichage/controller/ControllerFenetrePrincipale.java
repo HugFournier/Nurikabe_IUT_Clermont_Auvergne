@@ -125,6 +125,8 @@ public class ControllerFenetrePrincipale {
         start.setVisible(false);
         grille.setVisible(true);
         c.setLabel(text);
+        
+        grille.addEventHandler(caseClickedEvent.CASE_CLICKED_AVEC_POSITION, clicSurCase);
     }
 
     final EventHandler<caseClickedEvent> clicSurCase = new EventHandler<caseClickedEvent>() {

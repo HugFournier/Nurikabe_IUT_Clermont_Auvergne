@@ -36,6 +36,12 @@ public class SaveHandler {
         path = Paths.get(uri);
         loadFileLocations();
     }
+    
+    public void findInPP( ){
+        File f = path.toFile().getParentFile().getParentFile();
+        findSaveLocations( f);
+        saveFiles();
+    }
 
     public void findSaveLocations(){
         File f = path.toFile();
@@ -58,10 +64,10 @@ public class SaveHandler {
             if (f.isDirectory())
                 findSaveLocations( f);
             else{
-                String[] arr = dir.getAbsolutePath().split("\\.");
+                String[] arr = f.getAbsolutePath().split("\\.");
                 String extention = "." + arr[arr.length-1];
-                if (extention.equals( "nuribin") || extention.equals( "nuritxt"))
-                    addFile( dir.getAbsolutePath());
+                if (extention.equals( ".nuribin") || extention.equals( ".nuritxt"))
+                    addFile( f.getAbsolutePath());
             }
     }
     
@@ -90,6 +96,7 @@ public class SaveHandler {
         } catch (Exception e) {
             System.err.println("The saves file could not be found : " + e.getMessage());
         }
+        findInPP();
     }
     
     public void saveFiles( ){
