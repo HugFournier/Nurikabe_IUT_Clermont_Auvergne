@@ -7,8 +7,6 @@ package nurikabe.affichage.controller;
 
 import java.io.IOException;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +17,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import nurikabe.affichage.Case;
-import nurikabe.affichage.Console;
 import nurikabe.affichage.Grille;
 import nurikabe.affichage.events.caseClickedEvent;
 import nurikabe.jeu.assets.Chronometre;
@@ -76,6 +73,7 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
         Stage palmares = new Stage();
         Parent digit = FXMLLoader.load(getClass().getResource("/nurikabe/affichage/ihm/FenetrePalmares.fxml"));
         palmares.setScene(new Scene(digit));
+        palmares.setTitle("Palmarès");
         palmares.centerOnScreen();
         palmares.show();
     }
@@ -109,7 +107,7 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
         fSauvegarde.setScene(new Scene((Parent) fxmlLoader.load()));
         controllerSaves = fxmlLoader.getController();
         controllerSaves.setManager(manager);
-        //fSauvegarde.centerOnScreen();
+        fSauvegarde.setTitle("Charger une grille");
         fSauvegarde.show();
         grilleCorrect = null;
     }
@@ -121,12 +119,14 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
             c.start();
             bouttonPause.setVisible(true);
             bouttonStart.setVisible(false);
+            message.setText(null);
             grille.setVisible(true);
         } else {
             c.pause();
             bouttonPause.setVisible(false);
             bouttonStart.setVisible(true);
             grille.setVisible(false);
+            message.setText("En Pause");
             grilleCorrect = null;
         }
         enPause ^= true;
@@ -226,6 +226,7 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
                 fChemin.setScene(new Scene((Parent) fxmlLoader.load()));
                 controllerChemin = fxmlLoader.getController();
                 controllerChemin.setChemin(chemin);
+                fChemin.setTitle("Sauvegarder une grille");
                 fChemin.show();
             }catch(Exception e){
                 manager.enregistrer();

@@ -58,29 +58,22 @@ public class Case extends Label{
         if (valeur > 0){
             this.valeur = valeur;
             caseChifree = true;
-
             couleur = Color.WHITE;
         } 
         else{
             this.valeur = 0;
             caseChifree = false;
         }
-        
-
         if (isCaseChifree()){
             setText(getValeur()+"");
             setFont(new Font(17));
             setTextFill(Color.BLACK);
         }
-        
         setTextAlignment(TextAlignment.CENTER);
         this.setTranslateY(50);
         setBorder(BORDURE);
         setFill(couleur);
-        
         setMaxSize(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
-        
-        
         setOnMousePressed(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent me){
