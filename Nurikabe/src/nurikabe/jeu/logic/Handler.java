@@ -5,16 +5,19 @@ import nurikabe.jeu.logic.generateur.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.event.Event;
+import nurikabe.affichage.controller.ControllerFenetrePrincipale;
 
 public class Handler {
 
     private static final String path = System.getProperty( "user.dir").replace( "\\", "/");
 
     private String defaultPath = path + "/res/grilles/test.nuribin";
-
+    private List<IGrilleHandlerObserveur> listeObserveur = new ArrayList<IGrilleHandlerObserveur>();
     private List<Enregistreur> enregistreurs;
     private List<Chargeur> chargeurs;
     private Jeu jeu;
+    private String cheminDeSauvegarde = null;
 
     public Handler( ){
         initEnregistreursEtChargeurs();
@@ -46,7 +49,7 @@ public class Handler {
     }
 
     public void enregistrer( ){
-        enregistrer( defaultPath);
+        enregistrer(getCheminDeSauvegarde() == null ? defaultPath : getCheminDeSauvegarde());
     }
 
     public void enregistrer( String path){
@@ -66,6 +69,11 @@ public class Handler {
         String[] arr = path.split( "\\.");
         String extention = "." + arr[arr.length-1];
         jeu = new Jeu( getChargeurTypeSpecifique( extention), path);
+        setCheminDeSauvegarde(path);
+        //notifier du changement de la grille
+        for(IGrilleHandlerObserveur obs : listeObserveur){
+            obs.onNPartie();
+        }
     }
 
     public void jouer( int x, int y) {
@@ -74,5 +82,17 @@ public class Handler {
 
     public Jeu getJeu() {
         return jeu;
+    }
+
+    public void ajouterObservateur(IGrilleHandlerObserveur controller) {
+        listeObserveur.add(controller);
+    }
+    
+    public String getCheminDeSauvegarde(){
+        return cheminDeSauvegarde;
+    }
+    
+    public void setCheminDeSauvegarde(String chemin){
+        cheminDeSauvegarde=chemin;
     }
 }

@@ -8,6 +8,7 @@ package nurikabe.affichage.controller;
 import java.io.IOException;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,13 +25,14 @@ import nurikabe.affichage.events.caseClickedEvent;
 import nurikabe.jeu.assets.Chronometre;
 import nurikabe.jeu.assets.cellule.Etat;
 import nurikabe.jeu.logic.Handler;
+import nurikabe.jeu.logic.IGrilleHandlerObserveur;
 import nurikabe.jeu.logic.ia.IANew;
 
 /**
  *
  * @author argiraud
  */
-public class ControllerFenetrePrincipale {
+public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
 
     private nurikabe.jeu.assets.Grille grilleCorrect = null;
 
@@ -39,17 +41,17 @@ public class ControllerFenetrePrincipale {
     @FXML
     Grille grille;
     @FXML
-    Button pause;
-    @FXML
-    Button start;
+    Button bouttonPause, bouttonStart, bouttonVerif, bouttonAide, bouttonSauvegarde;
     @FXML
     Label chrono;
     @FXML
     Label message;
 
+    private boolean enPause = true;
     Chronometre c;
     private Handler manager = new Handler();
     private FenetreSauvegardeController controllerSaves;
+    private FenetreCheminController controllerChemin;
 
     /**
      * Get the value of manager
@@ -83,7 +85,10 @@ public class ControllerFenetrePrincipale {
         grille.initGrille(manager.getJeu().getGrille());
         c.setTime(manager.getJeu().getGrille().getChrono());
         c.start();
-        pause.setDisable(false);
+        bouttonPause.setDisable(false);
+        bouttonVerif.setDisable(false);
+        bouttonAide.setDisable(false);
+        bouttonSauvegarde.setDisable(false);
         message.setText(null);
         grilleCorrect = null;
     }
@@ -95,33 +100,35 @@ public class ControllerFenetrePrincipale {
         fSauvegarde.setScene(new Scene((Parent) fxmlLoader.load()));
         controllerSaves = fxmlLoader.getController();
         controllerSaves.setManager(manager);
-        controllerSaves.setGrille(grille);
-        fSauvegarde.centerOnScreen();
+        //fSauvegarde.centerOnScreen();
         fSauvegarde.show();
         grilleCorrect = null;
     }
 
     @FXML
-    public void onStart() {
-        c.start();
-        pause.setVisible(true);
-        start.setVisible(false);
-        grille.setVisible(true);
+    public void onStartAndPause() {
+        enPause ^= true;
+        if (enPause) {
+            c.start();
+            bouttonPause.setVisible(true);
+            bouttonStart.setVisible(false);
+            grille.setVisible(true);
+        } else {
+            c.pause();
+            bouttonPause.setVisible(false);
+            bouttonStart.setVisible(true);
+            grille.setVisible(false);
+            grilleCorrect = null;
+        }
         grilleCorrect = null;
     }
 
-    @FXML
-    public void onPause() {
-        c.pause();
-        pause.setVisible(false);
-        start.setVisible(true);
-        grille.setVisible(false);
-        grilleCorrect = null;
-    }
     //Méthode utilisée par lorsque que le bouton Quitter est utilisé
-
     @FXML
     public void onExit() {
+        if (!bouttonSauvegarde.isDisable()) {
+            onSauvegarde();
+        }
         c.pause();
         Platform.exit();
     }
@@ -130,11 +137,14 @@ public class ControllerFenetrePrincipale {
     public void initialize() {
         c = new Chronometre(0);
         c.setLabel(chrono);
-        pause.setDisable(true);
-        start.setVisible(false);
+        bouttonPause.setDisable(true);
+        bouttonVerif.setDisable(true);
+        bouttonAide.setDisable(true);
+        bouttonSauvegarde.setDisable(true);
+        bouttonStart.setVisible(false);
         grille.setVisible(true);
         c.setLabel(chrono);
-        
+        manager.ajouterObservateur(this);
         grille.addEventHandler(caseClickedEvent.CASE_CLICKED_AVEC_POSITION, clicSurCase);
         grilleCorrect = null;
     }
@@ -143,38 +153,66 @@ public class ControllerFenetrePrincipale {
         @Override
         public void handle(caseClickedEvent event) {
             if (!event.isSenderType()) {
-                manager.jouer(event.getColone(),event.getLigne());
+                manager.jouer(event.getColone(), event.getLigne());
             }
         }
     };
-    
+
     @FXML
     public void onVerif() {
-        if(manager.getJeu().verfication()) {message.setText("La grille est juste. Vous avez gagné.");}
-        else {message.setText("La grille est fausse.");}
+        if (manager.getJeu().verfication()) {
+            message.setText("La grille est juste. Vous avez gagné.");
+        } else {
+            message.setText("La grille est fausse.");
+        }
     }
 
     @FXML
     public void onAide() {
-        if (manager == null || manager.getJeu() == null || manager.getJeu().getGrille() == null)
+        if (manager == null || manager.getJeu() == null || manager.getJeu().getGrille() == null) {
             return;
-        if (grilleCorrect == null)
+        }
+        if (grilleCorrect == null) {
             grilleCorrect = (new IANew()).resoudre(manager.getJeu().getGrille());
-        for (int x = 0; x < grilleCorrect.getWidth(); x++)
-            for (int y = 0; y < grilleCorrect.getHeight(); y++)
-                if (grilleCorrect.getEtat( x, y) == Etat.BLANC && manager.getJeu().getEtat( x, y) != Etat.BLANC){
-                    manager.getJeu().getGrille().setEtat( x, y, Etat.BLANC);
-                    Case c = grille.getCase( x, y);
-                    if (c != null)
-                        c.setFill( Case.couleurBlanc);
+        }
+        for (int x = 0; x < grilleCorrect.getWidth(); x++) {
+            for (int y = 0; y < grilleCorrect.getHeight(); y++) {
+                if (grilleCorrect.getEtat(x, y) == Etat.BLANC && manager.getJeu().getEtat(x, y) != Etat.BLANC) {
+                    manager.getJeu().getGrille().setEtat(x, y, Etat.BLANC);
+                    Case c = grille.getCase(x, y);
+                    if (c != null) {
+                        c.setFill(Case.couleurBlanc);
+                    }
+                    return;
+                } else if (grilleCorrect.getEtat(x, y) == Etat.NOIR && manager.getJeu().getEtat(x, y) != Etat.NOIR) {
+                    manager.getJeu().getGrille().setEtat(x, y, Etat.NOIR);
+                    Case c = grille.getCase(x, y);
+                    if (c != null) {
+                        c.setFill(Case.couleurNoir);
+                    }
                     return;
                 }
-                else if (grilleCorrect.getEtat( x, y) == Etat.NOIR && manager.getJeu().getEtat( x, y) != Etat.NOIR){
-                    manager.getJeu().getGrille().setEtat( x, y, Etat.NOIR);
-                    Case c = grille.getCase( x, y);
-                    if (c != null)
-                        c.setFill( Case.couleurNoir);
-                    return;
-                }
+            }
+        }
+    }
+
+    @FXML
+    public void onSauvegarde(){
+        String chemin = manager.getCheminDeSauvegarde();
+        manager.getJeu().getGrille().setChrono(c.getTime());
+        if (chemin == null) {
+            //trouver une valeur a chemin en demandant
+            try{
+                Stage fChemin = new Stage();
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/nurikabe/affichage/ihm/FenetreChemin.fxml"));
+                fChemin.setScene(new Scene((Parent) fxmlLoader.load()));
+                controllerChemin = fxmlLoader.getController();
+                controllerChemin.setChemin(chemin);
+                fChemin.show();
+            }catch(Exception e){
+                manager.enregistrer();
+            }
+        }
+        manager.enregistrer(chemin);
     }
 }
