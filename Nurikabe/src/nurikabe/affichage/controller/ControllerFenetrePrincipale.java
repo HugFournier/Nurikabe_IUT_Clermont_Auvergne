@@ -162,6 +162,12 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
     public void onVerif() {
         if (manager.getJeu().verfication()) {
             message.setText("La grille est juste. Vous avez gagné.");
+            c.pause();
+            bouttonPause.setDisable(true);
+            bouttonVerif.setDisable(true);
+            bouttonAide.setDisable(true);
+            bouttonSauvegarde.setDisable(true);
+            grille.setDisable(true);
         } else {
             message.setText("La grille est fausse.");
         }
