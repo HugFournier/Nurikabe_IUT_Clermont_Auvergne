@@ -5,7 +5,6 @@
  */
 package nurikabe.affichage;
 
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
