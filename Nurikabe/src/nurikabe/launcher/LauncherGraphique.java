@@ -18,10 +18,11 @@ import nurikabe.affichage.controller.ControllerFenetrePrincipale;
  * @author argiraud
  */
 public class LauncherGraphique extends Application {
+
     ControllerFenetrePrincipale fenetrePrincipale;
-    
+
     @Override
-    public void start(Stage fPrincipale)throws IOException {
+    public void start(Stage fPrincipale) throws IOException {
         //Parent root = FXMLLoader.load(getClass().getResource("/nurikabe/affichage/ihm/FenetrePrincipalev2.fxml"));
         //Stage fPrincipale = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/nurikabe/affichage/ihm/FenetrePrincipalev2.fxml"));
@@ -29,9 +30,8 @@ public class LauncherGraphique extends Application {
         fenetrePrincipale = fxmlLoader.getController();
         //fPrincipale.setScene(new Scene(fxmlLoader.load()));
         fPrincipale.centerOnScreen();
-        fPrincipale.show(); 
-        
-       
+        fPrincipale.show();
+
     }
 
     /**
@@ -40,12 +40,14 @@ public class LauncherGraphique extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
     @Override
-    public void stop(){
-       fenetrePrincipale.onSauvegarde();
-       System.exit(0);
-       System.out.println("hello");
+    public void stop() {
+        if (fenetrePrincipale.getManager().isPartieEnCours()) {
+            fenetrePrincipale.onSauvegarde();
+        }
+        System.exit(0);
+        System.out.println("hello");
     }
-    
+
 }

@@ -82,6 +82,9 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
 
     @FXML
     public void onNPartie() {
+        if(manager.isPartieEnCours()){
+            onSauvegarde();
+        }
         grille.initGrille(manager.getJeu().getGrille());
         c.setTime(manager.getJeu().getGrille().getChrono());
         c.start();
@@ -91,10 +94,16 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
         bouttonSauvegarde.setDisable(false);
         message.setText(null);
         grilleCorrect = null;
+        if(enPause){
+            onStartAndPause();
+        }
     }
 
     @FXML
     public void onCharger() throws IOException {
+        if(!enPause){
+            onStartAndPause();
+        }
         Stage fSauvegarde = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/nurikabe/affichage/ihm/FenetreSauvegarde.fxml"));
         fSauvegarde.setScene(new Scene((Parent) fxmlLoader.load()));
@@ -107,7 +116,7 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
 
     @FXML
     public void onStartAndPause() {
-        enPause ^= true;
+        if(!manager.isPartieEnCours())return;
         if (enPause) {
             c.start();
             bouttonPause.setVisible(true);
@@ -120,16 +129,19 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
             grille.setVisible(false);
             grilleCorrect = null;
         }
+        enPause ^= true;
         grilleCorrect = null;
     }
 
     //Méthode utilisée par lorsque que le bouton Quitter est utilisé
     @FXML
     public void onExit() {
-        if (!bouttonSauvegarde.isDisable()) {
+        if (manager.isPartieEnCours() && !bouttonSauvegarde.isDisable()) {
             onSauvegarde();
         }
-        c.pause();
+        try{
+            c.pause();
+        }catch(Exception e){}
         Platform.exit();
     }
 

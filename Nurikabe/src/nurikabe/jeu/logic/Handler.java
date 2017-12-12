@@ -5,8 +5,11 @@ import nurikabe.jeu.logic.generateur.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.ObservableList;
 import javafx.event.Event;
 import nurikabe.affichage.controller.ControllerFenetrePrincipale;
+import nurikabe.jeu.logic.palmares.Palmares;
+import nurikabe.jeu.logic.palmares.PalmaresHandler;
 
 public class Handler {
 
@@ -18,10 +21,11 @@ public class Handler {
     private List<Chargeur> chargeurs;
     private Jeu jeu;
     private String cheminDeSauvegarde = null;
+    private PalmaresHandler palmaresHandler = new PalmaresHandler();
+    Boolean partieEnCours = false;
 
     public Handler( ){
         initEnregistreursEtChargeurs();
-        jeu = new Jeu( 7, 7, new HardCoded7by7());
     }
 
     private void initEnregistreursEtChargeurs(){
@@ -32,6 +36,14 @@ public class Handler {
         enregistreurs.add( new EnregisterDansFichierTexte());
         chargeurs.add( new ChargerDepuisFichierTexte());
 
+    }
+    
+    public void ajouterAuPalmares(String id, int taille, long temps){
+        palmaresHandler.addFile(id, taille, temps);
+    }
+    
+    public ObservableList<Palmares> getListePalmares(){
+        return palmaresHandler.getListePalmares();
     }
 
     private Enregistreur getEnregistreurTypeSpecifique( String type){
@@ -71,6 +83,7 @@ public class Handler {
         jeu = new Jeu( getChargeurTypeSpecifique( extention), path);
         setCheminDeSauvegarde(path);
         //notifier du changement de la grille
+        partieEnCours = true;
         for(IGrilleHandlerObserveur obs : listeObserveur){
             obs.onNPartie();
         }
@@ -82,6 +95,10 @@ public class Handler {
 
     public Jeu getJeu() {
         return jeu;
+    }
+    
+    public Boolean isPartieEnCours(){
+        return partieEnCours;
     }
 
     public void ajouterObservateur(IGrilleHandlerObserveur controller) {
