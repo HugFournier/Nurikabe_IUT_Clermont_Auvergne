@@ -87,6 +87,7 @@ public class IANew implements IAInterface{
         tmp = resoudre( laGrille, deptRest-1);
         if (lesVerifs.verification( tmp.getGrille()))
             return tmp;
+        placer( laGrille, p, Etat.VIDE);
         return laGrille;
     }
 
