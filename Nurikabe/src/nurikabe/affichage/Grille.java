@@ -32,9 +32,6 @@ public class Grille extends GridPane {
 
     private final NumberBinding taille = Bindings.min(widthProperty(), heightProperty());
 
-    private int nbCasesLargeur = 0;
-    private int nbCasesHauteur = 0;
-
     final EventHandler<caseClickedEvent> clicSurCase = new EventHandler<caseClickedEvent>() {
         @Override
         public void handle(caseClickedEvent event) {
@@ -52,27 +49,25 @@ public class Grille extends GridPane {
         this.getRowConstraints().clear();
         this.getChildren().clear();
         this.removeEventHandler(caseClickedEvent.CASE_CLICKED_AVEC_SENDER, clicSurCase);
-        
 
         int col = entree.getWidth();
         int row = entree.getHeight();
-        nbCasesHauteur = row;
-        nbCasesLargeur = col;
+
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
 
                 if (!entree.isJouable(i, j)) {
-                    ajouterCase(i,j,Case.couleurBlanc,entree.getValeur(i, j),col,row);
+                    ajouterCase(i,j,Case.COULEUR_BLANC,entree.getValeur(i, j),col,row);
                 } else {
                     switch (entree.getEtat(i, j)) {
                         case BLANC:
-                            ajouterCase(i,j,Case.couleurBlanc,0,col,row);
+                            ajouterCase(i,j,Case.COULEUR_BLANC,0,col,row);
                             break;
                         case NOIR:
-                            ajouterCase(i,j,Case.couleurNoir,0,col,row);
+                            ajouterCase(i,j,Case.COULEUR_NOIR,0,col,row);
                             break;
                         default:
-                            ajouterCase(i,j,Case.couleurVide,0,col,row);
+                            ajouterCase(i,j,Case.COULEUR_INCONNU,0,col,row);
                             break;
                     }
                 }
@@ -98,22 +93,12 @@ public class Grille extends GridPane {
     }
 
     public Case getCase( int colone, int ligne){
-        ObservableList<Node> children = getChildren();
-        if (nbCasesHauteur == 0 || nbCasesLargeur == 0)
-            return null;
-        double width = getWidth()/nbCasesLargeur;
-        double height = getHeight()/nbCasesHauteur;
-        if (width == 0 || height == 0)
-            return null;
-        for (Node n : children){
-            int x = (int) Math.round(n.getLayoutX()/width);
-            int y = (int) Math.round(n.getLayoutY()/height);
-            if (x == colone && y == ligne)
-                return (Case) n;
-
+        for (Node node : getChildren()) {
+            if (getColumnIndex(node) == colone && getRowIndex(node) == ligne) {
+                return (Case) node;
+            }
         }
         return null;
-
     }
 
     private void ajouterCase(int ligne, int colone, Paint couleur, int valeur, int totalCol, int totalLig) {

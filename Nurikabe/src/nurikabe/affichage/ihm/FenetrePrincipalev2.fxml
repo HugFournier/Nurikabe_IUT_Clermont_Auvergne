@@ -19,7 +19,7 @@
 <GridPane fx:controller="nurikabe.affichage.controller.ControllerFenetrePrincipale" 
           maxHeight="-Infinity" maxWidth="-Infinity" 
           minHeight="400" minWidth="400" 
-          prefHeight="800" prefWidth="800" 
+          prefHeight="600" prefWidth="600" 
           xmlns="http://javafx.com/javafx/8" 
           xmlns:fx="http://javafx.com/fxml/1">
     

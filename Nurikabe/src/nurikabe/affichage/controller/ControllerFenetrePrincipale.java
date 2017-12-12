@@ -187,14 +187,14 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
                     manager.getJeu().getGrille().setEtat(x, y, Etat.BLANC);
                     Case c = grille.getCase(x, y);
                     if (c != null) {
-                        c.setFill(Case.couleurBlanc);
+                        c.setFill(Case.COULEUR_BLANC);
                     }
                     return;
                 } else if (grilleCorrect.getEtat(x, y) == Etat.NOIR && manager.getJeu().getEtat(x, y) != Etat.NOIR) {
                     manager.getJeu().getGrille().setEtat(x, y, Etat.NOIR);
                     Case c = grille.getCase(x, y);
                     if (c != null) {
-                        c.setFill(Case.couleurNoir);
+                        c.setFill(Case.COULEUR_NOIR);
                     }
                     return;
                 }
