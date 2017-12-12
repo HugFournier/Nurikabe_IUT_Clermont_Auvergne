@@ -70,7 +70,11 @@ public class FenetreSauvegardeController {
         Node node = (Node) event.getSource();
         chooser.setTitle("Open File");
         File file = chooser.showOpenDialog(node.getScene().getWindow());
+        try{
         path = file.getAbsolutePath();
+        }catch(Exception e){
+            path = null;
+        }
     }
 
     @FXML
