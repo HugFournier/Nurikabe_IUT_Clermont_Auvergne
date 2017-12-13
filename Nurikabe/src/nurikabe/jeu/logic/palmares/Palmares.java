@@ -20,9 +20,9 @@ import javafx.beans.property.SimpleStringProperty;
  */
 public class Palmares implements Comparable {
 
-    private transient SimpleStringProperty id;
-    private transient SimpleLongProperty temps;
-    private transient SimpleIntegerProperty taille;
+    private SimpleStringProperty id;
+    private SimpleLongProperty temps;
+    private SimpleIntegerProperty taille;
 
     public Palmares(String id, int taille, long temps) {
         this.id = new SimpleStringProperty(id);
