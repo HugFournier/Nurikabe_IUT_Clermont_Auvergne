@@ -10,37 +10,37 @@
 <?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurikabe.affichage.controller.ControllerPalmares">
-   <top>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Palmarès" textAlignment="CENTER" BorderPane.alignment="CENTER">
-         <font>
-            <Font size="49.0" />
-         </font>
-      </Text>
-   </top>
-   <bottom>
-      <Button onAction="#onExit" text="Quitter" BorderPane.alignment="BOTTOM_RIGHT">
-         <BorderPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </BorderPane.margin>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </Button>
-   </bottom>
-   <center>
-       <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                            <children>
-                                <TableView fx:id="tablePalmares" layoutX="87.0" layoutY="54.0" prefHeight="369.6" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                    <columns>
-                                        <TableColumn fx:id="idCol" prefWidth="75.0" text="ID" />
-                                        <TableColumn fx:id="tailleCol" prefWidth="75.0" text="Taille" />
-                                        <TableColumn fx:id="tempsCol" prefWidth="75.0" text="Temps" />
-                                    </columns>
-                                    <columnResizePolicy>
-                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                    </columnResizePolicy>
-                                </TableView>
-                            </children>
-                        </AnchorPane>
-   </center>
+    <top>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Palmarès" textAlignment="CENTER" BorderPane.alignment="CENTER">
+            <font>
+                <Font size="49.0" />
+            </font>
+        </Text>
+    </top>
+    <bottom>
+        <Button onAction="#onExit" text="Quitter" BorderPane.alignment="BOTTOM_RIGHT">
+            <BorderPane.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </BorderPane.margin>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </Button>
+    </bottom>
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <children>
+                <TableView fx:id="tablePalmares" layoutX="87.0" layoutY="54.0" prefHeight="369.6" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                        <TableColumn fx:id="idCol" prefWidth="75.0" text="ID" />
+                        <TableColumn fx:id="tailleCol" prefWidth="75.0" text="Taille" />
+                        <TableColumn fx:id="tempsCol" prefWidth="75.0" text="Temps" />
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+            </children>
+        </AnchorPane>
+    </center>
 </BorderPane>

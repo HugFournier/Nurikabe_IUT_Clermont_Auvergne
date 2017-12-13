@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
+<GridPane fx:id ="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="100" minWidth="100" prefHeight="250" prefWidth="250" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurikabe.affichage.controller.FenetreCheminController">
+    
+    <columnConstraints>
+        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+        <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+        <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+    </rowConstraints>
+    
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="10" />
+    </padding>
+    <children>
+        <Button      mnemonicParsing="false" text="Chercher fichier" GridPane.columnSpan="2" onAction="#filePicker"/>
+        <RadioButton mnemonicParsing="false" text="RadioButton" GridPane.rowIndex="1" >
+            <toggleGroup>
+                <ToggleGroup fx:id="binoutxt" />
+            </toggleGroup>
+        </RadioButton>
+        <RadioButton toggleGroup="$binoutxt" mnemonicParsing="false" text="RadioButton" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Button      mnemonicParsing="false" text="Ok" GridPane.rowIndex="2" GridPane.columnSpan="2" onAction="#renvoyerChemin"/>
+    </children>
 
-<AnchorPane id="AnchorPane" fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="nurikabe.affichage.controller.FenetreCheminController">
-   <children>
-      <Button layoutX="269.0" layoutY="187.0" mnemonicParsing="false" onAction="#filePicker" text="Button" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-   </children>
-</AnchorPane>
+    
+</GridPane>
