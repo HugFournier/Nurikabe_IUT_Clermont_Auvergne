@@ -5,7 +5,6 @@
  */
 package nurikabe.affichage;
 
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -31,8 +30,17 @@ import nurikabe.affichage.events.caseClickedEvent;
 
 public class Case extends Label{
 
-    public static final Color couleurBlanc = Color.WHITE, couleurNoir = Color.BLACK, couleurVide = Color.LIGHTGREY;
-
+    //Les couleurs des cases
+    public static final Paint COULEUR_BLANC = Color.WHITE;
+    public static final Paint COULEUR_NOIR = Color.BLACK;
+    public static final Paint COULEUR_INCONNU = Color.LIGHTGREY;
+     
+    //Les differents Backgrounds
+    private static final Background BG_BLANC = new Background(new BackgroundFill(COULEUR_BLANC, CornerRadii.EMPTY, Insets.EMPTY));
+    private static final Background BG_NOIR = new Background(new BackgroundFill(COULEUR_NOIR, CornerRadii.EMPTY, Insets.EMPTY));
+    private static final Background BG_INCONNU = new Background(new BackgroundFill(COULEUR_INCONNU, CornerRadii.EMPTY, Insets.EMPTY));
+    private static final Border BORDURE = new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
+    
     //PROPERTIES
     private final int valeur;
     private final boolean caseChifree;
@@ -50,29 +58,22 @@ public class Case extends Label{
         if (valeur > 0){
             this.valeur = valeur;
             caseChifree = true;
-
             couleur = Color.WHITE;
         } 
         else{
             this.valeur = 0;
             caseChifree = false;
         }
-        
-
         if (isCaseChifree()){
             setText(getValeur()+"");
             setFont(new Font(17));
             setTextFill(Color.BLACK);
         }
-        
         setTextAlignment(TextAlignment.CENTER);
         this.setTranslateY(50);
-        setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-        setBackground(new Background(new BackgroundFill(couleur, CornerRadii.EMPTY, Insets.EMPTY)));
-        
+        setBorder(BORDURE);
+        setFill(couleur);
         setMaxSize(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
-        
-        
         setOnMousePressed(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent me){
@@ -87,21 +88,27 @@ public class Case extends Label{
     }
     
     public void setFill (Paint value ){
-        setBackground(new Background(new BackgroundFill(value, CornerRadii.EMPTY, Insets.EMPTY)));
+        if (value.equals(COULEUR_BLANC)){
+            setBackground(BG_BLANC);                
+        }
+        else if (value.equals(COULEUR_NOIR)){
+            setBackground(BG_NOIR);                
+        }
+        else {
+            setBackground(BG_INCONNU);                
+        }
     }
-    
     
     private void appuyer() {
         if (!caseChifree){
-            if(getFill().equals(couleurVide)){
-                setFill(couleurNoir);
+            if(getBackground().equals(BG_INCONNU)){
+                setBackground(BG_NOIR);
             }
-            else{ if(getFill().equals(couleurNoir)){
-                setFill(couleurBlanc);
+            else if(getBackground().equals(BG_NOIR)){
+                setBackground(BG_BLANC);
             }
-                else{
-                   setFill(couleurVide);
-                }
+            else{
+                setBackground(BG_INCONNU);
             }
         }
         fireEvent(new caseClickedEvent((Node)this));

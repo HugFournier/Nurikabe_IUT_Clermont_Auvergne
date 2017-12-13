@@ -8,7 +8,6 @@ package nurikabe.launcher;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import nurikabe.affichage.controller.ControllerFenetrePrincipale;
@@ -30,6 +29,7 @@ public class LauncherGraphique extends Application {
         fenetrePrincipale = fxmlLoader.getController();
         //fPrincipale.setScene(new Scene(fxmlLoader.load()));
         fPrincipale.centerOnScreen();
+        fPrincipale.setTitle("Nurikabe");
         fPrincipale.show();
 
     }
