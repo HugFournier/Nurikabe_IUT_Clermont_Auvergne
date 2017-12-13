@@ -52,6 +52,7 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
     private Handler manager = new Handler();
     private FenetreSauvegardeController controllerSaves;
     private FenetreCheminController controllerChemin;
+    private ControllerPalmares controllerPalmares;
 
     /**
      * Get the value of manager
@@ -73,11 +74,12 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
 
     @FXML
     public void onPalmares() throws IOException {
-        Stage palmares = new Stage();
-        Parent digit = FXMLLoader.load(getClass().getResource("/nurikabe/affichage/ihm/FenetrePalmares.fxml"));
-        palmares.setScene(new Scene(digit));
-        palmares.centerOnScreen();
-        palmares.show();
+        Stage fPalmares = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/nurikabe/affichage/ihm/FenetrePalmares.fxml"));
+        fPalmares.setScene(new Scene((Parent) fxmlLoader.load()));
+        controllerPalmares = fxmlLoader.getController();
+        controllerPalmares.setHandler(manager);
+        fPalmares.show();
     }
 
     @FXML
@@ -86,6 +88,7 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
             onSauvegarde();
         }
         grille.initGrille(manager.getJeu().getGrille());
+        grille.setDisable(false);
         c.setTime(manager.getJeu().getGrille().getChrono());
         c.start();
         bouttonPause.setDisable(false);
@@ -109,7 +112,6 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
         fSauvegarde.setScene(new Scene((Parent) fxmlLoader.load()));
         controllerSaves = fxmlLoader.getController();
         controllerSaves.setManager(manager);
-        //fSauvegarde.centerOnScreen();
         fSauvegarde.show();
         grilleCorrect = null;
     }
@@ -180,6 +182,7 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
             bouttonAide.setDisable(true);
             bouttonSauvegarde.setDisable(true);
             grille.setDisable(true);
+            manager.PartieTerminée(c.getTime());
         } else {
             message.setText("La grille est fausse.");
         }

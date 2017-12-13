@@ -5,39 +5,46 @@
  */
 package nurikabe.jeu.logic.palmares;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Objects;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 /**
  *
  * @author fourn
  */
-public class Palmares implements Serializable, Comparable {
-    private String id;
-    long temps;
-    int taille;
+public class Palmares implements Comparable {
+
+    private transient SimpleStringProperty id;
+    private transient SimpleLongProperty temps;
+    private transient SimpleIntegerProperty taille;
 
     public Palmares(String id, int taille, long temps) {
-        this.id = id;
-        this.taille = taille;
-        this.temps = temps;
+        this.id = new SimpleStringProperty(id);
+        this.temps = new SimpleLongProperty(temps);
+        this.taille = new SimpleIntegerProperty(taille);
     }
 
     public String getId() {
-        return id;
+        return id.get();
     }
 
     public int getTaille() {
-        return taille;
+        return taille.get();
     }
 
     public long getTemps() {
-        return temps;
+        return temps.get();
     }
 
     @Override
     public String toString() {
-        return "Palmares{" + "id=" + id + ", taille=" + taille + ", temps=" + temps + '}';
+        return getId() + System.lineSeparator() + getTaille() + " " + getTemps();
     }
 
     @Override
@@ -59,7 +66,7 @@ public class Palmares implements Serializable, Comparable {
             return false;
         }
         final Palmares other = (Palmares) obj;
-        if (!Objects.equals(this.id, other.id)) {
+        if (!Objects.equals(this.getId(), other.getId())) {
             return false;
         }
         return true;
@@ -67,11 +74,9 @@ public class Palmares implements Serializable, Comparable {
 
     @Override
     public int compareTo(Object o) {
-        if(equals(0)){
-            return (int) (((Palmares) o).getTemps() - temps);
+        if (equals(0)) {
+            return (int) (((Palmares) o).getTemps() - temps.get());
         }
         return 0;
     }
-    
-    
 }

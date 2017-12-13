@@ -13,7 +13,7 @@ import nurikabe.jeu.logic.palmares.PalmaresHandler;
 
 public class Handler {
 
-    private static final String path = System.getProperty( "user.dir").replace( "\\", "/");
+    private static final String path = System.getProperty("user.dir").replace("\\", "/");
 
     private String defaultPath = path + "/res/grilles/test.nuribin";
     private List<IGrilleHandlerObserveur> listeObserveur = new ArrayList<IGrilleHandlerObserveur>();
@@ -24,92 +24,106 @@ public class Handler {
     private PalmaresHandler palmaresHandler = new PalmaresHandler();
     Boolean partieEnCours = false;
 
-    public Handler( ){
+    public Handler() {
         initEnregistreursEtChargeurs();
     }
 
-    private void initEnregistreursEtChargeurs(){
+    private void initEnregistreursEtChargeurs() {
         enregistreurs = new ArrayList<Enregistreur>();
         chargeurs = new ArrayList<Chargeur>();
-        enregistreurs.add( new EnregistrerDansFichierBinaire());
-        chargeurs.add( new ChargerDepuisFichierBinaire());
-        enregistreurs.add( new EnregisterDansFichierTexte());
-        chargeurs.add( new ChargerDepuisFichierTexte());
+        enregistreurs.add(new EnregistrerDansFichierBinaire());
+        chargeurs.add(new ChargerDepuisFichierBinaire());
+        enregistreurs.add(new EnregisterDansFichierTexte());
+        chargeurs.add(new ChargerDepuisFichierTexte());
 
     }
-    
-    public void ajouterAuPalmares(String id, int taille, long temps){
-        palmaresHandler.addFile(id, taille, temps);
-    }
-    
-    public ObservableList<Palmares> getListePalmares(){
-        return palmaresHandler.getListePalmares();
-    }
 
-    private Enregistreur getEnregistreurTypeSpecifique( String type){
-        for (Enregistreur e : enregistreurs)
-            if (e.getExtentionDeFichier().equals( type))
+    private Enregistreur getEnregistreurTypeSpecifique(String type) {
+        for (Enregistreur e : enregistreurs) {
+            if (e.getExtentionDeFichier().equals(type)) {
                 return e;
+            }
+        }
         return null;
     }
 
-    private Chargeur getChargeurTypeSpecifique( String type){
-        for (Chargeur c : chargeurs)
-            if (c.getExtentionDeFichier().equals( type))
+    private Chargeur getChargeurTypeSpecifique(String type) {
+        for (Chargeur c : chargeurs) {
+            if (c.getExtentionDeFichier().equals(type)) {
                 return c;
+            }
+        }
         return null;
     }
 
-    public void enregistrer( ){
+    public void enregistrer() {
         enregistrer(getCheminDeSauvegarde() == null ? defaultPath : getCheminDeSauvegarde());
     }
 
-    public void enregistrer( String path){
+    public void enregistrer(String path) {
         String[] arr = path.split("\\.");
-        String extention = "." + arr[arr.length-1];
-        jeu.enregistrer( getEnregistreurTypeSpecifique( extention), path);
-        SaveHandler.getSaveHandler().addFile( path);
+        String extention = "." + arr[arr.length - 1];
+        jeu.enregistrer(getEnregistreurTypeSpecifique(extention), path);
+        SaveHandler.getSaveHandler().addFile(path);
         SaveHandler.getSaveHandler().saveFiles();
 
     }
 
-    public void charger( ){
-        charger( defaultPath);
+    public void charger() {
+        charger(defaultPath);
     }
 
-    public void charger( String path){
-        String[] arr = path.split( "\\.");
-        String extention = "." + arr[arr.length-1];
-        jeu = new Jeu( getChargeurTypeSpecifique( extention), path);
+    public void charger(String path) {
+        String[] arr = path.split("\\.");
+        String extention = "." + arr[arr.length - 1];
+        jeu = new Jeu(getChargeurTypeSpecifique(extention), path);
         setCheminDeSauvegarde(path);
         //notifier du changement de la grille
         partieEnCours = true;
-        for(IGrilleHandlerObserveur obs : listeObserveur){
+        for (IGrilleHandlerObserveur obs : listeObserveur) {
             obs.onNPartie();
         }
     }
 
-    public void jouer( int x, int y) {
-        jeu.jouer( x, y);
+    public void jouer(int x, int y) {
+        jeu.jouer(x, y);
     }
 
     public Jeu getJeu() {
         return jeu;
     }
-    
-    public Boolean isPartieEnCours(){
+
+    public Boolean isPartieEnCours() {
         return partieEnCours;
+    }
+
+    public void PartieTerminée(long temps) {
+        if (!partieEnCours) {
+            return;
+        }
+        partieEnCours = false;
+        ajouterAuPalmares(path, jeu.getHeight()*jeu.getWidth(), temps);
+            SaveHandler.getSaveHandler().deleteFile(path);
+        
+    }
+
+    private void ajouterAuPalmares(String id, int taille, long temps) {
+        palmaresHandler.addPalmares(id, taille, temps);
+    }
+
+    public ObservableList<Palmares> getListePalmares() {
+        return palmaresHandler.getListePalmares();
     }
 
     public void ajouterObservateur(IGrilleHandlerObserveur controller) {
         listeObserveur.add(controller);
     }
-    
-    public String getCheminDeSauvegarde(){
+
+    public String getCheminDeSauvegarde() {
         return cheminDeSauvegarde;
     }
-    
-    public void setCheminDeSauvegarde(String chemin){
-        cheminDeSauvegarde=chemin;
+
+    public void setCheminDeSauvegarde(String chemin) {
+        cheminDeSauvegarde = chemin;
     }
 }

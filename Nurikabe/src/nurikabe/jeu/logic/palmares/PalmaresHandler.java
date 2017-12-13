@@ -5,7 +5,7 @@
  */
 package nurikabe.jeu.logic.palmares;
 
-import java.awt.List;
+import java.util.List;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -13,12 +13,17 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintStream;
+import java.lang.reflect.Array;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.Scanner;
+import java.util.Set;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -29,7 +34,7 @@ import javafx.collections.ObservableList;
 public class PalmaresHandler {
 
     private final Path path;
-    private ObservableList<Palmares> listePalmares=FXCollections.observableArrayList();
+    private ObservableList<Palmares> listePalmares = FXCollections.observableArrayList();
 
     public PalmaresHandler() {
         URI uri = null;
@@ -42,8 +47,8 @@ public class PalmaresHandler {
         path = Paths.get(uri);
         lirePalmaresDepuisFichier();
     }
-    
-    public ObservableList<Palmares> getListePalmares(){
+
+    public ObservableList<Palmares> getListePalmares() {
         return listePalmares;
     }
 
@@ -63,32 +68,22 @@ public class PalmaresHandler {
             }
         }
         FileOutputStream fout = null;
-        ObjectOutputStream oos = null;
+        PrintStream ps = null;
         try {
             fout = new FileOutputStream(f);
-            oos = new ObjectOutputStream(fout);
-            oos.writeObject(listePalmares);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        } finally {
-            if (fout != null) {
-                try {
-                    fout.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            ps = new PrintStream(fout);
+            for (Palmares p : listePalmares) {
+                ps.println(p);
             }
-            if (oos != null) {
-                try {
-                    oos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            fout.close();
+            ps.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
     }
 
-    public void addFile(Palmares p) {
+    public void addPalmares(Palmares p) {
         if (listePalmares.contains(p)) {
             int index = listePalmares.indexOf(p);
             Palmares p2 = listePalmares.get(index);
@@ -101,38 +96,45 @@ public class PalmaresHandler {
         sauvegarderPalmares();
     }
 
-    public void addFile(String id, int taille, long temps) {
-        addFile(new Palmares(id,taille,temps));
+    public void addPalmares(String id, int taille, long temps) {
+        addPalmares(new Palmares(id, taille, temps));
     }
-    
+
     private void lirePalmaresDepuisFichier() {
         File f = new File(path.toAbsolutePath() + File.separator + "palmares.bin");
         if (!f.exists()) {
             return;
         }
         FileInputStream fin = null;
-        ObjectInputStream ois = null;
+        Scanner sc = null;
         try {
             fin = new FileInputStream(f);
-            ois = new ObjectInputStream(fin);
-            listePalmares = (ObservableList<Palmares>) ois.readObject();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        } finally {
-            if (fin != null) {
-                try {
-                    fin.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+            sc = new Scanner(fin);
+
+            //System.out.println((ois.readObject()).getClass().getName());
+            String id;
+            int taille;
+            long temps;
+
+            try {
+                id = sc.nextLine();
+                taille = sc.nextInt();
+                temps = sc.nextLong();
+                for (;;) {
+                    listePalmares.add(new Palmares(id,taille,temps));
+                    
+                    sc.nextLine();//retour à la ligne
+                    id = sc.nextLine();
+                    taille = sc.nextInt();
+                    temps = sc.nextLong();
                 }
+            } catch (Exception e) {
             }
-            if (ois != null) {
-                try {
-                    ois.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+
+            fin.close();
+            sc.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
