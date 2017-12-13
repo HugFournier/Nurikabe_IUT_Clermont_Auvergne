@@ -223,19 +223,23 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
         String chemin = manager.getCheminDeSauvegarde();
         manager.getJeu().getGrille().setChrono(c.getTime());
         if (chemin == null) {
+            if(!enPause){
+                onStartAndPause();
+            }
             //trouver une valeur a chemin en demandant
             try{
                 Stage fChemin = new Stage();
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/nurikabe/affichage/ihm/FenetreChemin.fxml"));
                 fChemin.setScene(new Scene((Parent) fxmlLoader.load()));
                 controllerChemin = fxmlLoader.getController();
-                controllerChemin.setChemin(chemin);
+                controllerChemin.setHandler(manager);
                 fChemin.setTitle("Sauvegarder une grille");
                 fChemin.show();
+                return;
             }catch(Exception e){
                 manager.enregistrer();
             }
         }
-        manager.enregistrer(chemin);
+        //manager.enregistrer(chemin);
     }
 }

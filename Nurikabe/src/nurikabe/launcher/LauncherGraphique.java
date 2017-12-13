@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import nurikabe.affichage.controller.ControllerFenetrePrincipale;
+import nurikabe.affichage.controller.FenetreCheminController;
 import nurikabe.jeu.logic.generateur.CreerDepuisPageWeb;
 
 /**
@@ -24,10 +25,10 @@ public class LauncherGraphique extends Application {
 
     @Override
     public void start(Stage fPrincipale) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/nurikabe/affichage/ihm/FenetrePrincipalev2.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/nurikabe/affichage/ihm/FenetrePrincipalev2.fxml"));//FenetreCheminController
+        
         fPrincipale.setScene(new Scene(fxmlLoader.load()));
         fenetrePrincipale = fxmlLoader.getController();
-        //fPrincipale.setScene(new Scene(fxmlLoader.load()));
         fPrincipale.centerOnScreen();
         fPrincipale.setTitle("Nurikabe");
         fPrincipale.show();
@@ -46,6 +47,7 @@ public class LauncherGraphique extends Application {
         if (fenetrePrincipale.getManager().isPartieEnCours()) {
             fenetrePrincipale.onSauvegarde();
         }
+        
         System.exit(0);
         System.out.println("hello");
     }

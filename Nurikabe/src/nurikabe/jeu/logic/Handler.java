@@ -71,7 +71,6 @@ public class Handler {
         jeu.enregistrer(getEnregistreurTypeSpecifique(extention), path);
         SaveHandler.getSaveHandler().addFile(path);
         SaveHandler.getSaveHandler().saveFiles();
-
     }
 
     public void charger() {
@@ -154,7 +153,7 @@ public class Handler {
         IDgrille=id; 
     }
     
-    private String getIDgrille(){
+    public String getIDgrille(){
         return IDgrille;
     }
 }

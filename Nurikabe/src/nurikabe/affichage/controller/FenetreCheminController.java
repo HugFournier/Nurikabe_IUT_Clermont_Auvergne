@@ -12,10 +12,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import nurikabe.jeu.logic.Handler;
 
 /**
  * FXML Controller class
@@ -26,24 +29,56 @@ public class FenetreCheminController {
 
     @FXML
     AnchorPane root;
-    String chemin;
+    String chemin, title = "sansNom", extention = ".nuritxt";
+    Handler handler;
+    @FXML
+    RadioButton choixBinaire, choixTexte;
+
     /**
      * Initializes the controller class.
      */
+    @FXML
     public void initialize() {
     }
 
     @FXML
     protected void filePicker(ActionEvent event) {
-        FileChooser chooser = new FileChooser();
-        Node node = (Node) event.getSource();
-        chooser.setTitle("Open File");
-        File file = chooser.showOpenDialog(node.getScene().getWindow());
-        chemin.replaceAll(chemin, file.getAbsolutePath());
-        System.out.println(file);
+        try {
+            DirectoryChooser chooser = new DirectoryChooser();
+            Node node = (Node) event.getSource();
+            chooser.setTitle("Open File");
+            File file = chooser.showDialog(node.getScene().getWindow());
+            chemin = file.getAbsolutePath();
+            System.out.println(file + " -chemin: " + chemin);
+        } catch (Exception e) {
+        }
     }
 
-    public void setChemin(String chemin){
-        this.chemin=chemin;
+    public void setHandler(Handler handler) {
+        this.handler = handler;
+        this.title = handler.getIDgrille();
+    }
+
+    public void onChoixExtention(ActionEvent event) {
+        switch (((RadioButton) event.getSource()).getId()) {
+            case "choixBinaire":
+                extention = ".nuribin";
+                break;
+            default:
+                extention = ".nuritxt";
+                break;
+        }
+    }
+
+    public void renvoyerChemin() {
+        if (chemin == null || handler == null) {
+            return;
+        }
+        String path = chemin + File.separator + title + extention;
+        handler.setCheminDeSauvegarde(path);
+        handler.enregistrer(path);
+
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.close();
     }
 }
