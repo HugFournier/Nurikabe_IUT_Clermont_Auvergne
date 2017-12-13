@@ -22,8 +22,6 @@ public class LauncherGraphique extends Application {
 
     @Override
     public void start(Stage fPrincipale) throws IOException {
-        //Parent root = FXMLLoader.load(getClass().getResource("/nurikabe/affichage/ihm/FenetrePrincipalev2.fxml"));
-        //Stage fPrincipale = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/nurikabe/affichage/ihm/FenetrePrincipalev2.fxml"));
         fPrincipale.setScene(new Scene(fxmlLoader.load()));
         fenetrePrincipale = fxmlLoader.getController();

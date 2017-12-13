@@ -107,8 +107,9 @@ public class Handler {
         String[] arr = cheminDeSauvegarde.split(Pattern.quote(File.separator));
         arr = arr[arr.length-1].split("\\.");
         String nomFichier = arr[0];
-        ajouterAuPalmares(cheminDeSauvegarde, jeu.getHeight()*jeu.getWidth(), temps);
+        ajouterAuPalmares(nomFichier, jeu.getHeight()*jeu.getWidth(), temps);
             SaveHandler.getSaveHandler().deleteFile(cheminDeSauvegarde);
+        setCheminDeSauvegarde(null);
         
     }
 
