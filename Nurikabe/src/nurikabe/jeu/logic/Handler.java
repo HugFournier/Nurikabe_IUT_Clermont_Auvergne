@@ -10,6 +10,8 @@ import java.util.regex.Pattern;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import nurikabe.affichage.controller.ControllerFenetrePrincipale;
+import nurikabe.jeu.assets.Grille;
+import nurikabe.jeu.assets.cellule.GrilleNommee;
 import nurikabe.jeu.logic.palmares.Palmares;
 import nurikabe.jeu.logic.palmares.PalmaresHandler;
 
@@ -24,7 +26,8 @@ public class Handler {
     private Jeu jeu;
     private String cheminDeSauvegarde = null;
     private PalmaresHandler palmaresHandler = new PalmaresHandler();
-    Boolean partieEnCours = false;
+    private Boolean partieEnCours = false;
+    private String IDgrille = null;
 
     public Handler() {
         initEnregistreursEtChargeurs();
@@ -80,8 +83,25 @@ public class Handler {
         String extention = "." + arr[arr.length - 1];
         jeu = new Jeu(getChargeurTypeSpecifique(extention), path);
         setCheminDeSauvegarde(path);
-        //notifier du changement de la grille
+        
+        arr = cheminDeSauvegarde.split(Pattern.quote(File.separator));
+        arr = arr[arr.length-1].split("\\.");
+        String nomFichier = arr[0];
+        setIDgrille(nomFichier);
+        
         partieEnCours = true;
+        //notifier du changement de la grille
+        for (IGrilleHandlerObserveur obs : listeObserveur) {
+            obs.onNPartie();
+        }
+    }
+    
+    public void ouvrirNouvelleGrille(GrilleNommee nGrille){
+        jeu = new Jeu(nGrille);
+        setCheminDeSauvegarde(null);
+        this.setIDgrille(nGrille.getId());
+        partieEnCours = true;
+        //notifier du changement de la grille
         for (IGrilleHandlerObserveur obs : listeObserveur) {
             obs.onNPartie();
         }
@@ -104,10 +124,7 @@ public class Handler {
             return;
         }
         partieEnCours = false;
-        String[] arr = cheminDeSauvegarde.split(Pattern.quote(File.separator));
-        arr = arr[arr.length-1].split("\\.");
-        String nomFichier = arr[0];
-        ajouterAuPalmares(nomFichier, jeu.getHeight()*jeu.getWidth(), temps);
+        ajouterAuPalmares(getIDgrille(), jeu.getHeight()*jeu.getWidth(), temps);
             SaveHandler.getSaveHandler().deleteFile(cheminDeSauvegarde);
         setCheminDeSauvegarde(null);
         
@@ -131,5 +148,13 @@ public class Handler {
 
     public void setCheminDeSauvegarde(String chemin) {
         cheminDeSauvegarde = chemin;
+    }
+    
+    private void setIDgrille(String id){
+        IDgrille=id; 
+    }
+    
+    private String getIDgrille(){
+        return IDgrille;
     }
 }

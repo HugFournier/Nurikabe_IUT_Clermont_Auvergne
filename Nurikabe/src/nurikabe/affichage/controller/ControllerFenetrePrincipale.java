@@ -82,9 +82,6 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
 
     @FXML
     public void onNPartie() {
-        if(manager.isPartieEnCours()){
-            onSauvegarde();
-        }
         grille.initGrille(manager.getJeu().getGrille());
         grille.setDisable(false);
         c.setTime(manager.getJeu().getGrille().getChrono());
@@ -104,6 +101,9 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
     public void onCharger() throws IOException {
         if(!enPause){
             onStartAndPause();
+        }
+        if(manager.isPartieEnCours()){
+            onSauvegarde();
         }
         Stage fSauvegarde = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/nurikabe/affichage/ihm/FenetreSauvegarde.fxml"));

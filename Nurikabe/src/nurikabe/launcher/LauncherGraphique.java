@@ -7,10 +7,12 @@ package nurikabe.launcher;
 
 import java.io.IOException;
 import javafx.application.Application;
+import static javafx.application.Platform.exit;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import nurikabe.affichage.controller.ControllerFenetrePrincipale;
+import nurikabe.jeu.logic.generateur.CreerDepuisPageWeb;
 
 /**
  *

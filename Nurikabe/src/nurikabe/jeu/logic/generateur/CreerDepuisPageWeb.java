@@ -14,7 +14,10 @@ import java.net.URLConnection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import nurikabe.jeu.assets.Grille;
+import nurikabe.jeu.assets.cellule.Etat;
 import nurikabe.jeu.assets.cellule.GrilleNommee;
+import nurikabe.jeu.assets.cellule.Jouable;
+import nurikabe.jeu.assets.cellule.NonJouable;
 import util.Matrix;
 
 /**
@@ -49,7 +52,7 @@ public class CreerDepuisPageWeb {
         }
 
         try {
-            URL site = new URL("https://www.puzzle-nurikabe.com/?size=0");
+            URL site = new URL("https://www.puzzle-nurikabe.com/?size="+taille);
             BufferedReader in = new BufferedReader(new InputStreamReader(site.openStream()));
 
             String inputLine = "", ligneGrille = "", ligneID = "";
@@ -64,17 +67,42 @@ public class CreerDepuisPageWeb {
                 }
             }
             in.close();
-            System.out.println(ligneGrille);
-            
+
+            //recherche de l'ID
             Pattern pattern = Pattern.compile("\\p{Blank}(\\d+,)*\\d+");
             Matcher matcher = pattern.matcher(ligneID);
             if (matcher.find()) {
-                ligneID=matcher.group(0).split("\\p{Blank}")[1];
+                ligneID = matcher.group(0).split("\\p{Blank}")[1];
                 grille.setId(ligneID);
-                System.out.println(ligneID);
+                //System.out.println(ligneID);
             }
             
-            
+            //Remplissage de la grille
+            int y = -1;
+            int x = -1;
+            int val;
+            String res;
+            pattern = Pattern.compile(">\\d<");
+            for (String ligne : ligneGrille.split("<tr>")) {
+                if (y >= 0) {
+                    x = -1;
+                    for (String colonne : ligne.split("<td")) {
+                        if (x >= 0) {
+                            matcher = pattern.matcher(colonne);
+                            if (matcher.find()) {
+                                res = matcher.group(0);
+                                val = Integer.parseInt(res.charAt(1) + "");
+                                grille.set(x, y, new NonJouable(val));
+                            } else {
+                                grille.set(x, y, new Jouable(Etat.VIDE));
+                            }
+                            //System.out.println(x+";"+y+"="+colonne);
+                        }
+                        x++;
+                    }
+                }
+                y++;
+            }
 
         } catch (Exception e) {
             return null;

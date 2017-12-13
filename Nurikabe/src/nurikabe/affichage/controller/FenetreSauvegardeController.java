@@ -7,6 +7,8 @@ package nurikabe.affichage.controller;
 
 import java.io.File;
 import java.util.List;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,6 +24,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import nurikabe.affichage.Grille;
 import nurikabe.jeu.logic.Handler;
+import nurikabe.jeu.logic.generateur.CreerDepuisPageWeb;
 import nurikabe.jeu.logic.generateur.SaveHandler;
 
 /**
@@ -47,6 +50,7 @@ public class FenetreSauvegardeController {
     ObservableList observableListeSaves = FXCollections.observableArrayList();
     Handler manager;
     String path = null;
+    String tailleCreationGrille = null;
 
     /**
      * Initializes the controller class.
@@ -57,6 +61,12 @@ public class FenetreSauvegardeController {
         listeSaves.setItems(observableListeSaves);
         observableListeTaille.addAll("5x5", "7x7", "10x10", "12x12", "15x15", "20x20");
         listeTaille.setItems(observableListeTaille);
+        listeTaille.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number number2) {
+                tailleCreationGrille = (String) listeTaille.getItems().get((Integer) number2);
+            }
+        });
     }
 
     @FXML
@@ -70,9 +80,9 @@ public class FenetreSauvegardeController {
         Node node = (Node) event.getSource();
         chooser.setTitle("Open File");
         File file = chooser.showOpenDialog(node.getScene().getWindow());
-        try{
-        path = file.getAbsolutePath();
-        }catch(Exception e){
+        try {
+            path = file.getAbsolutePath();
+        } catch (Exception e) {
             path = null;
         }
     }
@@ -80,6 +90,7 @@ public class FenetreSauvegardeController {
     @FXML
     public void changeGeneration(ActionEvent event) {
         path = null;
+        tailleCreationGrille = null;
         listeTaille.setDisable(true);
         bouttonChercherChemin.setDisable(true);
         listeSaves.setDisable(true);
@@ -110,15 +121,47 @@ public class FenetreSauvegardeController {
                 stage.close();
             } catch (Exception e) {
                 messageInfo.setText("Fichier invalide");
-                messageInfo.setVisible(true);
             }
+        } else if (tailleCreationGrille != null) {
+            //creation de la grille
+            int idTaille=0;
+            switch (tailleCreationGrille) {
+                case "5x5":
+                    idTaille=0;
+                    break;
+                case "7x7":
+                    idTaille=1;
+                    break;
+                case "10x10":
+                    idTaille=2;
+                    break;
+                case "12x12":
+                    idTaille=5;
+                    break;
+                case "15x15":
+                    idTaille=3;
+                    break;
+                case "20x20":
+                    idTaille=4;
+                    break;
+                default:
+                    messageInfo.setText("Erreur sélection taille");
+                    messageInfo.setVisible(true);
+                    return;
+            }
+            manager.ouvrirNouvelleGrille(CreerDepuisPageWeb.chercherHTML(idTaille));
+            Stage stage = (Stage) root.getScene().getWindow();
+            stage.close();
+
         } else {
-            messageInfo.setText("Aucun fichier sélectionné");
-            messageInfo.setVisible(true);
+            messageInfo.setText("Sélection incomplète");
         }
+
+        messageInfo.setVisible(true);
     }
 
     public void setManager(Handler manager) {
         this.manager = manager;
     }
+
 }

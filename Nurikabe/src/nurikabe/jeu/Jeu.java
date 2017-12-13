@@ -19,6 +19,10 @@ public class Jeu {
 	public Jeu(Chargeur chargeur, String path){
 		grille = new Grille( chargeur.charger( path));
 	}
+        
+        public Jeu(Grille grille){
+		this.grille = grille;
+	}
 	
 	public boolean verfication() {
 		return verifs.verification( grille);
