@@ -1,10 +1,12 @@
 package nurikabe.jeu.logic;
 
+import java.io.File;
 import nurikabe.jeu.Jeu;
 import nurikabe.jeu.logic.generateur.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import nurikabe.affichage.controller.ControllerFenetrePrincipale;
@@ -102,8 +104,11 @@ public class Handler {
             return;
         }
         partieEnCours = false;
-        ajouterAuPalmares(path, jeu.getHeight()*jeu.getWidth(), temps);
-            SaveHandler.getSaveHandler().deleteFile(path);
+        String[] arr = cheminDeSauvegarde.split(Pattern.quote(File.separator));
+        arr = arr[arr.length-1].split("\\.");
+        String nomFichier = arr[0];
+        ajouterAuPalmares(cheminDeSauvegarde, jeu.getHeight()*jeu.getWidth(), temps);
+            SaveHandler.getSaveHandler().deleteFile(cheminDeSauvegarde);
         
     }
 
