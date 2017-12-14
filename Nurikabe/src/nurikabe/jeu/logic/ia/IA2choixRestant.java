@@ -20,8 +20,8 @@ public class IA2choixRestant implements IAalgo{
 
     private IAGrille mettreDesBlancs( IAGrille grille, int x, int y){
         List<Position> possibles = new ArrayList<>();
-        possibleDePlacer( possibles, grille, x, y, new ArrayList<>(), grille.getGrille().getValeur( x, y));
-        if (possibles.size() == 2){
+        int nbDone = possibleDePlacer( possibles, grille, x, y, new ArrayList<>(), grille.getGrille().getValeur( x, y));
+        if (possibles.size() == 2 && nbDone == grille.getGrille().getValeur( x, y)-1){
             int x1 = possibles.get(0).getX();
             int x2 = possibles.get(1).getX();
             int y1 = possibles.get(0).getY();
@@ -66,31 +66,31 @@ public class IA2choixRestant implements IAalgo{
         possibles.add( new Position( x, y));
     }
 
-    private void possibleDePlacer( List<Position> possibles, IAGrille grille, int x, int y, List<Position> done, int aFaire){
+    private int possibleDePlacer( List<Position> possibles, IAGrille grille, int x, int y, List<Position> done, int aFaire){
         if (existInList( done, x, y))
-            return;
+            return 0;
         if (x < 0 || y < 0 || x >= grille.getWidth() || y >= grille.getHeight())
-            return;
+            return 0;
         if (aFaire <= 1)
-            return;
+            return 0;
         done.add( new Position( x, y));
 
         testEtAddPossible( possibles, grille, x-1, y, done);
         testEtAddPossible( possibles, grille, x+1, y, done);
         testEtAddPossible( possibles, grille, x, y-1, done);
         testEtAddPossible( possibles, grille, x, y+1, done);
-
+        int nbDone = 1;
 
 
         if (grille.isForced( x-1, y) && grille.getGrille().getEtat( x-1, y) == Etat.BLANC)
-            possibleDePlacer( possibles, grille, x-1, y, done, aFaire-1);
+            nbDone += possibleDePlacer( possibles, grille, x-1, y, done, aFaire-1);
         if (grille.isForced( x+1, y) && grille.getGrille().getEtat( x+1, y) == Etat.BLANC)
-            possibleDePlacer( possibles, grille, x+1, y, done, aFaire-1);
+            nbDone += possibleDePlacer( possibles, grille, x+1, y, done, aFaire-1);
         if (grille.isForced( x, y-1) && grille.getGrille().getEtat( x, y-1) == Etat.BLANC)
-            possibleDePlacer( possibles, grille, x, y-1, done, aFaire-1);
+            nbDone += possibleDePlacer( possibles, grille, x, y-1, done, aFaire-1);
         if (grille.isForced( x, y+1) && grille.getGrille().getEtat( x, y+1) == Etat.BLANC)
-            possibleDePlacer( possibles, grille, x, y+1, done, aFaire-1);
-
+            nbDone += possibleDePlacer( possibles, grille, x, y+1, done, aFaire-1);
+        return nbDone;
     }
 
 
