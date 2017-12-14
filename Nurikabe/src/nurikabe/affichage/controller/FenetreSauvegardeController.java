@@ -166,7 +166,8 @@ public class FenetreSauvegardeController {
                 Stage stage = (Stage) root.getScene().getWindow();
                 stage.close();
             } catch (Exception e) {
-                messageInfo.setText("Problème récupération web");
+                messageInfo.setText(e.getMessage());
+                //messageInfo.setText("Problème récupération web");
             }
 
         } else {
