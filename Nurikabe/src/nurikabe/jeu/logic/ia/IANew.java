@@ -10,6 +10,8 @@ import java.util.List;
 
 public class IANew implements IAInterface{
 
+    private static final int DEPT = 5;
+
     private List<IAalgo> algosStart = new LinkedList<>();
     private List<IAalgo> algosRun = new LinkedList<>();
     private List<IAalgo> algosStop = new LinkedList<>();
@@ -127,13 +129,14 @@ public class IANew implements IAInterface{
     @Override
     public void run() {
         IAGrille laGrille = new IAGrille( grilleD);
-        laGrille = resoudre( laGrille, 5);
+        laGrille = resoudre( laGrille, DEPT);
 
         grilleC = laGrille.getGrille();
         stopAvecParent();
     }
 
     private synchronized void stopAvecParent(){
+        System.out.println( "done");
         try{
             parrent.join();
         } catch (InterruptedException e) {
