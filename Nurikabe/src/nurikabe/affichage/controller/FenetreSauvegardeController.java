@@ -35,7 +35,7 @@ import nurikabe.jeu.logic.generateur.SaveHandler;
 public class FenetreSauvegardeController {
 
     @FXML
-    Button bouttonChercherChemin;
+    Button bouttonChercherChemin, bouttonLancer;
     @FXML
     RadioButton newGrille, unkGrille, knoGrille;
     @FXML
@@ -111,6 +111,8 @@ public class FenetreSauvegardeController {
 
     @FXML
     public void chargerGrille() {
+        bouttonLancer.setDisable(true);
+        bouttonLancer.setText("Chargement...");
         if (path != null) {
             try {
                 manager.charger(path);
@@ -149,14 +151,20 @@ public class FenetreSauvegardeController {
                     messageInfo.setVisible(true);
                     return;
             }
+            try{
             manager.ouvrirNouvelleGrille(CreerDepuisPageWeb.chercherHTML(idTaille));
             Stage stage = (Stage) root.getScene().getWindow();
             stage.close();
+            }catch(Exception e){
+                messageInfo.setText("Problème récupération web");
+            }
 
         } else {
             messageInfo.setText("Sélection incomplète");
         }
-
+        
+        bouttonLancer.setDisable(true);
+        bouttonLancer.setText("Lancer");
         messageInfo.setVisible(true);
     }
 

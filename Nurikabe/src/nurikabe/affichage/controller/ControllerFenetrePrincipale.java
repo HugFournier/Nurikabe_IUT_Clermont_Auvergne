@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import nurikabe.affichage.Case;
 import nurikabe.affichage.Grille;
@@ -104,6 +105,7 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
         }
         if(manager.isPartieEnCours()){
             onSauvegarde();
+            return;
         }
         Stage fSauvegarde = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/nurikabe/affichage/ihm/FenetreSauvegarde.fxml"));
@@ -229,17 +231,18 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
             //trouver une valeur a chemin en demandant
             try{
                 Stage fChemin = new Stage();
+                fChemin.initModality(Modality.APPLICATION_MODAL);
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/nurikabe/affichage/ihm/FenetreChemin.fxml"));
                 fChemin.setScene(new Scene((Parent) fxmlLoader.load()));
                 controllerChemin = fxmlLoader.getController();
                 controllerChemin.setHandler(manager);
                 fChemin.setTitle("Sauvegarder une grille");
-                fChemin.show();
+                fChemin.showAndWait();
                 return;
             }catch(Exception e){
-                manager.enregistrer();
+                return;
             }
         }
-        //manager.enregistrer(chemin);
+        manager.enregistrer(chemin);
     }
 }

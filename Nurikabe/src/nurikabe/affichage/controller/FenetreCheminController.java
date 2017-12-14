@@ -49,7 +49,6 @@ public class FenetreCheminController {
             chooser.setTitle("Open File");
             File file = chooser.showDialog(node.getScene().getWindow());
             chemin = file.getAbsolutePath();
-            System.out.println(file + " -chemin: " + chemin);
         } catch (Exception e) {
         }
     }
@@ -78,6 +77,10 @@ public class FenetreCheminController {
         handler.setCheminDeSauvegarde(path);
         handler.enregistrer(path);
 
+        onQuitter();
+    }
+    
+    public void onQuitter(){
         Stage stage = (Stage) root.getScene().getWindow();
         stage.close();
     }
