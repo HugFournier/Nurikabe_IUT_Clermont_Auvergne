@@ -45,6 +45,7 @@
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#onCharger" text="Charger une grille"  />
                 <MenuItem mnemonicParsing="false" onAction="#onPalmares" text="Palmarès" />
+                <MenuItem mnemonicParsing="false" onAction="#onRegles" text="Rêgles et crédits" />
                 <MenuItem mnemonicParsing="false" onAction="#onExit" text="Quitter" />
             </items>
             <font>

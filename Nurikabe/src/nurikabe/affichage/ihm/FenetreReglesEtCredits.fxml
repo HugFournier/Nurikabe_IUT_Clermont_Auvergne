@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane id="root" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nurikabe.affichage.controller.FenetreReglesEtCreditsController">
+    <padding>
+        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+    </padding>
+    <center>
+        <VBox prefHeight="500.0" prefWidth="400.0">
+            <Label wrapText="true">*** Les rêgles ***</Label>
+            <Label wrapText="true">Le Nurikabe est un jeu de logique originaire du Japon.</Label>
+            <Label wrapText="true">La grille représente un jardin composé de petits îlots et d'un ruisseau.</Label>
+            <Label wrapText="true">Le but est de retrouver la forme du ruisseau en respectant les rêgles suivantes.</Label>
+            <Label wrapText="true">Le ruisseau doit être continu : aucune case noire doit être isolée.</Label>
+            <Label wrapText="true">Le ruisseau ne doit pas comporter de bassins : aucun groupement de 4x4 cases noires.</Label>
+            <Label wrapText="true">Les îlots doivent comporter une unique case numérotée, celle-ci indique le nombre de cases blanches formant l'îlot.</Label>
+            <Label wrapText="true">La solution de chaque grille est unique.</Label>
+            <Label wrapText="true">Lors de la vérification, les cases restée en inconnu seront conscidérées comme des îlots.</Label>
+            <Label wrapText="true"></Label>
+            <Label wrapText="true">*** Les crédits ***</Label>
+            <Label wrapText="true">Commanditaire : M. Laurent PROVOT.</Label>
+            <Label wrapText="true">Equipe de développement :</Label>
+            <Label wrapText="true">M. Arthur GIRAUD</Label>
+            <Label wrapText="true">M. Hugo FOURNIER</Label>
+            <Label wrapText="true">M. Tom KAUFFELD</Label>
+            <Label wrapText="true">M. Sylvain ATELAIS</Label>
+            <Label wrapText="true">Projet réalisé dans le cadre des projets tutorés.</Label>
+            <Label wrapText="true">2017 - Université Clermont Auvergne.</Label>
+            <Label wrapText="true">Projet sous Licence MIT.</Label>
+            <Label wrapText="true"></Label>
+            <Button mnemonicParsing="false" onAction="#onExit" text="Quitter" />
+        </VBox>
+    </center>
+</BorderPane>
+

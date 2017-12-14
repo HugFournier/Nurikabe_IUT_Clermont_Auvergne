@@ -91,18 +91,18 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
         bouttonAide.setDisable(false);
         bouttonSauvegarde.setDisable(false);
         message.setText(null);
-        if(enPause){
+        if (enPause) {
             onStartAndPause();
         }
     }
 
     @FXML
     public void onCharger() throws IOException {
-        if(!enPause){
+        if (!enPause) {
             onStartAndPause();
         }
-        if(manager.isPartieEnCours()){
-            if(manager.getCheminDeSauvegarde()==null){
+        if (manager.isPartieEnCours()) {
+            if (manager.getCheminDeSauvegarde() == null) {
                 onSauvegarde();
                 return;
             }
@@ -119,7 +119,9 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
 
     @FXML
     public void onStartAndPause() {
-        if(!manager.isPartieEnCours())return;
+        if (!manager.isPartieEnCours()) {
+            return;
+        }
         if (enPause) {
             c.start();
             bouttonPause.setVisible(true);
@@ -142,9 +144,10 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
         if (manager.isPartieEnCours() && !bouttonSauvegarde.isDisable()) {
             onSauvegarde();
         }
-        try{
+        try {
             c.pause();
-        }catch(Exception e){}
+        } catch (Exception e) {
+        }
         Platform.exit();
     }
 
@@ -195,30 +198,32 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
         }
         try {
             PositionAvecEtat positionAvecEtat = manager.getJeu().demandeAide();
-            if (positionAvecEtat == null)
+            if (positionAvecEtat == null) {
                 return;
-            if (positionAvecEtat.getEtat() == Etat.BLANC)
-                grille.getCase( positionAvecEtat.getX(), positionAvecEtat.getY()).setFill( Case.COULEUR_BLANC);
-            else if (positionAvecEtat.getEtat() == Etat.NOIR)
-                grille.getCase( positionAvecEtat.getX(), positionAvecEtat.getY()).setFill( Case.COULEUR_NOIR);
-            manager.getJeu().getGrille().setEtat( positionAvecEtat.getX(), positionAvecEtat.getY(), positionAvecEtat.getEtat());
-            message.setText( "");
+            }
+            if (positionAvecEtat.getEtat() == Etat.BLANC) {
+                grille.getCase(positionAvecEtat.getX(), positionAvecEtat.getY()).setFill(Case.COULEUR_BLANC);
+            } else if (positionAvecEtat.getEtat() == Etat.NOIR) {
+                grille.getCase(positionAvecEtat.getX(), positionAvecEtat.getY()).setFill(Case.COULEUR_NOIR);
+            }
+            manager.getJeu().getGrille().setEtat(positionAvecEtat.getX(), positionAvecEtat.getY(), positionAvecEtat.getEtat());
+            message.setText("");
         } catch (Exception e) {
-            message.setText( "Veillez réessayer plus tard, nos patates vont le resoudre");
+            message.setText("Veillez réessayer plus tard, nos patates vont le resoudre");
         }
 
     }
 
     @FXML
-    public void onSauvegarde(){
+    public void onSauvegarde() {
         String chemin = manager.getCheminDeSauvegarde();
         manager.getJeu().getGrille().setChrono(c.getTime());
         if (chemin == null) {
-            if(!enPause){
+            if (!enPause) {
                 onStartAndPause();
             }
             //trouver une valeur a chemin en demandant
-            try{
+            try {
                 Stage fChemin = new Stage();
                 fChemin.initModality(Modality.APPLICATION_MODAL);
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/nurikabe/affichage/ihm/FenetreChemin.fxml"));
@@ -228,10 +233,19 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
                 fChemin.setTitle("Sauvegarder une grille");
                 fChemin.showAndWait();
                 return;
-            }catch(Exception e){
+            } catch (Exception e) {
                 return;
             }
         }
         manager.enregistrer(chemin);
+    }
+
+    @FXML
+    public void onRegles() throws IOException {
+        Stage fRegles = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/nurikabe/affichage/ihm/FenetreReglesEtCredits.fxml"));
+        fRegles.setScene(new Scene((Parent) fxmlLoader.load()));
+        fRegles.setTitle("Rêgles & Crédits");
+        fRegles.show();
     }
 }
