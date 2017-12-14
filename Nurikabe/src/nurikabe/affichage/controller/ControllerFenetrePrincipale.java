@@ -21,6 +21,7 @@ import nurikabe.affichage.Case;
 import nurikabe.affichage.Grille;
 import nurikabe.affichage.events.caseClickedEvent;
 import nurikabe.jeu.assets.Chronometre;
+import nurikabe.jeu.assets.PositionAvecEtat;
 import nurikabe.jeu.assets.cellule.Etat;
 import nurikabe.jeu.logic.Handler;
 import nurikabe.jeu.logic.IGrilleHandlerObserveur;
@@ -31,8 +32,6 @@ import nurikabe.jeu.logic.ia.IANew;
  * @author argiraud
  */
 public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
-
-    private nurikabe.jeu.assets.Grille grilleCorrect = null;
 
     @FXML
     BorderPane root;
@@ -92,7 +91,6 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
         bouttonAide.setDisable(false);
         bouttonSauvegarde.setDisable(false);
         message.setText(null);
-        grilleCorrect = null;
         if(enPause){
             onStartAndPause();
         }
@@ -117,7 +115,6 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
         controllerSaves.setManager(manager);
         fSauvegarde.setTitle("Charger une grille");
         fSauvegarde.show();
-        grilleCorrect = null;
     }
 
     @FXML
@@ -135,10 +132,8 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
             bouttonStart.setVisible(true);
             grille.setVisible(false);
             message.setText("En Pause");
-            grilleCorrect = null;
         }
         enPause ^= true;
-        grilleCorrect = null;
     }
 
     //Méthode utilisée par lorsque que le bouton Quitter est utilisé
@@ -166,7 +161,6 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
         c.setLabel(chrono);
         manager.ajouterObservateur(this);
         grille.addEventHandler(caseClickedEvent.CASE_CLICKED_AVEC_POSITION, clicSurCase);
-        grilleCorrect = null;
     }
 
     final EventHandler<caseClickedEvent> clicSurCase = new EventHandler<caseClickedEvent>() {
@@ -199,28 +193,19 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
         if (manager == null || manager.getJeu() == null || manager.getJeu().getGrille() == null) {
             return;
         }
-        if (grilleCorrect == null) {
-            grilleCorrect = (new IANew()).resoudre(manager.getJeu().getGrille());
+        try {
+            PositionAvecEtat positionAvecEtat = manager.getJeu().demandeAide();
+            if (positionAvecEtat == null)
+                return;
+            if (positionAvecEtat.getEtat() == Etat.BLANC)
+                grille.getCase( positionAvecEtat.getX(), positionAvecEtat.getY()).setFill( Case.COULEUR_BLANC);
+            else if (positionAvecEtat.getEtat() == Etat.NOIR)
+                grille.getCase( positionAvecEtat.getX(), positionAvecEtat.getY()).setFill( Case.COULEUR_NOIR);
+            manager.getJeu().getGrille().setEtat( positionAvecEtat.getX(), positionAvecEtat.getY(), positionAvecEtat.getEtat());
+        } catch (Exception e) {
+
         }
-        for (int x = 0; x < grilleCorrect.getWidth(); x++) {
-            for (int y = 0; y < grilleCorrect.getHeight(); y++) {
-                if (grilleCorrect.getEtat(x, y) == Etat.BLANC && manager.getJeu().getEtat(x, y) != Etat.BLANC) {
-                    manager.getJeu().getGrille().setEtat(x, y, Etat.BLANC);
-                    Case c = grille.getCase(x, y);
-                    if (c != null) {
-                        c.setFill(Case.COULEUR_BLANC);
-                    }
-                    return;
-                } else if (grilleCorrect.getEtat(x, y) == Etat.NOIR && manager.getJeu().getEtat(x, y) != Etat.NOIR) {
-                    manager.getJeu().getGrille().setEtat(x, y, Etat.NOIR);
-                    Case c = grille.getCase(x, y);
-                    if (c != null) {
-                        c.setFill(Case.COULEUR_NOIR);
-                    }
-                    return;
-                }
-            }
-        }
+
     }
 
     @FXML

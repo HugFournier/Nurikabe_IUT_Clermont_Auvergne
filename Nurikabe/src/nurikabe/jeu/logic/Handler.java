@@ -8,9 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
-import nurikabe.affichage.controller.ControllerFenetrePrincipale;
-import nurikabe.jeu.assets.Grille;
 import nurikabe.jeu.assets.cellule.GrilleNommee;
 import nurikabe.jeu.logic.palmares.Palmares;
 import nurikabe.jeu.logic.palmares.PalmaresHandler;
@@ -80,6 +77,8 @@ public class Handler {
     public void charger(String path) {
         String[] arr = path.split("\\.");
         String extention = "." + arr[arr.length - 1];
+        if (jeu != null)
+            jeu.stopCalcule();
         jeu = new Jeu(getChargeurTypeSpecifique(extention), path);
         setCheminDeSauvegarde(path);
         
@@ -96,6 +95,8 @@ public class Handler {
     }
     
     public void ouvrirNouvelleGrille(GrilleNommee nGrille){
+        if (jeu != null)
+            jeu.stopCalcule();
         jeu = new Jeu(nGrille);
         setCheminDeSauvegarde(null);
         this.setIDgrille(nGrille.getId());
@@ -122,6 +123,8 @@ public class Handler {
         if (!partieEnCours) {
             return;
         }
+        if (jeu != null)
+            jeu.stopCalcule();
         partieEnCours = false;
         ajouterAuPalmares(getIDgrille(), jeu.getHeight()*jeu.getWidth(), temps);
             SaveHandler.getSaveHandler().deleteFile(cheminDeSauvegarde);

@@ -15,6 +15,11 @@ public class IANew implements IAInterface{
     private List<IAalgo> algosStop = new LinkedList<>();
     private LesVerifs lesVerifs = new LesVerifs();
 
+    private Grille grilleC = null;
+    private Grille grilleD;
+    private Thread parrent;
+    private Thread thread;
+
     public IANew( ){
         initStart();
         initRun();
@@ -27,6 +32,7 @@ public class IANew implements IAInterface{
 
     private void initRun(){
         algosRun.add( new IABlancNoir());
+        algosRun.add( new IATroisNoirsUnBlanc());
         algosRun.add( new IANoirs());
         algosRun.add( new IABlancs());
         algosRun.add( new IABlancsCompletes());
@@ -69,7 +75,6 @@ public class IANew implements IAInterface{
     }
 
     private IAGrille resoudre( IAGrille grille, int deptRest){
-        System.out.println( deptRest);
         if (deptRest <= 0)
             return grille.clone();
         IAGrille laGrille = resoudre( grille.clone());
@@ -101,10 +106,48 @@ public class IANew implements IAInterface{
     }
 
     @Override
-    public Grille resoudre( Grille grille) {
-        IAGrille laGrille = new IAGrille( grille);
-        laGrille = resoudre( laGrille, 5);
-        return laGrille.getGrille();
+    public synchronized void resoudre( Grille grille) {
+        grilleD = grille;
+        grilleC = null;
+        parrent = Thread.currentThread();
+        thread = new Thread( this);
+        thread.start();
     }
 
+    @Override
+    public boolean isSolved() {
+        return (grilleC != null);
+    }
+
+    @Override
+    public Grille getGrille( ) {
+        return grilleC;
+    }
+
+    @Override
+    public void run() {
+        IAGrille laGrille = new IAGrille( grilleD);
+        laGrille = resoudre( laGrille, 5);
+
+        grilleC = laGrille.getGrille();
+        stopAvecParent();
+    }
+
+    private synchronized void stopAvecParent(){
+        try{
+            parrent.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public synchronized void stop(){
+        System.out.println( "STOP");
+        try{
+            thread.join();
+            grilleC = null;
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
