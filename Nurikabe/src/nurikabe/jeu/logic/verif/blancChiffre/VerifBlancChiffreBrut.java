@@ -34,7 +34,8 @@ public class VerifBlancChiffreBrut implements Verif{
 			if (v != nbBlanc( listBlanc, p))
 				return false;
 		}
-		
+		if (listBlanc.size() > 0)
+			return false;
 		return true;
 	}
 	

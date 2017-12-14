@@ -202,8 +202,9 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
             else if (positionAvecEtat.getEtat() == Etat.NOIR)
                 grille.getCase( positionAvecEtat.getX(), positionAvecEtat.getY()).setFill( Case.COULEUR_NOIR);
             manager.getJeu().getGrille().setEtat( positionAvecEtat.getX(), positionAvecEtat.getY(), positionAvecEtat.getEtat());
+            message.setText( "");
         } catch (Exception e) {
-
+            message.setText( "Veillez réessayer plus tard, nos patates vont le resoudre");
         }
 
     }

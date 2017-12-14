@@ -27,7 +27,7 @@ public class VerifBlancConnectBrut implements Verif{
 			if (!check( listBlanc, listChiffre, p))
 				return false;
 		}
-		return true;
+        return true;
 	}
 
 	
