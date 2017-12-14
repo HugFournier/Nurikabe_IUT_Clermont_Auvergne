@@ -26,16 +26,13 @@ public class IA2choixRestant implements IAalgo{
             int x2 = possibles.get(1).getX();
             int y1 = possibles.get(0).getY();
             int y2 = possibles.get(1).getY();
-            System.out.println("ah");
-            if (x1 == x2-1 && y1 == y2-1){
-                System.out.println( "oui");
+            if ((x1 == x2-1 && y1 == y2-1) || (x1 == x2+1 && y1 == y2+1)){
                 if (grille.getGrille().getEtat(x1, y2) == Etat.BLANC)
                     placer( grille, x2, y1, Etat.NOIR);
                 else
                     placer( grille, x1, y2, Etat.NOIR);
             }
-            else if (x1 == x2-1 && y1 == y2+1){
-                System.out.println("non");
+            else if ((x1 == x2-1 && y1 == y2+1) || (x1 == x2+1 && y1 == y2-1)){
                 if (grille.getGrille().getEtat(x1, y2) == Etat.BLANC)
                     placer( grille, x2, y1, Etat.NOIR);
                 else
