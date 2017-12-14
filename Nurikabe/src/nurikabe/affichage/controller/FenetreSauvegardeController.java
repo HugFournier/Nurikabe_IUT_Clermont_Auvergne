@@ -156,12 +156,6 @@ public class FenetreSauvegardeController {
                     return;
             }
             try {
-                /*new Timer().schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        throw new TimeoutException("Opération trop longue");
-                    }
-                }, 10000);*/
                 manager.ouvrirNouvelleGrille(CreerDepuisPageWeb.chercherHTML(idTaille));
                 Stage stage = (Stage) root.getScene().getWindow();
                 stage.close();

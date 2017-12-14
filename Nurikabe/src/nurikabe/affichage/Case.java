@@ -7,6 +7,7 @@ package nurikabe.affichage;
 
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -69,8 +70,8 @@ public class Case extends Label{
             setFont(new Font(17));
             setTextFill(Color.BLACK);
         }
-        setTextAlignment(TextAlignment.CENTER);
-        this.setTranslateY(50);
+        
+        this.setAlignment( Pos.CENTER);
         setBorder(BORDURE);
         setFill(couleur);
         setMaxSize(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
