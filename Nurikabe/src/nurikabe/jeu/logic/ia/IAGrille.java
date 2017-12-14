@@ -1,6 +1,10 @@
 package nurikabe.jeu.logic.ia;
 
 import nurikabe.jeu.assets.Grille;
+import nurikabe.jeu.assets.cellule.Cellule;
+import nurikabe.jeu.assets.cellule.Jouable;
+import nurikabe.jeu.assets.cellule.NonJouable;
+import util.Matrix;
 import util.PublicCloneable;
 
 class IAGrille implements PublicCloneable{
@@ -9,7 +13,14 @@ class IAGrille implements PublicCloneable{
     private boolean forced[][];
 
     protected IAGrille( Grille grille){
-        this.grille = grille.clone();
+        Matrix<Cellule> matrix = new Matrix<>( grille.getWidth(), grille.getHeight());
+        for (int x = 0; x < grille.getWidth(); x++)
+            for (int y = 0; y < grille.getHeight(); y++)
+                if (grille.getValeur( x, y) >= 1)
+                    matrix.set( x, y, new NonJouable( grille.getValeur(x ,y)));
+                else
+                    matrix.set( x, y, new Jouable( ));
+        this.grille = new Grille( matrix);
         forced = new boolean[grille.getWidth()][grille.getHeight()];
         for (int x = 0; x < grille.getWidth(); x++)
             for (int y = 0; y < grille.getHeight(); y++)
