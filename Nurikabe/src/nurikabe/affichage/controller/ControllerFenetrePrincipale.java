@@ -104,8 +104,11 @@ public class ControllerFenetrePrincipale implements IGrilleHandlerObserveur {
             onStartAndPause();
         }
         if(manager.isPartieEnCours()){
+            if(manager.getCheminDeSauvegarde()==null){
+                onSauvegarde();
+                return;
+            }
             onSauvegarde();
-            return;
         }
         Stage fSauvegarde = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/nurikabe/affichage/ihm/FenetreSauvegarde.fxml"));

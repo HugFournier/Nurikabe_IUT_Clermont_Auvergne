@@ -6,14 +6,10 @@
 package nurikabe.jeu.logic.generateur;
 
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import nurikabe.jeu.assets.Grille;
 import nurikabe.jeu.assets.cellule.Etat;
 import nurikabe.jeu.assets.cellule.GrilleNommee;
 import nurikabe.jeu.assets.cellule.Jouable;
@@ -26,7 +22,7 @@ import util.Matrix;
  */
 public class CreerDepuisPageWeb {
 
-    public static GrilleNommee chercherHTML(int taille) {
+    public static GrilleNommee chercherHTML(int taille) throws Exception {
 
         GrilleNommee grille;
 
@@ -67,6 +63,9 @@ public class CreerDepuisPageWeb {
                 }
             }
             in.close();
+            if (!trouve){
+                throw new Exception("Echec parseur");
+            }
 
             //recherche de l'ID
             Pattern pattern = Pattern.compile("\\p{Blank}(\\d+,)*\\d+");
@@ -105,7 +104,7 @@ public class CreerDepuisPageWeb {
             }
 
         } catch (Exception e) {
-            return null;
+            throw new Exception("Echec parseur");
         }
         return grille;
     }

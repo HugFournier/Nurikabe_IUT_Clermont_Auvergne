@@ -7,6 +7,11 @@ package nurikabe.affichage.controller;
 
 import java.io.File;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeoutException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -22,7 +27,6 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import nurikabe.affichage.Grille;
 import nurikabe.jeu.logic.Handler;
 import nurikabe.jeu.logic.generateur.CreerDepuisPageWeb;
 import nurikabe.jeu.logic.generateur.SaveHandler;
@@ -126,43 +130,49 @@ public class FenetreSauvegardeController {
             }
         } else if (tailleCreationGrille != null) {
             //creation de la grille
-            int idTaille=0;
+            int idTaille = 0;
             switch (tailleCreationGrille) {
                 case "5x5":
-                    idTaille=0;
+                    idTaille = 0;
                     break;
                 case "7x7":
-                    idTaille=1;
+                    idTaille = 1;
                     break;
                 case "10x10":
-                    idTaille=2;
+                    idTaille = 2;
                     break;
                 case "12x12":
-                    idTaille=5;
+                    idTaille = 5;
                     break;
                 case "15x15":
-                    idTaille=3;
+                    idTaille = 3;
                     break;
                 case "20x20":
-                    idTaille=4;
+                    idTaille = 4;
                     break;
                 default:
                     messageInfo.setText("Erreur sélection taille");
                     messageInfo.setVisible(true);
                     return;
             }
-            try{
-            manager.ouvrirNouvelleGrille(CreerDepuisPageWeb.chercherHTML(idTaille));
-            Stage stage = (Stage) root.getScene().getWindow();
-            stage.close();
-            }catch(Exception e){
+            try {
+                /*new Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        throw new TimeoutException("Opération trop longue");
+                    }
+                }, 10000);*/
+                manager.ouvrirNouvelleGrille(CreerDepuisPageWeb.chercherHTML(idTaille));
+                Stage stage = (Stage) root.getScene().getWindow();
+                stage.close();
+            } catch (Exception e) {
                 messageInfo.setText("Problème récupération web");
             }
 
         } else {
             messageInfo.setText("Sélection incomplète");
         }
-        
+
         bouttonLancer.setDisable(true);
         bouttonLancer.setText("Lancer");
         messageInfo.setVisible(true);
