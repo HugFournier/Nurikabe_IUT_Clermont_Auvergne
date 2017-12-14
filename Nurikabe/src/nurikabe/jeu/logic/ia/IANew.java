@@ -136,7 +136,6 @@ public class IANew implements IAInterface{
     }
 
     private synchronized void stopAvecParent(){
-        System.out.println( "done");
         try{
             parrent.join();
         } catch (InterruptedException e) {
@@ -145,7 +144,6 @@ public class IANew implements IAInterface{
     }
 
     public synchronized void stop(){
-        System.out.println( "STOP");
         try{
             thread.join();
             grilleC = null;
