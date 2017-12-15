@@ -6,6 +6,10 @@ import util.Position;
 import java.util.ArrayList;
 import java.util.List;
 
+import static nurikabe.jeu.logic.ia.IAUtils.peutPlacer;
+import static nurikabe.jeu.logic.ia.IAUtils.placer;
+import static nurikabe.jeu.logic.ia.IAUtils.positionExistList;
+
 public class IA2choixRestant implements IAalgo{
 
     @Override
@@ -44,30 +48,22 @@ public class IA2choixRestant implements IAalgo{
         return grille;
     }
 
-    private boolean peutPlacer( IAGrille grille, int x, int y){
-        if (x < 0 || y < 0 || x >= grille.getWidth() || y >= grille.getHeight())
-            return false;
-        if (grille.isForced( x, y))
-            return false;
-        return true;
-    }
-
     private void testEtAddPossible( List<Position> possibles, IAGrille grille, int x, int y, List<Position> done){
         if (!peutPlacer( grille, x, y))
             return;
-        if (!existInList( done, x-1, y) && grille.getGrille().getEtat( x-1, y) == Etat.BLANC)
+        if (!positionExistList( done, x-1, y) && grille.getGrille().getEtat( x-1, y) == Etat.BLANC)
             return;
-        if (!existInList( done, x+1, y) && grille.getGrille().getEtat( x+1, y) == Etat.BLANC)
+        if (!positionExistList( done, x+1, y) && grille.getGrille().getEtat( x+1, y) == Etat.BLANC)
             return;
-        if (!existInList( done, x, y-1) && grille.getGrille().getEtat( x, y-1) == Etat.BLANC)
+        if (!positionExistList( done, x, y-1) && grille.getGrille().getEtat( x, y-1) == Etat.BLANC)
             return;
-        if (!existInList( done, x, y+1) && grille.getGrille().getEtat( x, y+1) == Etat.BLANC)
+        if (!positionExistList( done, x, y+1) && grille.getGrille().getEtat( x, y+1) == Etat.BLANC)
             return;
         possibles.add( new Position( x, y));
     }
 
     private int possibleDePlacer( List<Position> possibles, IAGrille grille, int x, int y, List<Position> done, int aFaire){
-        if (existInList( done, x, y))
+        if (positionExistList( done, x, y))
             return 0;
         if (x < 0 || y < 0 || x >= grille.getWidth() || y >= grille.getHeight())
             return 0;
@@ -91,22 +87,5 @@ public class IA2choixRestant implements IAalgo{
         if (grille.isForced( x, y+1) && grille.getGrille().getEtat( x, y+1) == Etat.BLANC)
             nbDone += possibleDePlacer( possibles, grille, x, y+1, done, aFaire-1);
         return nbDone;
-    }
-
-
-    private boolean existInList( List<Position> list, int x, int y){
-        for (Position p : list)
-            if (p.getX() == x && p.getY() == y)
-                return true;
-        return false;
-    }
-
-    private IAGrille placer( IAGrille grille, int x, int y, Etat etat){
-        if (x < 0 || y < 0 || x >= grille.getWidth() || y >= grille.getHeight())
-            return grille;
-        if (grille.isForced(x, y))
-            return grille;
-        grille.setForced( x, y, grille.getGrille().setEtat( x, y, etat));
-        return grille;
     }
 }

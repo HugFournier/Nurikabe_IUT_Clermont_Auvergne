@@ -2,7 +2,9 @@ package nurikabe.jeu.logic.ia;
 
 import nurikabe.jeu.assets.cellule.Etat;
 
-public class IATroisNoirsUnBlanc implements IAalgo{
+import static nurikabe.jeu.logic.ia.IAUtils.placer;
+
+class IATroisNoirsUnBlanc implements IAalgo{
 
     @Override
     public IAGrille resoudre(IAGrille grille) {
@@ -12,15 +14,6 @@ public class IATroisNoirsUnBlanc implements IAalgo{
                 if (isObligated( laGrille, x, y))
                     placer( laGrille, x, y, Etat.BLANC);
         return laGrille;
-    }
-
-    private IAGrille placer( IAGrille grille, int x, int y, Etat etat){
-        if (x < 0 || y < 0 || x >= grille.getWidth() || y >= grille.getHeight())
-            return grille;
-        if (grille.isForced(x, y))
-            return grille;
-        grille.setForced( x, y, grille.getGrille().setEtat( x, y, etat));
-        return grille;
     }
 
     private boolean isObligated( IAGrille grille, int x, int y){

@@ -6,8 +6,11 @@ import util.Position;
 import java.util.ArrayList;
 import java.util.List;
 
-public class IANoirs implements IAalgo{
+import static nurikabe.jeu.logic.ia.IAUtils.placer;
+import static nurikabe.jeu.logic.ia.IAUtils.peutPlacer;
+import static nurikabe.jeu.logic.ia.IAUtils.positionExistList;
 
+class IANoirs implements IAalgo{
 
     @Override
     public IAGrille resoudre( IAGrille grille) {
@@ -27,16 +30,8 @@ public class IANoirs implements IAalgo{
         return grille;
     }
 
-    private boolean peutPlacer( IAGrille grille, int x, int y){
-        if (x < 0 || y < 0 || x >= grille.getWidth() || y >= grille.getHeight())
-            return false;
-        if (grille.isForced( x, y))
-            return false;
-        return true;
-    }
-
     private void possibleDePlacer( List<Position> possibles, IAGrille grille, int x, int y, List<Position> done){
-        if (existInList( done, x, y))
+        if (positionExistList( done, x, y))
             return;
         if (x < 0 || y < 0 || x >= grille.getWidth() || y >= grille.getHeight())
             return;
@@ -63,26 +58,5 @@ public class IANoirs implements IAalgo{
             possibleDePlacer( possibles, grille, x, y+1, done);
 
     }
-
-
-    private boolean existInList( List<Position> list, int x, int y){
-        for (Position p : list)
-            if (p.getX() == x && p.getY() == y)
-                return true;
-        return false;
-    }
-
-    private IAGrille placer( IAGrille grille, int x, int y, Etat etat){
-        if (x < 0 || y < 0 || x >= grille.getWidth() || y >= grille.getHeight())
-            return grille;
-        if (grille.isForced(x, y))
-            return grille;
-        grille.setForced( x, y, grille.getGrille().setEtat( x, y, etat));
-        return grille;
-    }
-
-
-
-
 
 }

@@ -3,6 +3,7 @@ package nurikabe.jeu.logic.verif;
 import nurikabe.jeu.assets.Grille;
 import nurikabe.jeu.logic.verif.blancChiffre.VerifBlancChiffreBrut;
 import nurikabe.jeu.logic.verif.blancConnect.VerifBlancConnectBrut;
+import nurikabe.jeu.logic.verif.noirBassin.VerifNoirBassinBrut;
 import nurikabe.jeu.logic.verif.noirConnect.VerifNoirConnectBrut;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class LesVerifs {
         regles.add( new VerifBlancChiffreBrut());
         regles.add( new VerifBlancConnectBrut());
         regles.add( new VerifNoirConnectBrut());
+        regles.add( new VerifNoirBassinBrut());
     }
 
     public boolean verification( Grille grille){
