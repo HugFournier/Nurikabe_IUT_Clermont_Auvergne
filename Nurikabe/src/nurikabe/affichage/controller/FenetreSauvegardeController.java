@@ -95,7 +95,7 @@ public class FenetreSauvegardeController {
     public void changeGeneration(ActionEvent event) {
         path = null;
         tailleCreationGrille = null;
-        listeTaille.setDisable(true);
+        /*listeTaille.setDisable(true);
         bouttonChercherChemin.setDisable(true);
         listeSaves.setDisable(true);
         switch (((RadioButton) event.getSource()).getId()) {
@@ -110,7 +110,7 @@ public class FenetreSauvegardeController {
                 break;
             default:
                 break;
-        }
+        }*/
     }
 
     @FXML

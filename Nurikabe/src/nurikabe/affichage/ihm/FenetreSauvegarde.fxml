@@ -33,14 +33,14 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     </rowConstraints>
                                     <children>
-                                        <Button fx:id="bouttonChercherChemin" disable="true" mnemonicParsing="false" onAction="#chercherChemin" text="Chercher fichier" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                         <RadioButton fx:id="newGrille" mnemonicParsing="false" onAction="#changeGeneration" text="Générer une nouvelle grille">
                                  <toggleGroup>
                                     <ToggleGroup fx:id="modeGeneration" />
                                  </toggleGroup></RadioButton>
                                         <RadioButton fx:id="unkGrille" mnemonicParsing="false" onAction="#changeGeneration" text="Générer une grille existante" toggleGroup="$modeGeneration" GridPane.columnIndex="2" />
                                         <RadioButton fx:id="knoGrille" mnemonicParsing="false" onAction="#changeGeneration" text="Fichiers récents" toggleGroup="$modeGeneration" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                        <ChoiceBox fx:id="listeTaille" disable="true" prefWidth="150.0" GridPane.rowIndex="1" />
+                                        <ChoiceBox fx:id="listeTaille" disable="${newGrille.selected == false}" prefWidth="150.0" GridPane.rowIndex="1" />
+                                        <Button fx:id="bouttonChercherChemin" disable="${unkGrille.selected == false}" mnemonicParsing="false" onAction="#chercherChemin" text="Chercher fichier" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                               <Label fx:id="messageInfo" textFill="RED" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     </children>
                                 </GridPane>
@@ -48,7 +48,7 @@
                         </AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                             <children>
-                                <ListView fx:id="listeSaves" disable="true" onMouseClicked="#cheminClic" prefHeight="100.0" prefWidth="598.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                <ListView fx:id="listeSaves" disable="${knoGrille.selected == false}" onMouseClicked="#cheminClic" prefHeight="100.0" prefWidth="598.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                             </children>
                         </AnchorPane>
                     </items>
