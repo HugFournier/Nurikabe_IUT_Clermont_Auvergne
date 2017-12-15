@@ -28,22 +28,22 @@
       <file leaf-file-name="IABrutThread.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IABrutThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="159" column="70" lean-forward="false" selection-start-line="159" selection-start-column="70" selection-end-line="159" selection-end-column="70" />
+            <state relative-caret-position="391">
+              <caret line="84" column="49" lean-forward="true" selection-start-line="84" selection-start-column="49" selection-end-line="84" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1054#1055#0" expanded="true" />
-                <element signature="e#1105#1106#0" expanded="true" />
+                <element signature="e#1144#1145#0" expanded="true" />
+                <element signature="e#1195#1196#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IABlancs.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="IABlancs.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IABlancs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="86" column="12" lean-forward="false" selection-start-line="86" selection-start-column="12" selection-end-line="86" selection-end-column="12" />
+            <state relative-caret-position="153">
+              <caret line="75" column="5" lean-forward="true" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -51,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IACaseTropLoins.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="IACaseTropLoins.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IACaseTropLoins.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state relative-caret-position="153">
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -113,16 +113,6 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IAGrille.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IAGrille.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="9" column="3" lean-forward="false" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -277,6 +267,12 @@
               <item name="jeu" type="462c0819:PsiDirectoryNode" />
               <item name="logic" type="462c0819:PsiDirectoryNode" />
               <item name="palmares" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nurikabe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nurikabe" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -761,18 +757,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IAUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="48" lean-forward="false" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#480#481#0" expanded="true" />
-            <element signature="e#537#538#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IAInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -856,33 +840,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IABrutThread.java">
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IACaseTropLoins.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="159" column="70" lean-forward="false" selection-start-line="159" selection-start-column="70" selection-end-line="159" selection-end-column="70" />
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IAUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="18" column="48" lean-forward="false" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1054#1055#0" expanded="true" />
-            <element signature="e#1105#1106#0" expanded="true" />
+            <element signature="e#480#481#0" expanded="true" />
+            <element signature="e#537#538#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IABrutThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="84" column="49" lean-forward="true" selection-start-line="84" selection-start-column="49" selection-end-line="84" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1144#1145#0" expanded="true" />
+            <element signature="e#1195#1196#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IABlancs.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="86" column="12" lean-forward="false" selection-start-line="86" selection-start-column="12" selection-end-line="86" selection-end-column="12" />
+        <state relative-caret-position="153">
+          <caret line="75" column="5" lean-forward="true" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nurikabe/jeu/logic/ia/IACaseTropLoins.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>

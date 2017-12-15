@@ -98,6 +98,10 @@ class IABlancs implements IAalgo{
             return;
         done.add( new Position( x, y));
 
+        if (aFaire <= done.size()){
+            possibles.clear();
+            return;
+        }
         testEtAddPossible( possibles, grille, x-1, y, done, blancs);
         testEtAddPossible( possibles, grille, x+1, y, done, blancs);
         testEtAddPossible( possibles, grille, x, y-1, done, blancs);
@@ -106,13 +110,13 @@ class IABlancs implements IAalgo{
 
 
         if (grille.isForced( x-1, y) && grille.getGrille().getEtat( x-1, y) == Etat.BLANC)
-            possibleDePlacer( possibles, grille, x-1, y, done, aFaire-1, blancs);
+            possibleDePlacer( possibles, grille, x-1, y, done, aFaire, blancs);
         if (grille.isForced( x+1, y) && grille.getGrille().getEtat( x+1, y) == Etat.BLANC)
-            possibleDePlacer( possibles, grille, x+1, y, done, aFaire-1, blancs);
+            possibleDePlacer( possibles, grille, x+1, y, done, aFaire, blancs);
         if (grille.isForced( x, y-1) && grille.getGrille().getEtat( x, y-1) == Etat.BLANC)
-            possibleDePlacer( possibles, grille, x, y-1, done, aFaire-1, blancs);
+            possibleDePlacer( possibles, grille, x, y-1, done, aFaire, blancs);
         if (grille.isForced( x, y+1) && grille.getGrille().getEtat( x, y+1) == Etat.BLANC)
-            possibleDePlacer( possibles, grille, x, y+1, done, aFaire-1, blancs);
+            possibleDePlacer( possibles, grille, x, y+1, done, aFaire, blancs);
 
     }
 

@@ -1,17 +1,20 @@
 package nurikabe.jeu.logic.ia;
 
-import javafx.scene.layout.Priority;
 import nurikabe.jeu.assets.Grille;
 import nurikabe.jeu.assets.cellule.Etat;
 import nurikabe.jeu.logic.verif.LesVerifs;
 import util.Position;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import static nurikabe.jeu.logic.ia.IAUtils.placer;
 
 class IABrutThread implements Runnable{
+
+    private static final Random random = new Random( System.nanoTime());
 
     private int dept;
 
@@ -79,11 +82,15 @@ class IABrutThread implements Runnable{
     }
 
     private Position getVide(IAGrille grille){
+        List<Position> vides = new ArrayList<>();
         for (int x = 0; x < grille.getWidth(); x++)
             for (int y = 0; y < grille.getHeight(); y++)
                 if (grille.getGrille().getEtat( x, y) == Etat.VIDE)
-                    return new Position( x, y);
-        return null;
+                    vides.add( new Position( x, y));
+        if (vides.size() <= 0)
+            return null;
+        int rd = random.nextInt( vides.size());
+        return vides.get( rd);
     }
 
     private IAGrille resoudre( IAGrille grille, int deptRest){
