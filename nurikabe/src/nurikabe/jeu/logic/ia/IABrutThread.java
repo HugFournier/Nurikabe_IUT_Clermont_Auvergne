@@ -16,14 +16,15 @@ class IABrutThread implements Runnable{
 
     private static final Random random = new Random( System.nanoTime());
 
+    private static List<IAalgo> algosStart = null;
+    private static List<IAalgo> algosRun = null;
+    private static List<IAalgo> algosStop = null;
+    private static LesVerifs lesVerifs = new LesVerifs();
+
     private int dept;
 
     private boolean done = false;
 
-    private List<IAalgo> algosStart = new LinkedList<>();
-    private List<IAalgo> algosRun = new LinkedList<>();
-    private List<IAalgo> algosStop = new LinkedList<>();
-    private LesVerifs lesVerifs = new LesVerifs();
 
     private Grille grilleC = null;
     private IAGrille grilleD;
@@ -43,20 +44,29 @@ class IABrutThread implements Runnable{
     }
 
     private void initStart( ){
+        if (algosStart != null)
+            return;
+        algosStart = new LinkedList<>();
         algosStart.add( new IAalgoLesUns());
     }
 
     private void initRun(){
+        if (algosRun != null)
+            return;
+        algosRun = new LinkedList<>();
         algosRun.add( new IABlancNoir());
         algosRun.add( new IATroisNoirsUnBlanc());
         algosRun.add( new IANoirs());
         algosRun.add( new IABlancs());
         algosRun.add( new IABlancsCompletes());
         algosRun.add( new IA2choixRestant());
+        algosRun.add( new IACaseTropLoins());
     }
 
     private void initStop(){
-
+        if (algosStop != null)
+            return;
+        algosStop = new LinkedList<>();
     }
 
     private IAGrille resoudre( IAGrille grille){
@@ -139,14 +149,18 @@ class IABrutThread implements Runnable{
 
     public Grille getGrille( ) {
         if (lesVerifs.verification( grilleC)){
+            next1 = null;
+            next2 = null;
             return grilleC;
         }
         if (next1 != null && next1.isCorrect()){
             grilleC = next1.getGrille().clone();
+            next1 = null;
         }
 
         else if (next2 != null && next2.isCorrect()) {
             grilleC = next2.getGrille().clone();
+            next2 = null;
         }
         return grilleC;
     }
@@ -159,6 +173,7 @@ class IABrutThread implements Runnable{
 
         grilleC = laGrille.getGrille();
         done = true;
+        grilleD = null;
         stopAvecParent();
     }
 
