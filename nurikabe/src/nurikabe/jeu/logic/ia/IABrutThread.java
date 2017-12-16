@@ -110,7 +110,7 @@ class IABrutThread implements Runnable{
     private IAGrille resoudre( IAGrille grille, int deptRest){
         if (deptRest <= 0)
             return grille.clone();
-        IAGrille laGrille = resoudre( grille.clone());
+        IAGrille laGrille = resoudre( grille);
         if (lesVerifs.verification( laGrille.getGrille()))
             return laGrille;
         Position p = getVide( laGrille);
@@ -153,6 +153,10 @@ class IABrutThread implements Runnable{
 
     public Grille getGrille( ) {
         if (lesVerifs.verification( grilleC)){
+            if (next1 != null)
+                next1.stop();
+            if (next2 != null)
+                next2.stop();
             next1 = null;
             next2 = null;
             return grilleC;
@@ -180,12 +184,7 @@ class IABrutThread implements Runnable{
     }
 
     private synchronized void stopAvecParent(){
-        try{
-            Thread.currentThread().setPriority( Thread.NORM_PRIORITY);
-            parrent.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public synchronized void stop(){
@@ -201,10 +200,14 @@ class IABrutThread implements Runnable{
                 next2 = null;
             }
             Thread.currentThread().setPriority( Thread.NORM_PRIORITY);
-            thread.join();
+            thread.join( 1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    private void setParrent( Thread parrent){
+        this.parrent = parrent;
     }
 
 }

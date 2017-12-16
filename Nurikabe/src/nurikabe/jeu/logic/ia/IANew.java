@@ -8,29 +8,42 @@ public class IANew implements IAInterface{
 
     private IABrutThread ia = null;
 
+    private Grille grilleC = null;
+
     public IANew( ){
 
     }
 
     @Override
     public void resoudre( Grille grille) {
+        grilleC = null;
         ia = new IABrutThread( DEPT, new IAGrille( grille));
         ia.go();
     }
 
     @Override
     public boolean isSolved() {
+        if (grilleC != null)
+            return true;
         if (ia == null)
             return false;
-        return ia.isSolved();
+        if (ia.isSolved()){
+            grilleC = ia.getGrille();
+            ia = null;
+            return true;
+        }
+        return false;
     }
 
     @Override
     public Grille getGrille( ) {
-        if (ia != null){
-            return ia.getGrille();
+        if (grilleC == null &&ia != null){
+            grilleC = ia.getGrille();
+            if (ia.isSolved())
+                ia = null;
         }
-        return null;
+
+        return grilleC;
     }
 
 
