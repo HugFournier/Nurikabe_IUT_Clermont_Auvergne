@@ -36,6 +36,9 @@
             <Label wrapText="true">2017 - Université Clermont Auvergne.</Label>
             <Label wrapText="true">Projet sous Licence MIT.</Label>
             <Label wrapText="true"></Label>
+            <Label wrapText="true">*** Les grilles ***</Label>
+            <Label wrapText="true">https://www.puzzle-nurikabe.com/</Label>
+            <Label wrapText="true"></Label>
             <Button mnemonicParsing="false" onAction="#onExit" text="Quitter" />
         </VBox>
     </center>

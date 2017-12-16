@@ -18,7 +18,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -26,6 +29,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import nurikabe.jeu.logic.Handler;
 import nurikabe.jeu.logic.generateur.CreerDepuisPageWeb;
@@ -55,6 +59,8 @@ public class FenetreSauvegardeController {
     Handler manager;
     String path = null;
     String tailleCreationGrille = null;
+    private Boolean propositionSauvegarde = false;
+    private FenetreCheminController controllerChemin;
 
     /**
      * Initializes the controller class.
@@ -95,28 +101,15 @@ public class FenetreSauvegardeController {
     public void changeGeneration(ActionEvent event) {
         path = null;
         tailleCreationGrille = null;
-        /*listeTaille.setDisable(true);
-        bouttonChercherChemin.setDisable(true);
-        listeSaves.setDisable(true);
-        switch (((RadioButton) event.getSource()).getId()) {
-            case "newGrille":
-                listeTaille.setDisable(false);
-                break;
-            case "unkGrille":
-                bouttonChercherChemin.setDisable(false);
-                break;
-            case "knoGrille":
-                listeSaves.setDisable(false);
-                break;
-            default:
-                break;
-        }*/
     }
 
     @FXML
     public void chargerGrille() {
-        bouttonLancer.setDisable(true);
-        bouttonLancer.setText("Chargement...");
+        //bouttonLancer.setDisable(true);
+        //bouttonLancer.setText("Chargement...");
+        if(manager.isPartieEnCours() && !propositionSauvegarde){
+            sauverPartieEnCours();
+        }
         if (path != null) {
             try {
                 manager.charger(path);
@@ -168,8 +161,8 @@ public class FenetreSauvegardeController {
             messageInfo.setText("Sélection incomplète");
         }
 
-        bouttonLancer.setDisable(true);
-        bouttonLancer.setText("Lancer");
+        //bouttonLancer.setDisable(true);
+        //bouttonLancer.setText("Lancer");
         messageInfo.setVisible(true);
     }
 
@@ -177,4 +170,27 @@ public class FenetreSauvegardeController {
         this.manager = manager;
     }
 
+    public void sauverPartieEnCours(){
+        String chemin = manager.getCheminDeSauvegarde();
+        propositionSauvegarde=true;
+        if (chemin == null) {
+            //trouver une valeur a chemin en demandant
+            try {
+                Stage fChemin = new Stage();
+                fChemin.initModality(Modality.APPLICATION_MODAL);
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/nurikabe/affichage/ihm/FenetreChemin.fxml"));
+                fChemin.setScene(new Scene((Parent) fxmlLoader.load()));
+                controllerChemin = fxmlLoader.getController();
+                controllerChemin.setHandler(manager);
+                fChemin.setTitle("Sauvegarder une grille");
+                fChemin.showAndWait();
+                chargerGrille();
+                return;
+            } catch (Exception e) {
+                return;
+            }
+        }
+        manager.enregistrer(chemin);
+        chargerGrille();
+    }
 }
