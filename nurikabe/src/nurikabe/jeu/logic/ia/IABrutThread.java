@@ -40,6 +40,10 @@ class IABrutThread implements Runnable{
         initStop();
         this.dept = dept;
         grilleD = grille.clone();
+
+    }
+
+    protected void go(){
         start();
     }
 
@@ -116,11 +120,11 @@ class IABrutThread implements Runnable{
         IAGrille nextGrille1 = laGrille.clone();
         placer( nextGrille1, p, Etat.BLANC);
         next1 = new IABrutThread( deptRest-1, nextGrille1);
-
+        next1.go();
         IAGrille nextGrille2 = laGrille.clone();
         placer( nextGrille2, p, Etat.NOIR);
         next2 = new IABrutThread( deptRest-1, nextGrille2);
-
+        next2.go();
         return laGrille;
     }
 
@@ -168,12 +172,10 @@ class IABrutThread implements Runnable{
     @Override
     public void run() {
         Thread.currentThread().setPriority( Thread.MIN_PRIORITY);
-        IAGrille laGrille = grilleD.clone();
-        laGrille = resoudre( laGrille, dept);
 
-        grilleC = laGrille.getGrille();
-        done = true;
+        grilleC = resoudre( grilleD, dept).getGrille();
         grilleD = null;
+        done = true;
         stopAvecParent();
     }
 
@@ -189,10 +191,15 @@ class IABrutThread implements Runnable{
     public synchronized void stop(){
         try{
             grilleC = null;
-            if (next1 != null)
+            grilleD = null;
+            if (next1 != null){
                 next1.stop();
-            if (next2 != null)
+                next1 = null;
+            }
+            if (next2 != null){
                 next2.stop();
+                next2 = null;
+            }
             Thread.currentThread().setPriority( Thread.NORM_PRIORITY);
             thread.join();
         } catch (InterruptedException e) {

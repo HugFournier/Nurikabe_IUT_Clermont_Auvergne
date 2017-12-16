@@ -15,6 +15,7 @@ public class IANew implements IAInterface{
     @Override
     public void resoudre( Grille grille) {
         ia = new IABrutThread( DEPT, new IAGrille( grille));
+        ia.go();
     }
 
     @Override
